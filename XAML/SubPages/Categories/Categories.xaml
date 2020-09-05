@@ -1,0 +1,83 @@
+﻿<Page
+	x:Class="Salary_Control.XAML.SubPages.Categories"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Salary_Control.XAML.SubPages"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:entities="using:Salary_Control.Source.API.Entities"
+	mc:Ignorable="d"
+	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+	<Grid>
+		<StackPanel Orientation="Vertical">
+			<CommandBar DefaultLabelPosition="Right">
+				<AppBarButton 
+					Icon="Add" 
+					Label="Добавить Категорию"
+					Click="RedirectOnDialogCreate"
+				/>
+				<AppBarButton 
+					Icon="ClearSelection" 
+					Label="Очистить выделение"
+					Click="ClearSelection"
+				/>
+
+				<CommandBar.SecondaryCommands>
+					<AppBarButton 
+						Icon="Delete" 
+						Label="Удалить выбранные категории"
+						Click="DisplayRemoveSelectedCategoriesDialog"
+						/>
+					<AppBarButton 
+						Icon="Delete" 
+						Label="Удалить всё"
+						Click="DisplayRemoveAllCategoriesDialog"
+						/>
+				</CommandBar.SecondaryCommands>
+			</CommandBar>
+
+			<ScrollViewer>
+				<ListView x:Name="list" ItemsSource="{x:Bind CategoriesList.Categories}" SelectionMode="Extended">
+					<ListView.ItemContainerStyle>
+						<Style TargetType="ListViewItem">
+							<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+						</Style>
+					</ListView.ItemContainerStyle>
+					
+					<ListView.ItemTemplate>
+						<DataTemplate x:DataType="entities:EventCategory">
+							<Grid Tag="{x:Bind Id}" Background="Transparent">
+								<Grid.ContextFlyout>
+									<MenuFlyout>
+										<MenuFlyoutItem 
+                                            Text="Изменить категорию" 
+                                            Click="EditCategory"
+                                            Tag="{x:Bind (entities:EventCategory)}"
+                                            >
+											<MenuFlyoutItem.Icon>
+												<SymbolIcon Symbol="Edit"/>
+											</MenuFlyoutItem.Icon>
+										</MenuFlyoutItem>
+                                        <MenuFlyoutItem 
+                                            Text="Удалить категорию" 
+                                            Click="RemoveCategory"
+                                            Tag="{x:Bind (entities:EventCategory)}">
+											<MenuFlyoutItem.Icon>
+												<SymbolIcon Symbol="Delete"/>
+											</MenuFlyoutItem.Icon>
+										</MenuFlyoutItem>
+									</MenuFlyout>
+								</Grid.ContextFlyout>
+
+								<StackPanel Orientation="Horizontal">
+									<Grid Height="40" Width="50" Background="{x:Bind Color}"/>
+									<TextBlock Text="{x:Bind Name}" Margin="10 10 0 0"/>
+								</StackPanel>
+							</Grid>
+						</DataTemplate>
+					</ListView.ItemTemplate>
+				</ListView>
+			</ScrollViewer>
+		</StackPanel>
+	</Grid>
+</Page>

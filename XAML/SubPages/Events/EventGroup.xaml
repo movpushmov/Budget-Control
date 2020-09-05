@@ -1,0 +1,133 @@
+﻿<Page
+    x:Class="Salary_Control.XAML.SubPages.EventGroup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Salary_Control.XAML.SubPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mctoolkit="using:Microsoft.Toolkit.Uwp.UI.Converters" xmlns:entities="using:Salary_Control.Source.API.Entities"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <mctoolkit:BoolNegationConverter x:Key="boolToNegative"/>
+    </Page.Resources>
+    
+    <Grid>
+
+        <StackPanel Orientation="Vertical">
+            <CommandBar DefaultLabelPosition="Right">
+                <AppBarButton 
+					Icon="ClearSelection" 
+					Label="Очистить выделение"
+					Click="ClearSelection"
+				    />
+                <CommandBar.SecondaryCommands>
+                    <AppBarButton 
+					    Icon="Delete" 
+					    Label="Удалить выбранные события"
+					    Click="DisplayRemoveSelectedCategoriesDialog"
+					    />
+                    <AppBarButton 
+					    Icon="Delete" 
+					    Label="Удалить всё"
+					    Click="DisplayRemoveAllCategoriesDialog"
+					    />
+                </CommandBar.SecondaryCommands>
+            </CommandBar>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="10 10 0 0">
+                    <CalendarDatePicker
+                        DateChanged="CalendarDatePickerDateChanged"
+                        Header="Выберите дату группы событий"
+                        />
+
+                    <RichTextBlock Margin="0 10 0 0">
+                        <Paragraph>
+                            <Run>Cобытия, которые произошли в этот день:</Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <ScrollViewer>
+                        <ListView 
+                            x:Name="list" 
+                            ItemsSource="{x:Bind EventsList.Events}"
+                            SelectionMode="Extended"
+                            >
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="entities:Event">
+                                    <Grid Background="Transparent">
+                                        <Grid.ContextFlyout>
+                                            <MenuFlyout>
+                                                <MenuFlyoutItem 
+                                                    Text="Изменить событие" 
+                                                    Click="ChangeEditMode"
+                                                    Tag="{x:Bind (entities:Event)}"
+                                                    >
+                                                    <MenuFlyoutItem.Icon>
+                                                        <SymbolIcon Symbol="Edit"/>
+                                                    </MenuFlyoutItem.Icon>
+                                                </MenuFlyoutItem>
+                                                <MenuFlyoutItem 
+                                                    Text="Удалить событие" 
+                                                    Click="RemoveEvent"
+                                                    Tag="{x:Bind (entities:Event)}"
+                                                    >
+                                                    <MenuFlyoutItem.Icon>
+                                                        <SymbolIcon Symbol="Delete"/>
+                                                    </MenuFlyoutItem.Icon>
+                                                </MenuFlyoutItem>
+                                            </MenuFlyout>
+                                        </Grid.ContextFlyout>
+
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{x:Bind Name}"/>
+                                            <Grid Background="{x:Bind Category.Color}">
+                                                <TextBlock Text="{x:Bind Category.Name}"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollViewer>
+                </StackPanel>
+
+
+                <Grid Visibility="{x:Bind GetAddFormVisibility(IsEditing), Mode=OneWay}" Padding="40 5 0 0">
+                    <StackPanel Orientation="Vertical" Width="200">
+                        <TextBlock Margin="0 0 0 10">Создать событие</TextBlock>
+                        <TextBox x:Name="newEventName" PlaceholderText="Название нового события"/>
+                        <TextBox 
+                            x:Name="newEventCost" 
+                            Margin="0 10 0 10" 
+                            InputScope="Number"
+                            PlaceholderText="Кол-во денег"
+                            />
+                        <AutoSuggestBox 
+                            x:Name="newEventCategory" 
+                            PlaceholderText="Название категории"
+                            QueryIcon="Find"
+                            TextChanged="CategoryNameFieldChanged"
+                            />
+
+                        <Button Click="CreateEvent" Margin="0 20 0 0">
+                            Создать событие
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+
+
+                <Grid Visibility="{x:Bind GetEditFormVisibility(IsEditing), Mode=OneWay}">
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

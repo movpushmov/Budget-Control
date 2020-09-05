@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="Salary_Control.XAML.SubPages.WelcomeScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Salary_Control.XAML.SubPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel 
+            Orientation="Vertical"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            >
+            <TextBlock
+                FontSize="20"
+                HorizontalAlignment="Center"
+                >
+            Добро пожаловать в приложение по контролю бюджета!
+            </TextBlock>
+            <TextBlock FontSize="15" HorizontalAlignment="Center" Foreground="Gray">
+                Чтобы начать пользоваться приложением, выберите один из пунктов в меню навигации.
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Page>
