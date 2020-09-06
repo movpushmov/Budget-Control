@@ -275,5 +275,42 @@ namespace Salary_Control.XAML.SubPages
                 EventsList.Events.Remove((sender as MenuFlyoutItem).Tag as Event);
             }
         }
+        private void EditEvent(object sender, RoutedEventArgs e)
+        {
+            using (var context = new DBContext())
+            {
+                var category = context.EventCategories.FirstOrDefault(c => c.Name == editEventCategory.Text);
+                var fixedTS = new DateTime(
+                    EventGroupTime.Year,
+                    EventGroupTime.Month,
+                    EventGroupTime.Day,
+                    0, 0, 0, 0
+                );
+
+                var eventsGroup = context.EventsGroups.FirstOrDefault(eg => eg.TimeStamp == fixedTS);
+
+                var res = int.TryParse(editEventCost.Text, out int cost);
+
+                if (category != null && eventsGroup != null && res)
+                {
+                    var editedEvent = new Event()
+                    {
+                        Category = category,
+                        EventsGroup = eventsGroup,
+                        Name = newEventName.Name,
+                        Cost = cost
+                    };
+
+                    context.Events.Add(editedEvent);
+                    context.SaveChanges();
+
+                    EventsList.Events.Add(editedEvent);
+
+                    editEventName.Text = "";
+                    editEventCost.Text = "";
+                    editEventCategory.Text = "";
+                }
+            }
+        }
     }
 }
