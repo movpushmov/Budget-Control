@@ -35,8 +35,17 @@
 					    />
                 </CommandBar.SecondaryCommands>
             </CommandBar>
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical" Margin="10 10 0 0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".3*"/>
+                    <ColumnDefinition Width=".7*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Orientation="Vertical" Margin="10 10 0 0" Grid.Row="0" Grid.Column="0">
                     <CalendarDatePicker
                         DateChanged="CalendarDatePickerDateChanged"
                         Header="Выберите дату группы событий"
@@ -100,7 +109,13 @@
                 </StackPanel>
 
 
-                <Grid Visibility="{x:Bind GetAddFormVisibility(IsEditing), Mode=OneWay}" Padding="40 5 0 0">
+                <Grid 
+                    Visibility="{x:Bind GetAddFormVisibility(IsEditing), Mode=OneWay}"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    >
                     <StackPanel Orientation="Vertical" Width="200">
                         <TextBlock Margin="0 0 0 10">Создать событие</TextBlock>
                         <TextBox x:Name="newEventName" PlaceholderText="Название нового события"/>
@@ -125,9 +140,46 @@
 
 
 
-                <Grid Visibility="{x:Bind GetEditFormVisibility(IsEditing), Mode=OneWay}">
-                </Grid>
-            </StackPanel>
+                <StackPanel 
+                    Orientation="Vertical" 
+                    Visibility="{x:Bind GetEditFormVisibility(IsEditing), Mode=OneWay}"
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    Grid.Row="0"
+                    Grid.Column="1">
+                    <Button 
+                        Click="ChangeEditMode"
+                        VerticalAlignment="Top"
+                        Margin="10"
+                        >
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Back"/>
+                            <TextBlock Margin="10 0 0 0">Назад</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                    <StackPanel Orientation="Vertical" Margin="10">
+                        <TextBlock Margin="0 0 0 10">Редактировать событие</TextBlock>
+                        <TextBox x:Name="editEventName" PlaceholderText="Название события"/>
+                        <TextBox 
+                            x:Name="editEventCost" 
+                            Margin="0 10 0 10" 
+                            InputScope="Number"
+                            PlaceholderText="Кол-во денег"
+                            />
+                        <AutoSuggestBox 
+                            x:Name="editEventCategory" 
+                            PlaceholderText="Название категории"
+                            QueryIcon="Find"
+                            TextChanged="CategoryNameFieldChanged"
+                            />
+
+                        <Button Click="EditEvent" Margin="0 20 0 0">
+                            Редактировать событие
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>
