@@ -66,9 +66,10 @@ namespace Salary_Control.XAML.SubPages
 
             var dateTime = DateTime.Now;
             EventGroupTime = new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0);
-            IsEditing = false;
 
-            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            calendarDatePicker.Date = EventGroupTime;
+
+            IsEditing = false;
         }
 
         private void CalendarDatePickerDateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
@@ -89,10 +90,40 @@ namespace Salary_Control.XAML.SubPages
             }
         }
 
-        private void ChangeEditMode(object sender, RoutedEventArgs e)
+        private void EnterEditMode(object sender, RoutedEventArgs e)
         {
-            
-            IsEditing = !IsEditing;
+            var ev = (sender as MenuFlyoutItem).Tag as Event;
+            editEventName.Text = ev.Name;
+
+            if (ev.Cost < 0)
+            {
+                editEventCost.Text = (ev.Cost * -1).ToString();
+                isMinusEditForm.IsChecked = true;
+            }
+            else
+            {
+                editEventCost.Text = ev.Cost.ToString();
+                isMinusEditForm.IsChecked = false;
+            }
+            editEventCategory.Text = ev.Category.Name;
+
+            CurrentEvent = ev;
+            IsEditing = true;
+        }
+
+        private void ClearEditForm()
+        {
+            editEventName.Text = "";
+            editEventCost.Text = "";
+            editEventCategory.Text = "";
+        }
+
+        private void ExitFromEditMode(object sender = null, RoutedEventArgs e = null)
+        {
+            ClearEditForm();
+
+            CurrentEvent = null;
+            IsEditing = false;
         }
 
         private void CreateEvent(object sender, RoutedEventArgs e)
@@ -111,13 +142,19 @@ namespace Salary_Control.XAML.SubPages
 
                 var res = int.TryParse(newEventCost.Text, out int cost);
 
+                bool isMinusChecked = isMinus.IsChecked.HasValue && isMinus.IsChecked.Value;
+                if (isMinusChecked)
+                {
+                    cost *= -1;
+                }
+
                 if (category != null && eventsGroup != null && res)
                 {
                     var newEvent = new Event()
                     {
                         Category = category,
                         EventsGroup = eventsGroup,
-                        Name = newEventName.Name,
+                        Name = newEventName.Text,
                         Cost = cost
                     };
 
@@ -162,7 +199,7 @@ namespace Salary_Control.XAML.SubPages
             {
                 ContentDialog removeAllCategoriesDialog = new ContentDialog
                 {
-                    Title = "Удалить все категории?",
+                    Title = "Удалить все события?",
                     Content = "Если вы удалите все категории, то потом не сможете отменить это действие.",
                     CloseButtonText = "Отменить",
                     PrimaryButtonText = "Удалить"
@@ -279,36 +316,44 @@ namespace Salary_Control.XAML.SubPages
         {
             using (var context = new DBContext())
             {
+                var dbEvent = context.Events.FirstOrDefault(c => c.Id == CurrentEvent.Id);
+
                 var category = context.EventCategories.FirstOrDefault(c => c.Name == editEventCategory.Text);
-                var fixedTS = new DateTime(
-                    EventGroupTime.Year,
-                    EventGroupTime.Month,
-                    EventGroupTime.Day,
-                    0, 0, 0, 0
-                );
-
-                var eventsGroup = context.EventsGroups.FirstOrDefault(eg => eg.TimeStamp == fixedTS);
-
                 var res = int.TryParse(editEventCost.Text, out int cost);
 
-                if (category != null && eventsGroup != null && res)
+                if (res && CurrentEvent != null && dbEvent != null)
                 {
-                    var editedEvent = new Event()
-                    {
-                        Category = category,
-                        EventsGroup = eventsGroup,
-                        Name = newEventName.Name,
-                        Cost = cost
-                    };
+                    dbEvent.Category = category;
 
-                    context.Events.Add(editedEvent);
+                    bool isMinusChecked = isMinus.IsChecked.HasValue && isMinus.IsChecked.Value;
+                    if (isMinusChecked && cost < 0)
+                    {
+                        dbEvent.Cost = cost;
+                    }
+                    else if (isMinusChecked && cost > 0)
+                    {
+                        dbEvent.Cost = cost * -1;
+                    }
+                    else if (!isMinusChecked && cost < 0)
+                    {
+                        dbEvent.Cost = cost * -1;
+                    }
+                    else if (isMinusChecked && cost > 0)
+                    {
+                        dbEvent.Cost = cost;
+                    }
+
+                    dbEvent.Name = editEventName.Text;
+
+                    for (int i = 0; i < EventsList.Events.Count; i++)
+                    {
+                        if (EventsList.Events[i].Id == dbEvent.Id)
+                            EventsList.Events[i] = dbEvent;
+                    }
+
                     context.SaveChanges();
 
-                    EventsList.Events.Add(editedEvent);
-
-                    editEventName.Text = "";
-                    editEventCost.Text = "";
-                    editEventCategory.Text = "";
+                    ExitFromEditMode();
                 }
             }
         }
