@@ -1,5 +1,6 @@
 ﻿using Salary_Control.Source.Navigation;
 using Salary_Control.XAML.SubPages;
+using Salary_Control.XAML.SubPages.Stats;
 using System;
 using System.Collections.Generic;
 using System.IO;

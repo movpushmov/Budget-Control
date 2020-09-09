@@ -9,8 +9,12 @@
 	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 	<Grid>
-		<StackPanel Orientation="Vertical">
-			<CommandBar DefaultLabelPosition="Right">
+		<Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height=".9*"/>
+            </Grid.RowDefinitions>
+			<CommandBar DefaultLabelPosition="Right" Grid.Row="0">
 				<AppBarButton 
 					Icon="Add" 
 					Label="Добавить Категорию"
@@ -36,7 +40,7 @@
 				</CommandBar.SecondaryCommands>
 			</CommandBar>
 
-			<ScrollViewer>
+			<ScrollViewer Grid.Row="1">
 				<ListView x:Name="list" ItemsSource="{x:Bind CategoriesList.Categories}" SelectionMode="Extended">
 					<ListView.ItemContainerStyle>
 						<Style TargetType="ListViewItem">
@@ -78,6 +82,6 @@
 					</ListView.ItemTemplate>
 				</ListView>
 			</ScrollViewer>
-		</StackPanel>
+		</Grid>
 	</Grid>
 </Page>

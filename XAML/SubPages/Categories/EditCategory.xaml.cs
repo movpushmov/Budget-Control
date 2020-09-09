@@ -66,10 +66,15 @@ namespace Salary_Control.XAML.SubPages
             {
                 using (var dbContext = new DBContext())
                 {
-                    Params.Category.Name = categoryName.Text;
-                    Params.Category.Color = ColorHelper.ToHex(categoryColor.Color);
+                    var category = dbContext.EventCategories.FirstOrDefault(c => c.Id == Params.Category.Id);
 
-                    dbContext.SaveChanges();
+                    if (category != null)
+                    {
+                        category.Name = categoryName.Text;
+                        category.Color = ColorHelper.ToHex(categoryColor.Color);
+
+                        dbContext.SaveChanges();
+                    }
                 }
 
                 for (int i = 0; i < Params.List.Categories.Count; i++)

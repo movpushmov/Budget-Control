@@ -15,8 +15,13 @@
     
     <Grid>
 
-        <StackPanel Orientation="Vertical">
-            <CommandBar DefaultLabelPosition="Right">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            
+            <CommandBar DefaultLabelPosition="Right" Grid.Row="0">
                 <AppBarButton 
 					Icon="ClearSelection" 
 					Label="Очистить выделение"
@@ -35,29 +40,38 @@
 					    />
                 </CommandBar.SecondaryCommands>
             </CommandBar>
-            <Grid>
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width=".3*"/>
-                    <ColumnDefinition Width=".7*"/>
+                    <ColumnDefinition Width=".4*"/>
+                    <ColumnDefinition Width=".4*"/>
                 </Grid.ColumnDefinitions>
                 
-                <StackPanel Orientation="Vertical" Margin="10 10 0 0" Grid.Row="0" Grid.Column="0">
+                <Grid Margin="10 10 0 0" Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    
                     <CalendarDatePicker
+                        x:Name="calendarDatePicker"
                         DateChanged="CalendarDatePickerDateChanged"
                         Header="Выберите дату группы событий"
+                        Grid.Row="0"
                         />
 
-                    <RichTextBlock Margin="0 10 0 0">
+                    <RichTextBlock Margin="0 10 0 0" Grid.Row="1">
                         <Paragraph>
                             <Run>Cобытия, которые произошли в этот день:</Run>
                         </Paragraph>
                     </RichTextBlock>
 
-                    <ScrollViewer>
+                    <Grid Grid.Row="2">
+                        <ScrollViewer>
                         <ListView 
                             x:Name="list" 
                             ItemsSource="{x:Bind EventsList.Events}"
@@ -71,12 +85,12 @@
 
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="entities:Event">
-                                    <Grid Background="Transparent">
+                                    <Grid Background="Transparent" Padding="5">
                                         <Grid.ContextFlyout>
                                             <MenuFlyout>
                                                 <MenuFlyoutItem 
                                                     Text="Изменить событие" 
-                                                    Click="ChangeEditMode"
+                                                    Click="EnterEditMode"
                                                     Tag="{x:Bind (entities:Event)}"
                                                     >
                                                     <MenuFlyoutItem.Icon>
@@ -97,23 +111,33 @@
 
                                         <StackPanel Orientation="Vertical">
                                             <TextBlock Text="{x:Bind Name}"/>
-                                            <Grid Background="{x:Bind Category.Color}">
-                                                <TextBlock Text="{x:Bind Category.Name}"/>
-                                            </Grid>
+                                            <TextBlock>
+                                                <Run Text="{x:Bind Cost}"/>
+                                                <Run Text="₽"/>
+                                            </TextBlock>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Grid Background="{x:Bind Category.Color}" Width="30" Height="30"/>
+                                                <TextBlock 
+                                                    Text="{x:Bind Category.Name}" 
+                                                    VerticalAlignment="Center"
+                                                    Margin="10 0 0 0"
+                                                    />
+                                            </StackPanel>
                                         </StackPanel>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                        </ListView>
-                    </ScrollViewer>
-                </StackPanel>
+                            </ListView>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
 
 
                 <Grid 
                     Visibility="{x:Bind GetAddFormVisibility(IsEditing), Mode=OneWay}"
-                    VerticalAlignment="Center" 
                     HorizontalAlignment="Center"
                     Grid.Row="0"
+                    Margin="0 50 0 0"
                     Grid.Column="1"
                     >
                     <StackPanel Orientation="Vertical" Width="200">
@@ -132,6 +156,8 @@
                             TextChanged="CategoryNameFieldChanged"
                             />
 
+                        <CheckBox x:Name="isMinus">Расход</CheckBox>
+
                         <Button Click="CreateEvent" Margin="0 20 0 0">
                             Создать событие
                         </Button>
@@ -143,12 +169,11 @@
                 <StackPanel 
                     Orientation="Vertical" 
                     Visibility="{x:Bind GetEditFormVisibility(IsEditing), Mode=OneWay}"
-                    VerticalAlignment="Center" 
                     HorizontalAlignment="Center"
                     Grid.Row="0"
                     Grid.Column="1">
                     <Button 
-                        Click="ChangeEditMode"
+                        Click="ExitFromEditMode"
                         VerticalAlignment="Top"
                         Margin="10"
                         >
@@ -174,12 +199,14 @@
                             TextChanged="CategoryNameFieldChanged"
                             />
 
+                        <CheckBox x:Name="isMinusEditForm">Расход</CheckBox>
+
                         <Button Click="EditEvent" Margin="0 20 0 0">
                             Редактировать событие
                         </Button>
                     </StackPanel>
                 </StackPanel>
             </Grid>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Page>

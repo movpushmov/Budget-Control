@@ -42,8 +42,6 @@ namespace Salary_Control.XAML.SubPages
                     )
                 };
             }
-
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
         private async void DisplayRemoveAllCategoriesDialog(object sender, RoutedEventArgs e)

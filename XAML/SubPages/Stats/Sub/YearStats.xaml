@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="Salary_Control.XAML.SubPages.Stats.Sub.YearStats"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Salary_Control.XAML.SubPages.Stats.Sub"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="50 0 0 0">Доходы за 6 месяцев</TextBlock>
+                <charting:Chart x:Name="chartPlus" Width="350" Height="350" Background="Transparent"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="50 0 0 0">Расходы за 6 месяцев</TextBlock>
+                <charting:Chart x:Name="chartMinus" Width="350" Height="350" Background="Transparent"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
