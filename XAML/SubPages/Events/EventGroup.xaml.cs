@@ -325,7 +325,7 @@ namespace Salary_Control.XAML.SubPages
                 {
                     dbEvent.Category = category;
 
-                    bool isMinusChecked = isMinus.IsChecked.HasValue && isMinus.IsChecked.Value;
+                    bool isMinusChecked = isMinusEditForm.IsChecked.HasValue && isMinusEditForm.IsChecked.Value;
                     if (isMinusChecked && cost < 0)
                     {
                         dbEvent.Cost = cost;
@@ -338,7 +338,7 @@ namespace Salary_Control.XAML.SubPages
                     {
                         dbEvent.Cost = cost * -1;
                     }
-                    else if (isMinusChecked && cost > 0)
+                    else if (!isMinusChecked && cost > 0)
                     {
                         dbEvent.Cost = cost;
                     }
