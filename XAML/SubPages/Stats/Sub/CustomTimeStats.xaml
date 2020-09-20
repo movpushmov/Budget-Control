@@ -13,6 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
         <StackPanel Orientation="Horizontal">
@@ -40,6 +41,20 @@
                 <TextBlock Margin="50 0 0 0">Расходы за этот промежуток</TextBlock>
                 <charting:Chart x:Name="chartMinus" Width="350" Height="350" Background="Transparent"/>
             </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="3">
+            <TextBlock HorizontalAlignment="Center" FontSize="17">
+                Всего получено за промежуток:
+            </TextBlock>
+            <TextBlock 
+                HorizontalAlignment="Center" 
+                FontSize="20"
+                Margin="20"
+                >
+                <Run x:Name="finalCount"/>
+                <Run>₽</Run>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </Page>

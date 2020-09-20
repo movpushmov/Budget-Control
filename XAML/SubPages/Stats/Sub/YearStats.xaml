@@ -9,6 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
                 <TextBlock Margin="50 0 0 0">Доходы за 6 месяцев</TextBlock>
@@ -19,6 +24,20 @@
                 <TextBlock Margin="50 0 0 0">Расходы за 6 месяцев</TextBlock>
                 <charting:Chart x:Name="chartMinus" Width="350" Height="350" Background="Transparent"/>
             </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <TextBlock HorizontalAlignment="Center" FontSize="17">
+                Всего получено за год:
+            </TextBlock>
+            <TextBlock 
+                HorizontalAlignment="Center" 
+                FontSize="20"
+                Margin="20"
+                >
+                <Run x:Name="finalCount"/>
+                <Run>₽</Run>
+            </TextBlock>
         </StackPanel>
     </Grid>
 </Page>
