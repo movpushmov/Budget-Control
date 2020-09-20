@@ -9,7 +9,7 @@
   <Identity
     Name="8b746ef8-f001-4814-a6e8-8a2b9d3474ed"
     Publisher="CN=redfo"
-    Version="1.0.0.0" />
+    Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="8b746ef8-f001-4814-a6e8-8a2b9d3474ed" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

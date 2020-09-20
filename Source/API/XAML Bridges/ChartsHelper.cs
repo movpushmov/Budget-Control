@@ -22,6 +22,7 @@ namespace Salary_Control.Source.API.XAML_Bridges
         }
 
         public static (
+            int totalCount,
             Dictionary<int, int> totalPlus,
             Dictionary<int, int> totalMinus,
             Dictionary<int, EventCategory> plusCategoriesMap,
@@ -32,13 +33,17 @@ namespace Salary_Control.Source.API.XAML_Bridges
             var totalMinus = new Dictionary<int, int>();
             var plusCategoriesMap = new Dictionary<int, EventCategory>();
             var minusCategoriesMap = new Dictionary<int, EventCategory>();
+            var totalCount = 0;
 
             foreach (var eventsGroup in eventsGroups)
             {
                 foreach (var e in eventsGroup.Events)
                 {
+                    totalCount += e.Cost;
+
                     if (e.Cost > 0)
                     {
+
                         if (totalPlus.ContainsKey(e.CategoryId))
                         {
                             totalPlus[e.CategoryId] += e.Cost;
@@ -64,7 +69,7 @@ namespace Salary_Control.Source.API.XAML_Bridges
                 }
             }
 
-            return (totalPlus, totalMinus, plusCategoriesMap, minusCategoriesMap);
+            return (totalCount, totalPlus, totalMinus, plusCategoriesMap, minusCategoriesMap);
         }
 
         public static void FillChartPaletter(

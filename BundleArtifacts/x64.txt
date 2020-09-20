@@ -1,0 +1,3 @@
+MainPackage=C:\Users\redfo\Documents\GitHub\Salary-Control\bin\x64\Release\Salary Control_1.0.1.0_x64.msix
+SymbolPackage=C:\Users\redfo\Documents\GitHub\Salary-Control\obj\x64\Release\Symbols\Salary Control_1.0.1.0_x64.appxsym
+ResourcePack=C:\Users\redfo\Documents\GitHub\Salary-Control\bin\x64\Release\Salary Control_1.0.1.0_language-ru.msix

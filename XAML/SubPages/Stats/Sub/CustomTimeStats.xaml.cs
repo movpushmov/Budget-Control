@@ -69,6 +69,8 @@ namespace Salary_Control.XAML.SubPages.Stats.Sub
                         ),
                         Palette = minusResourceCollection
                     });
+
+                    finalCount.Text = countResult.totalCount.ToString();
                 } 
                 else
                 {
