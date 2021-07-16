@@ -59,6 +59,8 @@ namespace Salary_Control.XAML.SubPages
         {
             InitializeComponent();
 
+            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+
             EventsList = new EventsList()
             {
                 Events = new ObservableCollection<Event>()

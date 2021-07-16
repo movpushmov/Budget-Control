@@ -143,9 +143,6 @@
     <Compile Include="XAML\Root.xaml.cs">
       <DependentUpon>Root.xaml</DependentUpon>
     </Compile>
-    <Compile Include="XAML\SubPages\Categories\AddCategory.xaml.cs">
-      <DependentUpon>AddCategory.xaml</DependentUpon>
-    </Compile>
     <Compile Include="XAML\SubPages\Categories\AddCategoryDialog.xaml.cs">
       <DependentUpon>AddCategoryDialog.xaml</DependentUpon>
     </Compile>
@@ -202,10 +199,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="XAML\Root.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\Categories\AddCategory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
