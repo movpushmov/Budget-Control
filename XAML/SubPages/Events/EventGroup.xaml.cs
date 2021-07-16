@@ -98,12 +98,10 @@ namespace Salary_Control.XAML.SubPages
             if (ev.Cost < 0)
             {
                 editEventCost.Text = (ev.Cost * -1).ToString();
-                isMinusEditForm.IsChecked = true;
             }
             else
             {
                 editEventCost.Text = ev.Cost.ToString();
-                isMinusEditForm.IsChecked = false;
             }
             editEventCategory.Text = ev.Category.Name;
 
@@ -142,8 +140,12 @@ namespace Salary_Control.XAML.SubPages
 
                 var res = int.TryParse(newEventCost.Text, out int cost);
 
-                bool isMinusChecked = isMinus.IsChecked.HasValue && isMinus.IsChecked.Value;
-                if (isMinusChecked)
+                if (category == null)
+                {
+                    return;
+                }
+
+                if (category.IsConsumption)
                 {
                     cost *= -1;
                 }
@@ -325,20 +327,19 @@ namespace Salary_Control.XAML.SubPages
                 {
                     dbEvent.Category = category;
 
-                    bool isMinusChecked = isMinusEditForm.IsChecked.HasValue && isMinusEditForm.IsChecked.Value;
-                    if (isMinusChecked && cost < 0)
+                    if (category.IsConsumption && cost < 0)
                     {
                         dbEvent.Cost = cost;
                     }
-                    else if (isMinusChecked && cost > 0)
+                    else if (category.IsConsumption && cost > 0)
                     {
                         dbEvent.Cost = cost * -1;
                     }
-                    else if (!isMinusChecked && cost < 0)
+                    else if (!category.IsConsumption && cost < 0)
                     {
                         dbEvent.Cost = cost * -1;
                     }
-                    else if (!isMinusChecked && cost > 0)
+                    else if (!category.IsConsumption && cost > 0)
                     {
                         dbEvent.Cost = cost;
                     }

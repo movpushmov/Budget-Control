@@ -16,6 +16,7 @@ namespace Salary_Control.Source.API
 
         public DBContext()
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

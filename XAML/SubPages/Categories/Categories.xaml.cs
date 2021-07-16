@@ -46,6 +46,11 @@ namespace Salary_Control.XAML.SubPages
 
         private async void DisplayRemoveAllCategoriesDialog(object sender, RoutedEventArgs e)
         {
+            if (CategoriesList.Categories.Count < 1)
+            {
+                return;
+            } 
+
             ContentDialog removeAllCategoriesDialog = new ContentDialog
             {
                 Title = "Удалить все категории?",
@@ -72,6 +77,11 @@ namespace Salary_Control.XAML.SubPages
 
         private async void DisplayRemoveSelectedCategoriesDialog(object sender, RoutedEventArgs e)
         {
+            if (CategoriesList.Categories.Count < 1 || list.SelectedItems.Count < 1)
+            {
+                return;
+            }
+
             ContentDialog removeAllCategoriesDialog = new ContentDialog
             {
                 Title = "Удалить выбранные категории?",

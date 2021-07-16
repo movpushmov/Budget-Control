@@ -50,7 +50,7 @@
                     <ColumnDefinition Width=".4*"/>
                 </Grid.ColumnDefinitions>
                 
-                <Grid Margin="10 10 0 0" Grid.Row="0" Grid.Column="0">
+                <Grid Margin="30 10 0 0" Grid.Row="0" Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -156,9 +156,7 @@
                             TextChanged="CategoryNameFieldChanged"
                             />
 
-                        <CheckBox x:Name="isMinus">Расход</CheckBox>
-
-                        <Button Click="CreateEvent" Margin="0 20 0 0">
+                        <Button Click="CreateEvent" Margin="0 20 0 0"  Style="{StaticResource AccentButtonStyle}">
                             Создать событие
                         </Button>
                     </StackPanel>
@@ -198,9 +196,7 @@
                             QueryIcon="Find"
                             TextChanged="CategoryNameFieldChanged"
                             />
-
-                        <CheckBox x:Name="isMinusEditForm">Расход</CheckBox>
-
+                        
                         <Button Click="EditEvent" Margin="0 20 0 0">
                             Редактировать событие
                         </Button>

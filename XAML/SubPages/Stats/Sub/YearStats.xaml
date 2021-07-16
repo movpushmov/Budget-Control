@@ -16,12 +16,12 @@
         
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
-                <TextBlock Margin="50 0 0 0">Доходы за 6 месяцев</TextBlock>
+                <TextBlock Margin="50 0 0 0">Доходы за 12 месяцев</TextBlock>
                 <charting:Chart x:Name="chartPlus" Width="350" Height="350" Background="Transparent"/>
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
-                <TextBlock Margin="50 0 0 0">Расходы за 6 месяцев</TextBlock>
+                <TextBlock Margin="50 0 0 0">Расходы за 12 месяцев</TextBlock>
                 <charting:Chart x:Name="chartMinus" Width="350" Height="350" Background="Transparent"/>
             </StackPanel>
         </StackPanel>
