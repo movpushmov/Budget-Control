@@ -24,6 +24,8 @@ namespace Salary_Control.XAML.SubPages.Categories
         {
             this.InitializeComponent();
 
+            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+
             using (var dbContext = new DBContext())
             {
                 CategoriesList = new CategoriesList()
@@ -103,7 +105,7 @@ namespace Salary_Control.XAML.SubPages.Categories
 
         private void OpenCreateDialog(object sender, RoutedEventArgs e)
         {
-            _ = new AddCategoryDialog(CategoriesList).ShowAsync();
+            new AddCategoryDialog(CategoriesList).ShowAsync();
         }
 
         private void ClearSelection(object sender, RoutedEventArgs e)

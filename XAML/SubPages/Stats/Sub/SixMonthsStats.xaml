@@ -28,7 +28,7 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <TextBlock HorizontalAlignment="Center" FontSize="17">
-                Всего получено за 6 месяца:
+                Всего получено за 6 месяцев:
             </TextBlock>
             <TextBlock 
                 HorizontalAlignment="Center" 
