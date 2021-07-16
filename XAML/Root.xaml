@@ -14,7 +14,7 @@
             IsBackButtonVisible="Collapsed"
             IsPaneOpen="True"
             IsSettingsVisible="False"
-            OpenPaneLength="200"
+            OpenPaneLength="250"
             SelectionChanged="NavigationViewSelectionChanged"
             >
             <muxc:NavigationView.MenuItems>
