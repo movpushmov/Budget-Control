@@ -53,7 +53,7 @@ namespace Salary_Control.XAML.SubPages
 
                 _categoriesList.Categories.Add(eventCategory);
 
-                Navigation.Navigate(typeof(Categories));
+                Navigation.Navigate(typeof(Categories.Categories));
             }
         }
     }

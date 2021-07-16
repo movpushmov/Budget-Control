@@ -1,22 +1,9 @@
 ﻿using Microsoft.Toolkit.Uwp.Helpers;
 using Salary_Control.Source.API;
-using Salary_Control.Source.API.Entities;
-using Salary_Control.Source.API.XAML_Bridges;
 using Salary_Control.Source.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
@@ -87,7 +74,7 @@ namespace Salary_Control.XAML.SubPages
                     }
                 }
 
-                Navigation.Navigate(typeof(Categories));
+                Navigation.Navigate(typeof(Categories.Categories));
             }
         }
     }
