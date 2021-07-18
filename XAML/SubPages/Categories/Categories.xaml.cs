@@ -1,6 +1,7 @@
 ﻿using Salary_Control.Source.API;
 using Salary_Control.Source.API.Entities;
 using Salary_Control.Source.API.XAML_Bridges;
+using Salary_Control.Source.API.XAML_Bridges.Utils;
 using Salary_Control.Source.Navigation;
 using System;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -34,7 +36,14 @@ namespace Salary_Control.XAML.SubPages.Categories
                         dbContext.EventCategories.Where(c => true).ToList()
                     )
                 };
+
+                emptyCategoriesBlock.Visibility = CategoriesList.Categories.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
             }
+        }
+
+        public static SolidColorBrush GetCategoryIconColor(bool isConsumption)
+        {
+            return new SolidColorBrush(ColorUtils.GetCategoryIconColor(isConsumption));
         }
 
         private async void DisplayRemoveAllCategoriesDialog(object sender, RoutedEventArgs e)
@@ -64,76 +73,39 @@ namespace Salary_Control.XAML.SubPages.Categories
 
                     await context.SaveChangesAsync();
                     CategoriesList.Categories.Clear();
-                }
-            }
-        }
 
-        private async void DisplayRemoveSelectedCategoriesDialog(object sender, RoutedEventArgs e)
-        {
-            if (CategoriesList.Categories.Count < 1 || list.SelectedItems.Count < 1)
-            {
-                return;
-            }
-
-            ContentDialog removeAllCategoriesDialog = new ContentDialog
-            {
-                Title = "Удалить выбранные категории?",
-                Content = "Если вы удалите выбранные категории, то потом не сможете отменить это действие.",
-                CloseButtonText = "Отменить",
-                PrimaryButtonText = "Удалить"
-            };
-
-            ContentDialogResult result = await removeAllCategoriesDialog.ShowAsync();
-
-            if (result == ContentDialogResult.Primary && list.SelectedItems.Count > 0)
-            {
-                using (var context = new DBContext())
-                {
-                    var categories = list.SelectedItems.Cast<EventCategory>().ToList();
-
-                    context.EventCategories.RemoveRange(categories.ToArray());
-                    await context.SaveChangesAsync();
-
-
-                    foreach (var category in categories)
-                    {
-                        CategoriesList.Categories.Remove(category);
-                    }
+                    emptyCategoriesBlock.Visibility = Visibility.Visible;
                 }
             }
         }
 
         private void OpenCreateDialog(object sender, RoutedEventArgs e)
         {
-            new AddCategoryDialog(CategoriesList).ShowAsync();
-        }
-
-        private void ClearSelection(object sender, RoutedEventArgs e)
-        {
-            list.SelectedItems.Clear();
-        }
-
-        private void RemoveCategory(object sender, RoutedEventArgs e)
-        {
-            using (var context = new DBContext())
+            _ = new AddCategoryDialog((category) =>
             {
-                context.EventCategories.Remove((sender as MenuFlyoutItem).Tag as EventCategory);
-                context.SaveChanges();
-            }
-
-            CategoriesList.Categories.Remove((sender as MenuFlyoutItem).Tag as EventCategory);
+                CategoriesList.Categories.Add(category);
+                emptyCategoriesBlock.Visibility = Visibility.Collapsed;
+            }).ShowAsync();
         }
 
         private void EditCategory(object sender, RoutedEventArgs e)
         {
-            Navigation.Navigate(
-                typeof(EditCategory),
-                new EditCategoryParams()
-                {
-                    Category = (sender as MenuFlyoutItem).Tag as EventCategory,
-                    List = CategoriesList
-                }
-            );
+            _ = new EditCategoryDialog((sender as Button).Tag as EventCategory).ShowAsync();
+        }
+
+        private void RemoveCategory(object sender, RoutedEventArgs e)
+        {
+            var category = (sender as Button).Tag as EventCategory;
+
+            using (var context = new DBContext())
+            {
+                context.EventCategories.Remove(category);
+                context.SaveChanges();
+            }
+
+            CategoriesList.Categories.Remove(category);
+
+            emptyCategoriesBlock.Visibility = CategoriesList.Categories.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         }
     }
 }

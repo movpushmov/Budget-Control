@@ -13,18 +13,21 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
+
+
+        <Frame Grid.Row="1" x:Name="chartPageFrame"/>
         
         <ComboBox 
             Margin="15 15 0 15" 
             PlaceholderText="Выберите тип отчёта"
             SelectionChanged="ComboBoxSelectionChanged"
+            SelectedValue="Отчёт за 3 месяца"
+            Grid.Row="0"
             >
-            <x:String >Отчёт за 3 месяца</x:String>
+            <x:String>Отчёт за 3 месяца</x:String>
             <x:String>Отчёт за 6 месяцев</x:String>
             <x:String>Отчёт за 12 месяцев</x:String>
             <x:String>Отчёт за произвольный промежуток</x:String>
         </ComboBox>
-
-        <Frame Grid.Row="1" x:Name="chartPageFrame"/>
     </Grid>
 </Page>
