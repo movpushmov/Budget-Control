@@ -30,6 +30,8 @@ namespace Salary_Control.XAML.SubPages.Stats
         public Stats()
         {
             this.InitializeComponent();
+
+            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
         private void ComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
