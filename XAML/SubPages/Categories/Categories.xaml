@@ -3,10 +3,11 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="using:Salary_Control.XAML.SubPages.Categories"
+    xmlns:utils="using:Salary_Control.Source.API.XAML_Bridges.Utils"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:entities="using:Salary_Control.Source.API.Entities"
 	mc:Ignorable="d"
-	Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	Background="#F9F9F9">
 
 	<Grid>
 		<Grid>
@@ -14,74 +15,119 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height=".9*"/>
             </Grid.RowDefinitions>
-			<CommandBar DefaultLabelPosition="Right" Grid.Row="0">
-				<AppBarButton 
+			<CommandBar DefaultLabelPosition="Right" Grid.Row="0" Margin="0 8 0 0">
+                <AppBarButton 
 					Icon="Add" 
 					Label="Добавить Категорию"
 					Click="OpenCreateDialog"
 				/>
-				<AppBarButton 
-					Icon="ClearSelection" 
-					Label="Очистить выделение"
-					Click="ClearSelection"
-				/>
+            </CommandBar>
 
-				<CommandBar.SecondaryCommands>
-					<AppBarButton 
-						Icon="Delete" 
-						Label="Удалить выбранные категории"
-						Click="DisplayRemoveSelectedCategoriesDialog"
-						/>
-					<AppBarButton 
-						Icon="Delete" 
-						Label="Удалить всё"
-						Click="DisplayRemoveAllCategoriesDialog"
-						/>
-				</CommandBar.SecondaryCommands>
-			</CommandBar>
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="24 20 0 0" HorizontalAlignment="Left">
+                Категории
+            </TextBlock>
 
-			<ScrollViewer Grid.Row="1">
-				<ListView x:Name="list" ItemsSource="{x:Bind CategoriesList.Categories}" SelectionMode="Extended">
-					<ListView.ItemContainerStyle>
-						<Style TargetType="ListViewItem">
-							<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-						</Style>
-					</ListView.ItemContainerStyle>
-					
-					<ListView.ItemTemplate>
-						<DataTemplate x:DataType="entities:EventCategory">
-							<Grid Tag="{x:Bind Id}" Background="Transparent">
-								<Grid.ContextFlyout>
-									<MenuFlyout>
-										<MenuFlyoutItem 
-                                            Text="Изменить категорию" 
-                                            Click="EditCategory"
-                                            Tag="{x:Bind (entities:EventCategory)}"
-                                            >
-											<MenuFlyoutItem.Icon>
-												<SymbolIcon Symbol="Edit"/>
-											</MenuFlyoutItem.Icon>
-										</MenuFlyoutItem>
-                                        <MenuFlyoutItem 
-                                            Text="Удалить категорию" 
-                                            Click="RemoveCategory"
-                                            Tag="{x:Bind (entities:EventCategory)}">
-											<MenuFlyoutItem.Icon>
-												<SymbolIcon Symbol="Delete"/>
-											</MenuFlyoutItem.Icon>
-										</MenuFlyoutItem>
-									</MenuFlyout>
-								</Grid.ContextFlyout>
+            <ScrollViewer Margin="24 0 0 0" Grid.Row="1">
+                <ListView ItemsSource="{x:Bind CategoriesList.Categories}" SelectionMode="Extended" Margin="0 16 0 0">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <ContentPresenter/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
 
-								<StackPanel Orientation="Horizontal">
-									<Grid Height="40" Width="50" Background="{x:Bind Color}"/>
-									<TextBlock Text="{x:Bind Name}" Margin="10 10 0 0"/>
-								</StackPanel>
-							</Grid>
-						</DataTemplate>
-					</ListView.ItemTemplate>
-				</ListView>
-			</ScrollViewer>
-		</Grid>
-	</Grid>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="entities:EventCategory">
+                            <Grid
+                                Tag="{x:Bind Id}"
+                                Margin="0 8 0 0"
+                                Width="400"
+                                HorizontalAlignment="Left"
+                                Background="#F7F7F7"
+                                BorderBrush="#EAEAEA"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <Grid HorizontalAlignment="Left" Padding="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <Grid Height="32" Width="32" CornerRadius="50" Background="{x:Bind local:Categories.GetCategoryIconColor(IsConsumption)}">
+                                            <TextBlock
+                                            Foreground="White"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Style="{StaticResource SubtitleTextBlockStyle}"
+                                            Margin="0 -4 0 0">
+                                            $
+                                            </TextBlock>
+                                        </Grid>
+                                        <Grid Height="32" Width="32" CornerRadius="50" Background="{x:Bind Color}"  Margin="5 0 10 0" Grid.Column="1"/>
+                                        <TextBlock VerticalAlignment="Center" Text="{x:Bind Name}" Grid.Column="2"/>
+                                    </Grid>
+
+                                    <Grid
+                                        Grid.Row="1"
+                                        Margin="0 4 0 0"
+                                        Background="#F3F3F3"
+                                        BorderBrush="#EAEAEA"
+                                        BorderThickness="0, 1, 0, 0"
+                                        Padding="12"
+                                        CornerRadius="0 0 8 8"
+                                        >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <Button Margin="0 0 8 0" Click="EditCategory" Tag="{x:Bind (entities:EventCategory)}">
+                                            Редактировать
+                                        </Button>
+                                        <Button Click="RemoveCategory" Tag="{x:Bind (entities:EventCategory)}" Grid.Column="1">
+                                            Удалить
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+        </Grid>
+
+        <StackPanel 
+            Orientation="Vertical"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            x:Name="emptyCategoriesBlock"
+            >
+            <FontIcon Glyph="&#xE9CE;" FontSize="48"/>
+
+            <TextBlock
+                FontSize="20"
+                HorizontalAlignment="Center"
+                Margin="0 8 0 4"
+                >
+                    Упс! Похоже, что у вас нет созданных категорий.
+            </TextBlock>
+            <TextBlock FontSize="15" HorizontalAlignment="Center" Foreground="Gray">
+                    Создать категорию вы сможете с помощью кнопки выше.
+            </TextBlock>
+        </StackPanel>
+    </Grid>
 </Page>

@@ -1,44 +1,42 @@
 ﻿using Microsoft.Toolkit.Uwp.Helpers;
 using Salary_Control.Source.API;
 using Salary_Control.Source.API.Entities;
-using Salary_Control.Source.API.XAML_Bridges;
-using System;
+using System.Linq;
 using Windows.UI.Xaml.Controls;
 
 // Документацию по шаблону элемента "Диалоговое окно содержимого" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Salary_Control.XAML.SubPages.Categories
 {
-    public sealed partial class AddCategoryDialog : ContentDialog
+    public sealed partial class EditCategoryDialog : ContentDialog
     {
-        private Action<EventCategory> _addCategory;
+        private EventCategory _category;
 
-        public AddCategoryDialog(Action<EventCategory> action)
+        public EditCategoryDialog(EventCategory category)
         {
             this.InitializeComponent();
 
-            _addCategory = action;
+            categoryName.Text = category.Name;
+            categoryIsConsumption.IsChecked = category.IsConsumption;
+            categoryColor.Color = ColorHelper.ToColor(category.Color);
+
+            _category = category;
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             if (categoryName.Text != "")
             {
-                var eventCategory = new EventCategory()
-                {
-                    Name = categoryName.Text,
-                    Color = ColorHelper.ToHex(categoryColor.Color),
-                    IsConsumption = categoryIsConsumption.IsChecked ?? false
-            };
-
                 using (var dbContext = new DBContext())
                 {
-                    dbContext.EventCategories.Add(eventCategory);
+                    var category = dbContext.EventCategories.FirstOrDefault(c => c.Id == _category.Id);
+
+                    category.Name = categoryName.Text;
+                    category.Color = ColorHelper.ToHex(categoryColor.Color);
+                    category.IsConsumption = categoryIsConsumption.IsChecked ?? false;
 
                     dbContext.SaveChanges();
                 }
-
-                _addCategory(eventCategory);
             }
         }
 

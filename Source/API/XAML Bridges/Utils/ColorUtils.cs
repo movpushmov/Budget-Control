@@ -10,15 +10,9 @@ namespace Salary_Control.Source.API.XAML_Bridges.Utils
 {
     public static class ColorUtils
     {
-        public static Windows.UI.Color GetCategoryIconColor(EventCategory category)
+        public static Windows.UI.Color GetCategoryIconColor(bool isConsumption)
         {
-            if (category == null)
-            {
-                return Windows.UI.Colors.Transparent;
-            }
-
-
-            return category.IsConsumption ? ColorHelper.ToColor("#F86161") : ColorHelper.ToColor("#38E272");
+            return isConsumption ? ColorHelper.ToColor("#F86161") : ColorHelper.ToColor("#38E272");
         }
     }
 }

@@ -139,6 +139,7 @@
     <Compile Include="Source\API\Entities\EventsGroup.cs" />
     <Compile Include="Source\API\XAML Bridges\CategoriesList.cs" />
     <Compile Include="Source\API\XAML Bridges\EventsList.cs" />
+    <Compile Include="Source\API\XAML Bridges\Utils\ColorUtils.cs" />
     <Compile Include="Source\Navigation\Navigation.cs" />
     <Compile Include="XAML\Root.xaml.cs">
       <DependentUpon>Root.xaml</DependentUpon>
@@ -149,8 +150,11 @@
     <Compile Include="XAML\SubPages\Categories\Categories.xaml.cs">
       <DependentUpon>Categories.xaml</DependentUpon>
     </Compile>
-    <Compile Include="XAML\SubPages\Categories\EditCategory.xaml.cs">
-      <DependentUpon>EditCategory.xaml</DependentUpon>
+    <Compile Include="XAML\SubPages\Categories\EditCategoryDialog.xaml.cs">
+      <DependentUpon>EditCategoryDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\SubPages\Categories\ListOfCategories.xaml.cs">
+      <DependentUpon>ListOfCategories.xaml</DependentUpon>
     </Compile>
     <Compile Include="XAML\SubPages\Events\EventGroup.xaml.cs">
       <DependentUpon>EventGroup.xaml</DependentUpon>
@@ -210,7 +214,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="XAML\SubPages\Categories\EditCategory.xaml">
+    <Page Include="XAML\SubPages\Categories\EditCategoryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\SubPages\Categories\ListOfCategories.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -20,7 +20,7 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Tag="stats" Content="Статистика">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8EF;"/>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE9D2;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
