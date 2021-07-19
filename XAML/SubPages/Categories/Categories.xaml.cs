@@ -107,5 +107,10 @@ namespace Salary_Control.XAML.SubPages.Categories
 
             emptyCategoriesBlock.Visibility = CategoriesList.Categories.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         }
+
+        public static string GetCategoryTooltip(bool isConsumption)
+        {
+            return isConsumption ? "Категория для расходов" : "Категория для доходов";
+        }
     }
 }

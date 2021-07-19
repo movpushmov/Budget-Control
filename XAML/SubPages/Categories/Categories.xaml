@@ -67,7 +67,12 @@
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
                                         
-                                        <Grid Height="32" Width="32" CornerRadius="50" Background="{x:Bind local:Categories.GetCategoryIconColor(IsConsumption)}">
+                                        <Grid
+                                            Height="32"
+                                            Width="32"
+                                            CornerRadius="50"
+                                            Background="{x:Bind local:Categories.GetCategoryIconColor(IsConsumption)}"
+                                            ToolTipService.ToolTip="{x:Bind local:Categories.GetCategoryTooltip(IsConsumption)}">
                                             <TextBlock
                                             Foreground="White"
                                             HorizontalAlignment="Center"
