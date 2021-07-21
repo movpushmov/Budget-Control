@@ -1,6 +1,7 @@
 ﻿using Microsoft.Toolkit.Uwp.Helpers;
 using Salary_Control.Source.API;
 using Salary_Control.Source.API.Entities;
+using Salary_Control.Source.API.XAML_Bridges;
 using System.Linq;
 using Windows.UI.Xaml.Controls;
 
@@ -11,10 +12,13 @@ namespace Salary_Control.XAML.SubPages.Categories
     public sealed partial class EditCategoryDialog : ContentDialog
     {
         private EventCategory _category;
+        private CategoriesList _categoriesList;
 
-        public EditCategoryDialog(EventCategory category)
+        public EditCategoryDialog(EventCategory category, CategoriesList categoriesList)
         {
             this.InitializeComponent();
+
+            _categoriesList = categoriesList;
 
             categoryName.Text = category.Name;
             categoryIsConsumption.IsChecked = category.IsConsumption;
@@ -36,6 +40,14 @@ namespace Salary_Control.XAML.SubPages.Categories
                     category.IsConsumption = categoryIsConsumption.IsChecked ?? false;
 
                     dbContext.SaveChanges();
+
+                    for (int i = 0; i < _categoriesList.Categories.Count; i++)
+                    {
+                        if (_categoriesList.Categories[i].Id == _category.Id)
+                        {
+                            _categoriesList.Categories[i] = category;
+                        }
+                    }
                 }
             }
         }

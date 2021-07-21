@@ -5,14 +5,14 @@
     xmlns:local="using:Salary_Control.XAML.SubPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:mctoolkit="using:Microsoft.Toolkit.Uwp.UI.Converters" xmlns:entities="using:Salary_Control.Source.API.Entities"
+    xmlns:mctoolkit="using:Microsoft.Toolkit.Uwp.UI.Converters" xmlns:entities="using:Salary_Control.Source.API.Entities" xmlns:categories="using:Salary_Control.XAML.SubPages.Categories"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+	Background="#F9F9F9">
 
     <Page.Resources>
         <mctoolkit:BoolNegationConverter x:Key="boolToNegative"/>
     </Page.Resources>
-    
+
     <Grid>
 
         <Grid>
@@ -20,26 +20,19 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            
+
             <CommandBar DefaultLabelPosition="Right" Grid.Row="0">
                 <AppBarButton 
-					Icon="ClearSelection" 
-					Label="Очистить выделение"
-					Click="ClearSelection"
+					Icon="Add" 
+					Label="Создать событие"
+					Click="CreateEvent"
 				    />
-                <CommandBar.SecondaryCommands>
-                    <AppBarButton 
-					    Icon="Delete" 
-					    Label="Удалить выбранные события"
-					    Click="DisplayRemoveSelectedCategoriesDialog"
-					    />
-                    <AppBarButton 
-					    Icon="Delete" 
-					    Label="Удалить всё"
-					    Click="DisplayRemoveAllCategoriesDialog"
-					    />
-                </CommandBar.SecondaryCommands>
             </CommandBar>
+
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="24 20 0 0" HorizontalAlignment="Left" Grid.Row="0">
+                События за выбранную дату
+            </TextBlock>
+
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -49,14 +42,14 @@
                     <ColumnDefinition Width=".4*"/>
                     <ColumnDefinition Width=".4*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <Grid Margin="30 10 0 0" Grid.Row="0" Grid.Column="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <CalendarDatePicker
                         x:Name="calendarDatePicker"
                         DateChanged="CalendarDatePickerDateChanged"
@@ -70,138 +63,140 @@
                         </Paragraph>
                     </RichTextBlock>
 
-                    <Grid Grid.Row="2">
-                        <ScrollViewer>
-                        <ListView 
-                            x:Name="list" 
-                            ItemsSource="{x:Bind EventsList.Events}"
-                            SelectionMode="Extended"
-                            >
+                    <ScrollViewer Margin="0 24 0 0" Grid.Row="1">
+                        <ListView ItemsSource="{x:Bind EventsList.Events}" SelectionMode="Extended" Margin="0 16 0 0">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <ContentPresenter/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
                                 </Style>
                             </ListView.ItemContainerStyle>
 
+
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="entities:Event">
-                                    <Grid Background="Transparent" Padding="5">
-                                        <Grid.ContextFlyout>
-                                            <MenuFlyout>
-                                                <MenuFlyoutItem 
-                                                    Text="Изменить событие" 
-                                                    Click="EnterEditMode"
-                                                    Tag="{x:Bind (entities:Event)}"
-                                                    >
-                                                    <MenuFlyoutItem.Icon>
-                                                        <SymbolIcon Symbol="Edit"/>
-                                                    </MenuFlyoutItem.Icon>
-                                                </MenuFlyoutItem>
-                                                <MenuFlyoutItem 
-                                                    Text="Удалить событие" 
-                                                    Click="RemoveEvent"
-                                                    Tag="{x:Bind (entities:Event)}"
-                                                    >
-                                                    <MenuFlyoutItem.Icon>
-                                                        <SymbolIcon Symbol="Delete"/>
-                                                    </MenuFlyoutItem.Icon>
-                                                </MenuFlyoutItem>
-                                            </MenuFlyout>
-                                        </Grid.ContextFlyout>
+                                    <Grid
+                                        Tag="{x:Bind Id}"
+                                        Margin="0 8 0 0"
+                                        Width="400"
+                                        HorizontalAlignment="Left"
+                                        Background="#F7F7F7"
+                                        BorderBrush="#EAEAEA"
+                                        BorderThickness="1"
+                                        CornerRadius="8"
+                                        >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
 
-                                        <StackPanel Orientation="Vertical">
-                                            <TextBlock Text="{x:Bind Name}"/>
-                                            <TextBlock>
-                                                <Run Text="{x:Bind Cost}"/>
-                                                <Run Text="₽"/>
-                                            </TextBlock>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid HorizontalAlignment="Left" Padding="12">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid
+                                                    Height="32"
+                                                    Width="32"
+                                                    CornerRadius="50"
+                                                    Background="{x:Bind categories:Categories.GetCategoryIconColor(Category.IsConsumption)}">
+                                                <TextBlock
+                                                        Foreground="White"
+                                                        HorizontalAlignment="Center"
+                                                        VerticalAlignment="Center"
+                                                        Style="{StaticResource SubtitleTextBlockStyle}"
+                                                        Margin="0 -4 0 0">
+                                                        $
+                                                </TextBlock>
+                                            </Grid>
+                                            <Grid Grid.Column="1" Margin="12 0 0 0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <TextBlock VerticalAlignment="Center" Text="{x:Bind Name}" Grid.Column="2"/>
+                                                <TextBlock
+                                                        VerticalAlignment="Center"
+                                                        Grid.Row="1"
+                                                        Grid.Column="2"
+                                                    >
+                                                        <Run Text="{x:Bind Cost}"/>
+                                                        <Run Text="₽"/>
+                                                </TextBlock>
+                                            </Grid>
+                                        </Grid>
+
+                                        <Grid
+                                            Grid.Row="1"
+                                            Margin="0 4 0 0"
+                                            Background="#F3F3F3"
+                                            BorderBrush="#EAEAEA"
+                                            BorderThickness="0, 1, 0, 0"
+                                            Padding="12"
+                                            CornerRadius="0 0 8 8"
+                                            >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Button Margin="0 0 8 0" Click="EditEvent" Tag="{x:Bind (entities:Event)}">
+                                                Редактировать
+                                            </Button>
+                                            <Button Click="RemoveEvent" Tag="{x:Bind (entities:Event)}" Grid.Column="1">
+                                                Удалить
+                                            </Button>
+                                        </Grid>
+
+                                        <Button HorizontalAlignment="Right" Margin="0 0 12 0" Height="32" CornerRadius="8">
+                                            <Button.Flyout>
+                                                <Flyout>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Grid
+                                                            Height="32"
+                                                            Width="32"
+                                                            CornerRadius="50"
+                                                            Background="{x:Bind categories:Categories.GetCategoryIconColor(Category.IsConsumption)}"
+                                                            ToolTipService.ToolTip="{x:Bind categories:Categories.GetCategoryTooltip(Category.IsConsumption)}">
+                                                            <TextBlock
+                                                                Foreground="White"
+                                                                HorizontalAlignment="Center"
+                                                                VerticalAlignment="Center"
+                                                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                                                Margin="0 -4 0 0">
+                                                                $
+                                                            </TextBlock>
+                                                        </Grid>
+                                                        <Grid Height="24" Width="24" CornerRadius="50" Background="{x:Bind Category.Color}"  Margin="5 0 10 0" Grid.Column="1"/>
+                                                        <TextBlock VerticalAlignment="Center" Text="{x:Bind Category.Name}" Grid.Column="2"/>
+                                                    </StackPanel>
+                                                </Flyout>
+                                            </Button.Flyout>
+
                                             <StackPanel Orientation="Horizontal">
-                                                <Grid Background="{x:Bind Category.Color}" Width="30" Height="30"/>
-                                                <TextBlock 
-                                                    Text="{x:Bind Category.Name}" 
-                                                    VerticalAlignment="Center"
-                                                    Margin="10 0 0 0"
-                                                    />
+                                                <FontIcon VerticalAlignment="Center" Glyph="&#xE946;" FontSize="16"/>
+                                                <TextBlock Margin="8 -2 0 0" VerticalAlignment="Center">Посмотреть категорию</TextBlock>
                                             </StackPanel>
-                                        </StackPanel>
+                                        </Button>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                            </ListView>
-                        </ScrollViewer>
-                    </Grid>
+                        </ListView>
+                    </ScrollViewer>
                 </Grid>
-
-
-                <Grid 
-                    Visibility="{x:Bind GetAddFormVisibility(IsEditing), Mode=OneWay}"
-                    HorizontalAlignment="Center"
-                    Grid.Row="0"
-                    Margin="0 50 0 0"
-                    Grid.Column="1"
-                    >
-                    <StackPanel Orientation="Vertical" Width="200">
-                        <TextBlock Margin="0 0 0 10">Создать событие</TextBlock>
-                        <TextBox x:Name="newEventName" PlaceholderText="Название нового события"/>
-                        <TextBox 
-                            x:Name="newEventCost" 
-                            Margin="0 10 0 10" 
-                            InputScope="Number"
-                            PlaceholderText="Кол-во денег"
-                            />
-                        <AutoSuggestBox 
-                            x:Name="newEventCategory" 
-                            PlaceholderText="Название категории"
-                            QueryIcon="Find"
-                            TextChanged="CategoryNameFieldChanged"
-                            />
-
-                        <Button Click="CreateEvent" Margin="0 20 0 0"  Style="{StaticResource AccentButtonStyle}">
-                            Создать событие
-                        </Button>
-                    </StackPanel>
-                </Grid>
-
-
-
-                <StackPanel 
-                    Orientation="Vertical" 
-                    Visibility="{x:Bind GetEditFormVisibility(IsEditing), Mode=OneWay}"
-                    HorizontalAlignment="Center"
-                    Grid.Row="0"
-                    Grid.Column="1">
-                    <Button 
-                        Click="ExitFromEditMode"
-                        VerticalAlignment="Top"
-                        Margin="10"
-                        >
-                        <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Back"/>
-                            <TextBlock Margin="10 0 0 0">Назад</TextBlock>
-                        </StackPanel>
-                    </Button>
-
-                    <StackPanel Orientation="Vertical" Margin="10">
-                        <TextBlock Margin="0 0 0 10">Редактировать событие</TextBlock>
-                        <TextBox x:Name="editEventName" PlaceholderText="Название события"/>
-                        <TextBox 
-                            x:Name="editEventCost" 
-                            Margin="0 10 0 10" 
-                            InputScope="Number"
-                            PlaceholderText="Кол-во денег"
-                            />
-                        <AutoSuggestBox 
-                            x:Name="editEventCategory" 
-                            PlaceholderText="Название категории"
-                            QueryIcon="Find"
-                            TextChanged="CategoryNameFieldChanged"
-                            />
-                        
-                        <Button Click="EditEvent" Margin="0 20 0 0">
-                            Редактировать событие
-                        </Button>
-                    </StackPanel>
-                </StackPanel>
             </Grid>
         </Grid>
     </Grid>

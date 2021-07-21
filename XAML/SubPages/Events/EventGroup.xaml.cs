@@ -2,6 +2,7 @@
 using Salary_Control.Source.API;
 using Salary_Control.Source.API.Entities;
 using Salary_Control.Source.API.XAML_Bridges;
+using Salary_Control.XAML.SubPages.Events;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -43,18 +44,6 @@ namespace Salary_Control.XAML.SubPages
 
         public EventsList EventsList { get; set; }
 
-        public Event CurrentEvent
-        {
-            get { return (Event)GetValue(CurrentEventProperty); }
-            set { SetValue(CurrentEventProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for EditedEvent.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CurrentEventProperty =
-            DependencyProperty.Register("CurrentEvent", typeof(Event), typeof(EventGroup), new PropertyMetadata(0));
-
-
-
         public EventGroup()
         {
             InitializeComponent();
@@ -84,179 +73,9 @@ namespace Salary_Control.XAML.SubPages
             }
         }
 
-        private void ClearSelection(object sender, RoutedEventArgs e)
-        {
-            if (EventsList.Events.Count > 0)
-            {
-                list.SelectedItems.Clear();
-            }
-        }
-
-        private void EnterEditMode(object sender, RoutedEventArgs e)
-        {
-            var ev = (sender as MenuFlyoutItem).Tag as Event;
-            editEventName.Text = ev.Name;
-
-            if (ev.Cost < 0)
-            {
-                editEventCost.Text = (ev.Cost * -1).ToString();
-            }
-            else
-            {
-                editEventCost.Text = ev.Cost.ToString();
-            }
-            editEventCategory.Text = ev.Category.Name;
-
-            CurrentEvent = ev;
-            IsEditing = true;
-        }
-
-        private void ClearEditForm()
-        {
-            editEventName.Text = "";
-            editEventCost.Text = "";
-            editEventCategory.Text = "";
-        }
-
-        private void ExitFromEditMode(object sender = null, RoutedEventArgs e = null)
-        {
-            ClearEditForm();
-
-            CurrentEvent = null;
-            IsEditing = false;
-        }
-
         private void CreateEvent(object sender, RoutedEventArgs e)
         {
-            using (var context = new DBContext())
-            {
-                var category = context.EventCategories.FirstOrDefault(c => c.Name == newEventCategory.Text);
-                var fixedTS = new DateTime(
-                    EventGroupTime.Year,
-                    EventGroupTime.Month,
-                    EventGroupTime.Day,
-                    0, 0, 0, 0
-                );
-
-                var eventsGroup = context.EventsGroups.FirstOrDefault(eg => eg.TimeStamp == fixedTS);
-
-                var res = int.TryParse(newEventCost.Text, out int cost);
-
-                if (category == null)
-                {
-                    return;
-                }
-
-                if (category.IsConsumption)
-                {
-                    cost *= -1;
-                }
-
-                if (category != null && eventsGroup != null && res)
-                {
-                    var newEvent = new Event()
-                    {
-                        Category = category,
-                        EventsGroup = eventsGroup,
-                        Name = newEventName.Text,
-                        Cost = cost
-                    };
-
-                    context.Events.Add(newEvent);
-                    context.SaveChanges();
-
-                    EventsList.Events.Add(newEvent);
-
-                    newEventName.Text = "";
-                    newEventCost.Text = "";
-                    newEventCategory.Text = "";
-                }
-            }
-        }
-
-        private void CategoryNameFieldChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-        {
-            if (args.CheckCurrent() && sender.Text != "")
-            {
-                var term = sender.Text.ToLower();
-                using (var context = new DBContext())
-                {
-                    var all = context.EventCategories.Where(c => true).ToList();
-
-                    var itemsSource = all.Where(c => c.Name.ToLower().StartsWith(term)).ToList();
-
-                    if (itemsSource.Count > 0)
-                    {
-                        sender.ItemsSource = itemsSource.Select(c => c.Name).ToList();
-                    }
-                    else
-                    {
-                        sender.ItemsSource = new List<string>() { "Ничего не найдено" };
-                    }
-                }
-            }
-        }
-
-        private async void DisplayRemoveAllCategoriesDialog(object sender, RoutedEventArgs e)
-        {
-            if (EventsList.Events.Count > 0)
-            {
-                ContentDialog removeAllCategoriesDialog = new ContentDialog
-                {
-                    Title = "Удалить все события?",
-                    Content = "Если вы удалите все категории, то потом не сможете отменить это действие.",
-                    CloseButtonText = "Отменить",
-                    PrimaryButtonText = "Удалить"
-                };
-
-                ContentDialogResult result = await removeAllCategoriesDialog.ShowAsync();
-
-                if (result == ContentDialogResult.Primary)
-                {
-                    using (var context = new DBContext())
-                    {
-                        context.Events.RemoveRange(
-                            context.Events.Where(c => true).ToArray()
-                        );
-
-                        await context.SaveChangesAsync();
-                        EventsList.Events.Clear();
-                    }
-                }
-            }
-        }
-
-        private async void DisplayRemoveSelectedCategoriesDialog(object sender, RoutedEventArgs e)
-        {
-            if (EventsList.Events.Count > 0)
-            {
-                ContentDialog removeAllCategoriesDialog = new ContentDialog
-                {
-                    Title = "Удалить выбранные события?",
-                    Content = "Если вы удалите выбранные события, то потом не сможете отменить это действие.",
-                    CloseButtonText = "Отменить",
-                    PrimaryButtonText = "Удалить"
-                };
-
-                ContentDialogResult result = await removeAllCategoriesDialog.ShowAsync();
-
-                if (result == ContentDialogResult.Primary && list.SelectedItems.Count > 0)
-                {
-                    using (var context = new DBContext())
-                    {
-                        var events = list.SelectedItems.Cast<Event>().ToList();
-
-                        context.Events.RemoveRange(events.ToArray());
-                        await context.SaveChangesAsync();
-
-
-                        foreach (var ev in events)
-                        {
-                            EventsList.Events.Remove(ev);
-                        }
-                    }
-                }
-            }
+            _ = new AddEventDialog(EventGroupTime, EventsList).ShowAsync();
         }
 
         private Visibility GetAddFormVisibility(bool isEditing)
@@ -303,62 +122,38 @@ namespace Salary_Control.XAML.SubPages
             }
         }
 
-        private void RemoveEvent(object sender, RoutedEventArgs e)
+        private async void RemoveEvent(object sender, RoutedEventArgs e)
         {
-            if (EventsList.Events.Count > 0)
+            var dialog = new ContentDialog()
             {
+                Title = "Удалить данное событие?",
+                Content = new TextBlock() { Text = "Это действие нельзя будет отменить." },
+
+                SecondaryButtonStyle = this.Resources["AccentButtonStyle"] as Style,
+
+                PrimaryButtonText = "Удалить",
+                SecondaryButtonText = "Отменить"
+            };
+
+            var res = await dialog.ShowAsync();
+
+            if (res == ContentDialogResult.Primary)
+            {
+                var ev = (sender as Button).Tag as Event;
+
                 using (var context = new DBContext())
                 {
-                    context.Events.Remove((sender as MenuFlyoutItem).Tag as Event);
+                    context.Events.Remove(ev);
                     context.SaveChanges();
                 }
 
-                EventsList.Events.Remove((sender as MenuFlyoutItem).Tag as Event);
+                EventsList.Events.Remove(ev);
             }
         }
+
         private void EditEvent(object sender, RoutedEventArgs e)
         {
-            using (var context = new DBContext())
-            {
-                var dbEvent = context.Events.FirstOrDefault(c => c.Id == CurrentEvent.Id);
-
-                var category = context.EventCategories.FirstOrDefault(c => c.Name == editEventCategory.Text);
-                var res = int.TryParse(editEventCost.Text, out int cost);
-
-                if (res && CurrentEvent != null && dbEvent != null)
-                {
-                    dbEvent.Category = category;
-
-                    if (category.IsConsumption && cost < 0)
-                    {
-                        dbEvent.Cost = cost;
-                    }
-                    else if (category.IsConsumption && cost > 0)
-                    {
-                        dbEvent.Cost = cost * -1;
-                    }
-                    else if (!category.IsConsumption && cost < 0)
-                    {
-                        dbEvent.Cost = cost * -1;
-                    }
-                    else if (!category.IsConsumption && cost > 0)
-                    {
-                        dbEvent.Cost = cost;
-                    }
-
-                    dbEvent.Name = editEventName.Text;
-
-                    for (int i = 0; i < EventsList.Events.Count; i++)
-                    {
-                        if (EventsList.Events[i].Id == dbEvent.Id)
-                            EventsList.Events[i] = dbEvent;
-                    }
-
-                    context.SaveChanges();
-
-                    ExitFromEditMode();
-                }
-            }
+            _ = new EditEventDialog(EventsList, (sender as Button).Tag as Event).ShowAsync();
         }
     }
 }

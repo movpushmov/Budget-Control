@@ -74,11 +74,11 @@
                                             Background="{x:Bind local:Categories.GetCategoryIconColor(IsConsumption)}"
                                             ToolTipService.ToolTip="{x:Bind local:Categories.GetCategoryTooltip(IsConsumption)}">
                                             <TextBlock
-                                            Foreground="White"
-                                            HorizontalAlignment="Center"
-                                            VerticalAlignment="Center"
-                                            Style="{StaticResource SubtitleTextBlockStyle}"
-                                            Margin="0 -4 0 0">
+                                                Foreground="White"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Style="{StaticResource SubtitleTextBlockStyle}"
+                                                Margin="0 -4 0 0">
                                             $
                                             </TextBlock>
                                         </Grid>
