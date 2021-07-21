@@ -90,22 +90,38 @@ namespace Salary_Control.XAML.SubPages.Categories
 
         private void EditCategory(object sender, RoutedEventArgs e)
         {
-            _ = new EditCategoryDialog((sender as Button).Tag as EventCategory).ShowAsync();
+            _ = new EditCategoryDialog((sender as Button).Tag as EventCategory, CategoriesList).ShowAsync();
         }
 
-        private void RemoveCategory(object sender, RoutedEventArgs e)
+        private async void RemoveCategory(object sender, RoutedEventArgs e)
         {
-            var category = (sender as Button).Tag as EventCategory;
-
-            using (var context = new DBContext())
+            var dialog = new ContentDialog()
             {
-                context.EventCategories.Remove(category);
-                context.SaveChanges();
+                Title = "Удалить данную категорию?",
+                Content = new TextBlock() { Text = "Это действие нельзя будет отменить." },
+
+                SecondaryButtonStyle = this.Resources["AccentButtonStyle"] as Style,
+
+                PrimaryButtonText = "Удалить",
+                SecondaryButtonText = "Отменить"
+            };
+
+            var res = await dialog.ShowAsync();
+
+            if (res == ContentDialogResult.Primary)
+            {
+                var category = (sender as Button).Tag as EventCategory;
+
+                using (var context = new DBContext())
+                {
+                    context.EventCategories.Remove(category);
+                    context.SaveChanges();
+                }
+
+                CategoriesList.Categories.Remove(category);
+
+                emptyCategoriesBlock.Visibility = CategoriesList.Categories.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
             }
-
-            CategoriesList.Categories.Remove(category);
-
-            emptyCategoriesBlock.Visibility = CategoriesList.Categories.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
         }
 
         public static string GetCategoryTooltip(bool isConsumption)

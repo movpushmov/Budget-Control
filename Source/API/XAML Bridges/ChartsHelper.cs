@@ -39,10 +39,9 @@ namespace Salary_Control.Source.API.XAML_Bridges
             {
                 foreach (var e in eventsGroup.Events)
                 {
-                    totalCount += e.Cost;
-
-                    if (e.Cost > 0)
+                    if (!e.Category.IsConsumption)
                     {
+                        totalCount += e.Cost;
 
                         if (totalPlus.ContainsKey(e.CategoryId))
                         {
@@ -54,15 +53,17 @@ namespace Salary_Control.Source.API.XAML_Bridges
                             plusCategoriesMap.Add(e.CategoryId, e.Category);
                         }
                     }
-                    else if (e.Cost < 0)
+                    else
                     {
+                        totalCount -= e.Cost;
+
                         if (totalMinus.ContainsKey(e.CategoryId))
                         {
-                            totalMinus[e.CategoryId] += e.Cost;
+                            totalMinus[e.CategoryId] -= e.Cost;
                         }
                         else
                         {
-                            totalMinus.Add(e.CategoryId, e.Cost);
+                            totalMinus.Add(e.CategoryId, -e.Cost);
                             minusCategoriesMap.Add(e.CategoryId, e.Category);
                         }
                     }

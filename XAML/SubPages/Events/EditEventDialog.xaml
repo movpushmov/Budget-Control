@@ -1,0 +1,45 @@
+﻿<ContentDialog
+    x:Class="Salary_Control.XAML.SubPages.Events.EditEventDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Salary_Control.XAML.SubPages.Events"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Изменить событие"
+    PrimaryButtonText="Изменить"
+    PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
+    SecondaryButtonText="Отменить"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <ContentDialog.Resources>
+        <Style TargetType="local:EditEventDialog" BasedOn="{StaticResource DefaultContentDialogStyle}"/>
+    </ContentDialog.Resources>
+
+    <StackPanel Orientation="Vertical" Margin="0 16 0 0" Width="360">
+        <TextBox x:Name="eventName" PlaceholderText="Название нового события"/>
+        <TextBox 
+            x:Name="eventCost" 
+            Margin="0 16 0 16" 
+            InputScope="Number"
+            PlaceholderText="Затраченные/полученные деньги"
+            />
+        <AutoSuggestBox 
+            x:Name="eventCategory" 
+            PlaceholderText="Название категории"
+            QueryIcon="Find"
+            Margin="0 0 0 8" 
+            TextChanged="CategoryNameFieldChanged"
+            />
+        <TextBlock
+            Margin="0 0 0 8"
+            TextAlignment="Center"
+            TextWrapping="Wrap"
+            Style="{StaticResource CaptionTextBlockStyle}"
+            >
+            *Обратите внимание, что приложение само определяет,
+            доходное это событие, или расходное.
+        </TextBlock>
+    </StackPanel>
+</ContentDialog>
