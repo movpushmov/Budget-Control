@@ -18,7 +18,8 @@ namespace Salary_Control.XAML
             this.InitializeComponent();
 
             Navigation.Init(rootFrame);
-            Navigation.Navigate(typeof(WelcomeScreen));
+
+            navigationView.SelectedItem = mainNavItem;
         }
 
         private void NavigationViewSelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
@@ -27,6 +28,11 @@ namespace Salary_Control.XAML
 
             switch(item.Tag)
             {
+                case "main":
+                    {
+                        Navigation.Navigate(typeof(Main));
+                        break;
+                    }
                 case "stats":
                     {
                         Navigation.Navigate(typeof(Stats));

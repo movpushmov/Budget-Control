@@ -23,9 +23,9 @@ namespace Salary_Control.XAML.SubPages.Events
     public sealed partial class AddEventDialog : ContentDialog
     {
         private DateTime _eventGroupTime;
-        private EventsList _eventsList;
+        private EntitiesList<Event> _eventsList;
 
-        public AddEventDialog(DateTime eventGroupTime, EventsList eventsList)
+        public AddEventDialog(DateTime eventGroupTime, EntitiesList<Event> eventsList)
         {
             this.InitializeComponent();
 
@@ -67,7 +67,7 @@ namespace Salary_Control.XAML.SubPages.Events
                     context.Events.Add(newEvent);
                     context.SaveChanges();
 
-                    _eventsList.Events.Add(newEvent);
+                    _eventsList.Entities.Add(newEvent);
                 }
             }
         }

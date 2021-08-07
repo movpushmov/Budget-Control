@@ -1,0 +1,48 @@
+﻿<UserControl
+    x:Class="Salary_Control.XAML.Controls.ExpensesBlock"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Salary_Control.XAML.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid
+        Background="{ThemeResource BlockBackgroundColor}"
+        Width="420"
+        Padding="16"
+        CornerRadius="6"
+        BorderBrush="{ThemeResource BlockBorderColor}"
+        BorderThickness="1"
+        >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid>
+            <TextBlock FontSize="14" FontWeight="Bold">
+                <Run>
+                    Траты за
+                </Run>
+                <Run x:Name="monthName" Text="август"/>
+            </TextBlock>
+
+            <TextBlock FontSize="14" HorizontalAlignment="Right">
+                <Run x:Name="totalMinusCount"></Run>
+                <Run>₽</Run>
+            </TextBlock>
+        </Grid>
+
+        <StackPanel
+            Grid.Row="1"
+            Height="12px"
+            CornerRadius="6"
+            Margin="0 12 0 0"
+            Orientation="Horizontal"
+            Background="{ThemeResource ExpensesBlockBackgroundColor}"
+            x:Name="expensesBlock"
+            >
+        </StackPanel>
+    </Grid>
+</UserControl>

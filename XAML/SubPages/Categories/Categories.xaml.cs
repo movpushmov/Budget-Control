@@ -20,7 +20,7 @@ namespace Salary_Control.XAML.SubPages.Categories
     /// </summary>
     public sealed partial class Categories : Page
     {
-        public CategoriesList CategoriesList { get; set; }
+        public EntitiesList<EventCategory> CategoriesList { get; set; }
 
         public Categories()
         {
@@ -30,14 +30,14 @@ namespace Salary_Control.XAML.SubPages.Categories
 
             using (var dbContext = new DBContext())
             {
-                CategoriesList = new CategoriesList()
+                CategoriesList = new EntitiesList<EventCategory>()
                 {
-                    Categories = new ObservableCollection<EventCategory>(
+                    Entities = new ObservableCollection<EventCategory>(
                         dbContext.EventCategories.Where(c => true).ToList()
                     )
                 };
 
-                emptyCategoriesBlock.Visibility = CategoriesList.Categories.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
+                emptyCategoriesBlock.Visibility = CategoriesList.Entities.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 
@@ -48,7 +48,7 @@ namespace Salary_Control.XAML.SubPages.Categories
 
         private async void DisplayRemoveAllCategoriesDialog(object sender, RoutedEventArgs e)
         {
-            if (CategoriesList.Categories.Count < 1)
+            if (CategoriesList.Entities.Count < 1)
             {
                 return;
             } 
@@ -72,7 +72,7 @@ namespace Salary_Control.XAML.SubPages.Categories
                     );
 
                     await context.SaveChangesAsync();
-                    CategoriesList.Categories.Clear();
+                    CategoriesList.Entities.Clear();
 
                     emptyCategoriesBlock.Visibility = Visibility.Visible;
                 }
@@ -83,7 +83,7 @@ namespace Salary_Control.XAML.SubPages.Categories
         {
             _ = new AddCategoryDialog((category) =>
             {
-                CategoriesList.Categories.Add(category);
+                CategoriesList.Entities.Add(category);
                 emptyCategoriesBlock.Visibility = Visibility.Collapsed;
             }).ShowAsync();
         }
@@ -118,9 +118,9 @@ namespace Salary_Control.XAML.SubPages.Categories
                     context.SaveChanges();
                 }
 
-                CategoriesList.Categories.Remove(category);
+                CategoriesList.Entities.Remove(category);
 
-                emptyCategoriesBlock.Visibility = CategoriesList.Categories.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
+                emptyCategoriesBlock.Visibility = CategoriesList.Entities.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 

@@ -13,12 +13,19 @@
         <muxc:NavigationView 
             PaneDisplayMode="Left"
             IsBackButtonVisible="Collapsed"
+            x:Name="navigationView"
             IsPaneOpen="True"
             IsSettingsVisible="False"
             OpenPaneLength="250"
             SelectionChanged="NavigationViewSelectionChanged"
             >
             <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem Tag="main" Content="Главная" x:Name="mainNavItem">
+                    <muxc:NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA8A;"/>
+                    </muxc:NavigationViewItem.Icon>
+                </muxc:NavigationViewItem>
+                
                 <muxc:NavigationViewItem Tag="stats" Content="Статистика">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE9D2;"/>

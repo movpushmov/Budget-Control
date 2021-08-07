@@ -5,6 +5,7 @@
     xmlns:local="using:Salary_Control.XAML.SubPages.Events"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Title="Создание события"
     PrimaryButtonText="Создать"
@@ -32,14 +33,14 @@
             Margin="0 0 0 8" 
             TextChanged="CategoryNameFieldChanged"
             />
-        <TextBlock
-            Margin="0 0 0 8"
-            TextAlignment="Center"
-            TextWrapping="Wrap"
-            Style="{StaticResource CaptionTextBlockStyle}"
-            >
-            *Обратите внимание, что приложение само определяет,
-            доходное это событие, или расходное.
-        </TextBlock>
+
+        <muxc:InfoBar
+            Severity="Informational"
+            IsOpen="True"
+            IsClosable="False"
+            Title="Обратите внимание"
+            Message="Приложение само определяет,
+            доходное это событие, или расходное."
+        />
     </StackPanel>
 </ContentDialog>

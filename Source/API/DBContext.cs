@@ -13,6 +13,7 @@ namespace Salary_Control.Source.API
         public DbSet<Event> Events { get; set; }
         public DbSet<EventCategory> EventCategories { get; set; }
         public DbSet<EventsGroup> EventsGroups { get; set; }
+        public DbSet<UserTask> UserTasks { get; set; }
 
         public DBContext()
         {

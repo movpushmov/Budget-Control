@@ -132,15 +132,17 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source\API\DBContext.cs" />
+    <Compile Include="Source\API\Entities\UserTask.cs" />
     <Compile Include="Source\API\XAML Bridges\ChartsHelper.cs" />
-    <Compile Include="Source\API\XAML Bridges\EditCategoryParams.cs" />
     <Compile Include="Source\API\Entities\EventCategory.cs" />
     <Compile Include="Source\API\Entities\Event.cs" />
     <Compile Include="Source\API\Entities\EventsGroup.cs" />
-    <Compile Include="Source\API\XAML Bridges\CategoriesList.cs" />
-    <Compile Include="Source\API\XAML Bridges\EventsList.cs" />
+    <Compile Include="Source\API\XAML Bridges\EntitiesList.cs" />
     <Compile Include="Source\API\XAML Bridges\Utils\ColorUtils.cs" />
     <Compile Include="Source\Navigation\Navigation.cs" />
+    <Compile Include="XAML\Controls\ExpensesBlock.xaml.cs">
+      <DependentUpon>ExpensesBlock.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\Root.xaml.cs">
       <DependentUpon>Root.xaml</DependentUpon>
     </Compile>
@@ -162,6 +164,9 @@
     <Compile Include="XAML\SubPages\Events\EventGroup.xaml.cs">
       <DependentUpon>EventGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XAML\SubPages\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\SubPages\Stats\Stats.xaml.cs">
       <DependentUpon>Stats.xaml</DependentUpon>
     </Compile>
@@ -176,9 +181,6 @@
     </Compile>
     <Compile Include="XAML\SubPages\Stats\Sub\YearStats.xaml.cs">
       <DependentUpon>YearStats.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XAML\SubPages\WelcomeScreen.xaml.cs">
-      <DependentUpon>WelcomeScreen.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +206,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XAML\Controls\ExpensesBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\Root.xaml">
       <SubType>Designer</SubType>
@@ -233,6 +239,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="XAML\SubPages\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="XAML\SubPages\Stats\Stats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -250,10 +260,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\SubPages\Stats\Sub\YearStats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\WelcomeScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
