@@ -23,9 +23,9 @@ namespace Salary_Control.XAML.SubPages.Events
     public sealed partial class EditEventDialog : ContentDialog
     {
         private Event _event;
-        private EventsList _eventsList;
+        private EntitiesList<Event> _eventsList;
 
-        public EditEventDialog(EventsList eventsList, Event e)
+        public EditEventDialog(EntitiesList<Event> eventsList, Event e)
         {
             this.InitializeComponent();
 
@@ -84,11 +84,11 @@ namespace Salary_Control.XAML.SubPages.Events
 
                         context.SaveChanges();
 
-                        for (int i = 0; i < _eventsList.Events.Count; i++)
+                        for (int i = 0; i < _eventsList.Entities.Count; i++)
                         {
-                            if (_eventsList.Events[i].Id == _event.Id)
+                            if (_eventsList.Entities[i].Id == _event.Id)
                             {
-                                _eventsList.Events[i] = ev;
+                                _eventsList.Entities[i] = ev;
                             }
                         }
                     }

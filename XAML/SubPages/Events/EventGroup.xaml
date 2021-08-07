@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mctoolkit="using:Microsoft.Toolkit.Uwp.UI.Converters" xmlns:entities="using:Salary_Control.Source.API.Entities" xmlns:categories="using:Salary_Control.XAML.SubPages.Categories"
     mc:Ignorable="d"
-	Background="#F9F9F9">
+	Background="{ThemeResource BackgroundColor}">
 
     <Page.Resources>
         <mctoolkit:BoolNegationConverter x:Key="boolToNegative"/>
@@ -64,7 +64,7 @@
                     </RichTextBlock>
 
                     <ScrollViewer Margin="0 24 0 0" Grid.Row="1">
-                        <ListView ItemsSource="{x:Bind EventsList.Events}" SelectionMode="Extended" Margin="0 16 0 0">
+                        <ListView ItemsSource="{x:Bind EventsList.Entities}" SelectionMode="Extended" Margin="0 16 0 0">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="Template">
@@ -83,10 +83,10 @@
                                     <Grid
                                         Tag="{x:Bind Id}"
                                         Margin="0 8 0 0"
-                                        Width="400"
+                                        Width="500"
                                         HorizontalAlignment="Left"
-                                        Background="#F7F7F7"
-                                        BorderBrush="#EAEAEA"
+                                        Background="{ThemeResource BlockBackgroundColor}"
+                                        BorderBrush="{ThemeResource BlockBorderColor}"
                                         BorderThickness="1"
                                         CornerRadius="8"
                                         >
@@ -142,8 +142,8 @@
                                         <Grid
                                             Grid.Row="1"
                                             Margin="0 4 0 0"
-                                            Background="#F3F3F3"
-                                            BorderBrush="#EAEAEA"
+                                            Background="{ThemeResource BlockSubBackgroundColor}"
+                                            BorderBrush="{ThemeResource BlockSubBorderColor}"
                                             BorderThickness="0, 1, 0, 0"
                                             Padding="12"
                                             CornerRadius="0 0 8 8"

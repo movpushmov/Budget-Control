@@ -12,9 +12,9 @@ namespace Salary_Control.XAML.SubPages.Categories
     public sealed partial class EditCategoryDialog : ContentDialog
     {
         private EventCategory _category;
-        private CategoriesList _categoriesList;
+        private EntitiesList<EventCategory> _categoriesList;
 
-        public EditCategoryDialog(EventCategory category, CategoriesList categoriesList)
+        public EditCategoryDialog(EventCategory category, EntitiesList<EventCategory> categoriesList)
         {
             this.InitializeComponent();
 
@@ -41,11 +41,11 @@ namespace Salary_Control.XAML.SubPages.Categories
 
                     dbContext.SaveChanges();
 
-                    for (int i = 0; i < _categoriesList.Categories.Count; i++)
+                    for (int i = 0; i < _categoriesList.Entities.Count; i++)
                     {
-                        if (_categoriesList.Categories[i].Id == _category.Id)
+                        if (_categoriesList.Entities[i].Id == _category.Id)
                         {
-                            _categoriesList.Categories[i] = category;
+                            _categoriesList.Entities[i] = category;
                         }
                     }
                 }

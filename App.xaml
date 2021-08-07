@@ -4,6 +4,30 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Salary_Control">
     <Application.Resources>
-        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="BackgroundColor" Color="#F9F9F9" />
+                    <SolidColorBrush x:Key="BlockBackgroundColor" Color="#FDFDFD" />
+                    <SolidColorBrush x:Key="BlockBorderColor" Color="#EAEAEA" />
+
+                    <SolidColorBrush x:Key="BlockSubBackgroundColor" Color="#F3F3F3"/>
+                    <SolidColorBrush x:Key="BlockSubBorderColor" Color="#EAEAEA"/>
+                    <SolidColorBrush x:Key="ExpensesBlockBackgroundColor" Color="White"/>
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="BackgroundColor" Color="#272727" />
+                    <SolidColorBrush x:Key="BlockBackgroundColor" Color="#323232" />
+                    <SolidColorBrush x:Key="BlockBorderColor" Color="#232323" />
+
+                    <SolidColorBrush x:Key="BlockSubBackgroundColor" Color="#202020"/>
+                    <SolidColorBrush x:Key="BlockSubBorderColor" Color="#1D1D1D"/>
+                    <SolidColorBrush x:Key="ExpensesBlockBackgroundColor" Color="#4B4B4B"/>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

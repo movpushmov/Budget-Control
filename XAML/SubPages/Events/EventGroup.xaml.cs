@@ -42,7 +42,7 @@ namespace Salary_Control.XAML.SubPages
         public static readonly DependencyProperty IsEditingProperty =
             DependencyProperty.Register("IsEditing", typeof(bool), typeof(EventGroup), new PropertyMetadata(0));
 
-        public EventsList EventsList { get; set; }
+        public EntitiesList<Event> EventsList { get; set; }
 
         public EventGroup()
         {
@@ -50,9 +50,9 @@ namespace Salary_Control.XAML.SubPages
 
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
-            EventsList = new EventsList()
+            EventsList = new EntitiesList<Event>()
             {
-                Events = new ObservableCollection<Event>()
+                Entities = new ObservableCollection<Event>()
             };
 
             var dateTime = DateTime.Now;
@@ -94,7 +94,7 @@ namespace Salary_Control.XAML.SubPages
             {
                 var fixedTS = new DateTime(time.Year, time.Month, time.Day, 0, 0, 0, 0);
 
-                EventsList.Events.Clear();
+                EventsList.Entities.Clear();
 
                 var eventsGroup = context.EventsGroups
                     .Include(e => e.Events)
@@ -116,7 +116,7 @@ namespace Salary_Control.XAML.SubPages
                 {
                     foreach (var item in eventsGroup.Events)
                     {
-                        EventsList.Events.Add(item);
+                        EventsList.Entities.Add(item);
                     }
                 }
             }
@@ -147,7 +147,7 @@ namespace Salary_Control.XAML.SubPages
                     context.SaveChanges();
                 }
 
-                EventsList.Events.Remove(ev);
+                EventsList.Entities.Remove(ev);
             }
         }
 

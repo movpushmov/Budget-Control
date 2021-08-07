@@ -5,8 +5,7 @@
     xmlns:local="using:Salary_Control.XAML.SubPages.Stats.Sub"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:charting="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
-    mc:Ignorable="d"
-	Background="#F9F9F9">
+    mc:Ignorable="d">
 
     <Grid>
         <Grid.RowDefinitions>
