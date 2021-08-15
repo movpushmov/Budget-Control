@@ -5,27 +5,66 @@
     xmlns:local="using:Salary_Control.XAML.SubPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Salary_Control.XAML.Controls"
+    xmlns:controls="using:Salary_Control.XAML.Controls" xmlns:entities="using:Salary_Control.Source.API.Entities"
     mc:Ignorable="d"
 	Background="{ThemeResource BackgroundColor}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
-        <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="24 20 0 0" HorizontalAlignment="Left" Grid.Row="0">
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="24 20 0 0" HorizontalAlignment="Left" Grid.Row="0">
                 Главная
-        </TextBlock>
+            </TextBlock>
 
-        <Grid Grid.Row="1" x:Name="expensesBlockGrid" HorizontalAlignment="Left"/>
+            <Grid Grid.Row="1" x:Name="expensesBlockGrid" HorizontalAlignment="Left"/>
+
+            <Grid
+                Grid.Row="2"
+                Width="420"
+                Margin="24 0 0 0"
+                Background="{ThemeResource BlockBackgroundColor}"
+                BorderThickness="1"
+                CornerRadius="6"
+                BorderBrush="{ThemeResource BlockBorderColor}"
+                HorizontalAlignment="Left"
+                Padding="16"
+            >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock FontWeight="Bold">
+                Ваши средства:
+                </TextBlock>
+
+                <TextBlock FontWeight="Bold" Grid.Row="1">
+                <Run Text="{x:Bind TotalAmount}"/>
+                <Run>₽</Run>
+                </TextBlock>
+            </Grid>
+        </Grid>
 
         <Grid
-            Grid.Row="2"
+            Grid.Column="1"
             Width="420"
-            Margin="24 0 0 0"
+            Margin="24 72 0 0"
             Background="{ThemeResource BlockBackgroundColor}"
             BorderThickness="1"
             CornerRadius="6"
@@ -36,22 +75,57 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-
-            <TextBlock>
-                Ваши средства:
+            
+            <TextBlock FontWeight="Bold">
+                Ваши цели:
             </TextBlock>
 
-            <TextBlock FontWeight="Bold" Grid.Row="1">
-                <Run Text="{x:Bind TotalAmount}"/>
-                <Run>₽</Run>
-            </TextBlock>
+            <Grid Grid.Row="1" Padding="0 16 0 8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <Grid Grid.Row="2" Padding="8 24 8 8">
-                <Grid>
+                <FlipView x:Name="tasksList" ItemsSource="{x:Bind TasksList.Entities}" Height="360" Background="Transparent">
+                    <FlipView.ItemTemplate>
+                        <DataTemplate x:DataType="entities:UserTask">
+                            <StackPanel Orientation="Vertical">
+                                <Image Source="{x:Bind ImagePath}" MaxHeight="240"/>
+
+                                <TextBlock
+                                    FontSize="18"
+                                    Margin="0 8 0 0"
+                                    Text="{x:Bind Name}"
+                                    HorizontalAlignment="Center"
+                                    />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Margin="0 8"
+                                    >
+                                    <Run Text="{x:Bind Cost}"/>
+                                    <Run>₽</Run>
+                                </TextBlock>
+
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Click="EditTaskModalOpen" Tag="{x:Bind (entities:UserTask)}">
+                                        Редактировать
+                                    </Button>
+                                    <Button
+                                        Margin="8 0 0 0"
+                                        Click="RemoveTaskOpenModal"
+                                        Tag="{x:Bind (entities:UserTask)}"
+                                        >
+                                        Удалить
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </FlipView.ItemTemplate>
+                </FlipView>
+
+                <Grid x:Name="noTasks">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
@@ -60,11 +134,17 @@
                     <TextBlock Grid.Row="1" HorizontalAlignment="Center" Margin="0 8 0 16">
                         В данный момент у вас нет целей.
                     </TextBlock>
-
-                    <Button HorizontalAlignment="Center" Grid.Row="2" Style="{StaticResource AccentButtonStyle}">
-                        Создать цель
-                    </Button>
                 </Grid>
+
+                <Button
+                    HorizontalAlignment="Center"
+                    Grid.Row="1"
+                    Margin="0 8 0 0"
+                    Style="{StaticResource AccentButtonStyle}"
+                    Click="AddTaskOpenModal"
+                    >
+                    Создать цель
+                </Button>
             </Grid>
         </Grid>
     </Grid>

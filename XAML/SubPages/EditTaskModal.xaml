@@ -1,0 +1,37 @@
+﻿<ContentDialog
+    x:Class="Salary_Control.XAML.SubPages.EditTaskModal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Salary_Control.XAML.SubPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Редактировать задачу"
+    PrimaryButtonText="Редактировать"
+    PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
+    SecondaryButtonText="Отменить"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <ContentDialog.Resources>
+        <Style TargetType="local:EditTaskModal" BasedOn="{StaticResource DefaultContentDialogStyle}"/>
+    </ContentDialog.Resources>
+
+    <StackPanel Margin="0 16 0 0" Orientation="Vertical">
+        <TextBox PlaceholderText="Название задачи" x:Name="taskName"/>
+        <TextBox PlaceholderText="Сумма для выполнения задачи" Margin="0 16" x:Name="taskCost"/>
+
+        <Button Click="SelectFile">
+            <StackPanel Orientation="Horizontal">
+                <FontIcon Glyph="" FontFamily="Segoe Fluent Icons" HorizontalAlignment="Center"/>
+                <TextBlock HorizontalAlignment="Center" Margin="4 0 0 0">Выберите файл</TextBlock>
+            </StackPanel>
+        </Button>
+
+        <TextBlock
+            Style="{StaticResource CaptionTextBlockStyle}"
+            Text="{x:Bind FileName, Mode=OneWay}"
+            Margin="0 8 0 0"
+            />
+    </StackPanel>
+</ContentDialog>

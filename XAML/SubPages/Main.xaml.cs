@@ -79,7 +79,69 @@ namespace Salary_Control.XAML.SubPages
                 {
                     Entities = new ObservableCollection<UserTask>(context.UserTasks.ToList()),
                 };
+
+                if (TasksList.Entities.Count > 0)
+                {
+                    tasksList.Visibility = Visibility.Visible;
+                    noTasks.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    tasksList.Visibility = Visibility.Collapsed;
+                    noTasks.Visibility = Visibility.Visible;
+                }
             }
+        }
+
+        private async void AddTaskOpenModal(object sender, RoutedEventArgs e)
+        {
+            await (new AddTaskModal(TasksList).ShowAsync());
+
+            tasksList.Visibility = Visibility.Visible;
+            noTasks.Visibility = Visibility.Collapsed;
+        }
+
+        private async void RemoveTaskOpenModal(object sender, RoutedEventArgs e)
+        {
+            var dialog = new ContentDialog()
+            {
+                Title = "Удалить задачу?",
+                Content = "Это действие нельзя будет отменить.",
+                PrimaryButtonText = "Удалить",
+                SecondaryButtonText = "Отменить",
+                SecondaryButtonStyle = this.Resources["AccentButtonStyle"] as Style
+            };
+
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                using (var context = new DBContext())
+                {
+                    var task = (sender as Button).Tag as UserTask;
+
+                    context.UserTasks.Remove(task);
+                    context.SaveChanges();
+
+                    TasksList.Entities.Remove(task);
+
+                    if (TasksList.Entities.Count > 0)
+                    {
+                        tasksList.Visibility = Visibility.Visible;
+                        noTasks.Visibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        tasksList.Visibility = Visibility.Collapsed;
+                        noTasks.Visibility = Visibility.Visible;
+                    }
+                }
+            }
+        }
+
+        private async void EditTaskModalOpen(object sender, RoutedEventArgs e)
+        {
+            await (new EditTaskModal(TasksList, (sender as Button).Tag as UserTask).ShowAsync());
         }
     }
 }
