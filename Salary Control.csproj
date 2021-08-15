@@ -140,6 +140,9 @@
     <Compile Include="Source\API\XAML Bridges\EntitiesList.cs" />
     <Compile Include="Source\API\XAML Bridges\Utils\ColorUtils.cs" />
     <Compile Include="Source\Navigation\Navigation.cs" />
+    <Compile Include="XAML\SubPages\AddTaskModal.xaml.cs">
+      <DependentUpon>AddTaskModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\Controls\ExpensesBlock.xaml.cs">
       <DependentUpon>ExpensesBlock.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,9 @@
     </Compile>
     <Compile Include="XAML\SubPages\Categories\EditCategoryDialog.xaml.cs">
       <DependentUpon>EditCategoryDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\SubPages\EditTaskModal.xaml.cs">
+      <DependentUpon>EditTaskModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="XAML\SubPages\Events\AddEventDialog.xaml.cs">
       <DependentUpon>AddEventDialog.xaml</DependentUpon>
@@ -207,6 +213,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="XAML\SubPages\AddTaskModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="XAML\Controls\ExpensesBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -224,6 +234,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\SubPages\Categories\EditCategoryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\SubPages\EditTaskModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
