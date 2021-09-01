@@ -24,6 +24,7 @@ namespace Salary_Control.XAML.SubPages.Events
     {
         private DateTime _eventGroupTime;
         private EntitiesList<Event> _eventsList;
+        private List<EventCategory> _categories;
 
         public AddEventDialog(DateTime eventGroupTime, EntitiesList<Event> eventsList)
         {
@@ -31,6 +32,11 @@ namespace Salary_Control.XAML.SubPages.Events
 
             _eventGroupTime = eventGroupTime;
             _eventsList = eventsList;
+
+            using (var context = new DBContext())
+            {
+                _categories = context.EventCategories.Where(c => true).ToList();
+            }
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -79,9 +85,7 @@ namespace Salary_Control.XAML.SubPages.Events
                 var term = sender.Text.ToLower();
                 using (var context = new DBContext())
                 {
-                    var all = context.EventCategories.Where(c => true).ToList();
-
-                    var itemsSource = all.Where(c => c.Name.ToLower().StartsWith(term)).ToList();
+                    var itemsSource = _categories.Where(c => c.Name.ToLower().StartsWith(term)).ToList();
 
                     if (itemsSource.Count > 0)
                     {

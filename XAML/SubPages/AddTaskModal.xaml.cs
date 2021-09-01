@@ -23,12 +23,14 @@ namespace Salary_Control.XAML.SubPages
             DependencyProperty.Register("FileName", typeof(string), typeof(AddTaskModal), new PropertyMetadata(""));
 
         EntitiesList<UserTask> _list;
+        public int _currentAmount;
 
-        public AddTaskModal(EntitiesList<UserTask> list)
+        public AddTaskModal(EntitiesList<UserTask> list, int currentAmount)
         {
             this.InitializeComponent();
 
             _list = list;
+            _currentAmount = currentAmount;
         }
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
@@ -40,12 +42,13 @@ namespace Salary_Control.XAML.SubPages
             string name = taskName.Text;
             bool success = int.TryParse(taskCost.Text, out int cost);
 
-            if (success)
+            if (success && cost > 0)
             {
                 var task = new UserTask()
                 {
                     Name = name,
                     Cost = cost,
+                    CurrentAmount = _currentAmount,
                     ImagePath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName),
                 };
 

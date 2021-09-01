@@ -1,0 +1,44 @@
+﻿<ContentDialog
+    x:Class="Salary_Control.XAML.SubPages.CompleteTaskDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Salary_Control.XAML.SubPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Отметить цель как выполненную"
+    PrimaryButtonText="Отметить"
+    SecondaryButtonText="Отмена"
+    PrimaryButtonStyle="{ThemeResource AccentButtonStyle}"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls">
+
+    <ContentDialog.Resources>
+        <Style TargetType="local:CompleteTaskDialog" BasedOn="{StaticResource DefaultContentDialogStyle}"/>
+    </ContentDialog.Resources>
+
+    <StackPanel Orientation="Vertical" Margin="0 16 0 0" Width="360">
+        <muxc:InfoBar
+            Severity="Informational"
+            IsOpen="True"
+            IsClosable="False"
+            Title="Обратите внимание"
+            Message="Вы можете создать расходное событие,
+            которое будет отнесено к данной цели."
+        />
+
+        <CheckBox
+            x:Name="createEvent"
+            Content="Создать расходное событие для цели"
+            Margin="0 8 0 8" 
+            />
+        <AutoSuggestBox 
+            x:Name="newEventCategory" 
+            IsEnabled="{x:Bind (x:Boolean)createEvent.IsChecked, Mode=OneWay}"
+            PlaceholderText="Название категории"
+            QueryIcon="Find"
+            TextChanged="CategoryNameFieldChanged"
+            />
+    </StackPanel>
+</ContentDialog>

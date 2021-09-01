@@ -24,26 +24,22 @@ namespace Salary_Control.XAML.Controls
     {
         private readonly decimal _width = 420 - 32;
 
-        public ExpensesBlock(Dictionary<int, EventCategory> categories, Dictionary<int, int> totalMinus)
+        public ExpensesBlock()
         {
             this.InitializeComponent();
 
             DateTimeFormatInfo info = CultureInfo.GetCultureInfo("ru-RU").DateTimeFormat;
             monthName.Text = info.MonthNames[DateTime.Now.Month - 1].ToLower();
-
-
-            if (categories.Count > 0)
-            {
-                UpdateExpenses(categories, totalMinus);
-            }
-            else
-            {
-                totalMinusCount.Text = "0";
-            }
         }
 
         public void UpdateExpenses(Dictionary<int, EventCategory> expenseses, Dictionary<int, int> totalMinus)
         {
+            if (expenseses.Count < 0)
+            {
+                totalMinusCount.Text = "0";
+                return;
+            }
+
             var minus = -totalMinus.Sum(x => x.Value);
             totalMinusCount.Text = minus.ToString();
 

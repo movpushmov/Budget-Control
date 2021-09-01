@@ -1,6 +1,5 @@
 ﻿using Salary_Control.Source.API;
 using Salary_Control.Source.API.Entities;
-using Salary_Control.Source.API.XAML_Bridges;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,24 +17,16 @@ using Windows.UI.Xaml.Navigation;
 
 // Документацию по шаблону элемента "Диалоговое окно содержимого" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Salary_Control.XAML.SubPages.Events
+namespace Salary_Control.XAML.SubPages
 {
-    public sealed partial class EditEventDialog : ContentDialog
+    public sealed partial class CompleteTaskDialog : ContentDialog
     {
-        private Event _event;
-        private EntitiesList<Event> _eventsList;
         private List<EventCategory> _categories;
+        public EventCategory Category { get; set; }
 
-        public EditEventDialog(EntitiesList<Event> eventsList, Event e)
+        public CompleteTaskDialog()
         {
             this.InitializeComponent();
-
-            _event = e;
-            _eventsList = eventsList;
-
-            eventName.Text = e.Name;
-            eventCost.Text = e.Cost.ToString();
-            eventCategory.Text = e.Category.Name;
 
             using (var context = new DBContext())
             {
@@ -50,7 +41,7 @@ namespace Salary_Control.XAML.SubPages.Events
                 var term = sender.Text.ToLower();
                 using (var context = new DBContext())
                 {
-                    var itemsSource = _categories.Where(c => c.Name.ToLower().StartsWith(term)).ToList();
+                    var itemsSource = _categories.Where(c => c.Name.ToLower().StartsWith(term) && c.IsConsumption).ToList();
 
                     if (itemsSource.Count > 0)
                     {
@@ -68,35 +59,7 @@ namespace Salary_Control.XAML.SubPages.Events
         {
             using (var context = new DBContext())
             {
-                var category = context.EventCategories.FirstOrDefault(c => c.Name == eventCategory.Text);
-                var res = int.TryParse(eventCost.Text, out int cost);
-
-                if (category == null || eventName.Text == "" || eventName.Text.Trim() == "")
-                {
-                    return;
-                }
-
-                if (res)
-                {
-                    var ev = context.Events.FirstOrDefault(e => e.Id == _event.Id);
-
-                    if (ev != null)
-                    {
-                        ev.Category = category;
-                        ev.Cost = cost;
-                        ev.Name = eventName.Text;
-
-                        context.SaveChanges();
-
-                        for (int i = 0; i < _eventsList.Entities.Count; i++)
-                        {
-                            if (_eventsList.Entities[i].Id == _event.Id)
-                            {
-                                _eventsList.Entities[i] = ev;
-                            }
-                        }
-                    }
-                }
+                Category = context.EventCategories.FirstOrDefault(c => c.Name == newEventCategory.Text);
             }
         }
 

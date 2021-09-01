@@ -140,6 +140,9 @@
     <Compile Include="Source\API\XAML Bridges\EntitiesList.cs" />
     <Compile Include="Source\API\XAML Bridges\Utils\ColorUtils.cs" />
     <Compile Include="Source\Navigation\Navigation.cs" />
+    <Compile Include="XAML\Controls\ProgressBar.xaml.cs">
+      <DependentUpon>ProgressBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\SubPages\AddTaskModal.xaml.cs">
       <DependentUpon>AddTaskModal.xaml</DependentUpon>
     </Compile>
@@ -157,6 +160,9 @@
     </Compile>
     <Compile Include="XAML\SubPages\Categories\EditCategoryDialog.xaml.cs">
       <DependentUpon>EditCategoryDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\SubPages\CompleteTaskDialog.xaml.cs">
+      <DependentUpon>CompleteTaskDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="XAML\SubPages\EditTaskModal.xaml.cs">
       <DependentUpon>EditTaskModal.xaml</DependentUpon>
@@ -213,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="XAML\Controls\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="XAML\SubPages\AddTaskModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -234,6 +244,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\SubPages\Categories\EditCategoryDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\SubPages\CompleteTaskDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -291,6 +305,9 @@
       <Version>6.2.10</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp">
+      <Version>7.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications">
       <Version>7.0.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
