@@ -63,6 +63,7 @@ namespace Salary_Control.XAML.SubPages
                         task.Name = name;
                         task.Cost = cost;
                         task.ImagePath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName);
+                        task.CurrentAmount = _task.CurrentAmount;
 
                         context.SaveChanges();
 

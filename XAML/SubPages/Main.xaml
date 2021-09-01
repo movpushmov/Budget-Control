@@ -30,7 +30,9 @@
                 Главная
             </TextBlock>
 
-            <Grid Grid.Row="1" x:Name="expensesBlockGrid" HorizontalAlignment="Left"/>
+            <Grid Grid.Row="1"  HorizontalAlignment="Left">
+                <controls:ExpensesBlock x:Name="expensesBlock" Margin="24, 24, 0, 16"/>
+            </Grid>
 
             <Grid
                 Grid.Row="2"
@@ -51,12 +53,12 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock FontWeight="Bold">
-                Ваши средства:
+                    Ваши средства:
                 </TextBlock>
 
                 <TextBlock FontWeight="Bold" Grid.Row="1">
-                <Run Text="{x:Bind TotalAmount}"/>
-                <Run>₽</Run>
+                    <Run Text="{x:Bind TotalAmount, Mode=OneWay}"/>
+                    <Run>₽</Run>
                 </TextBlock>
             </Grid>
         </Grid>
@@ -99,16 +101,25 @@
                                     Text="{x:Bind Name}"
                                     HorizontalAlignment="Center"
                                     />
-                                <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Margin="0 8"
-                                    >
-                                    <Run Text="{x:Bind Cost}"/>
-                                    <Run>₽</Run>
-                                </TextBlock>
+                                <controls:ProgressBar
+                                    Balance="{x:Bind CurrentAmount, Mode=OneWay}"
+                                    Needed="{x:Bind Cost, Mode=OneWay}"
+                                    />
 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <Button Click="EditTaskModalOpen" Tag="{x:Bind (entities:UserTask)}">
+                                    <Button
+                                        Click="SetTaskAsCompleted"
+                                        IsEnabled="{x:Bind local:Main.IsTaskCanBeCompleted(CurrentAmount, Cost)}"
+                                        Style="{x:Bind local:Main.GetCompleteButtonStyle(CurrentAmount, Cost)}"
+                                        Tag="{x:Bind (entities:UserTask)}"
+                                        >
+                                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph=""/>
+                                    </Button>
+                                    <Button
+                                        Click="EditTaskModalOpen"
+                                        Tag="{x:Bind (entities:UserTask)}"
+                                        Margin="8 0 0 0"
+                                        >
                                         Редактировать
                                     </Button>
                                     <Button

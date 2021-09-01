@@ -22,25 +22,25 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Tag="main" Content="Главная" x:Name="mainNavItem">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA8A;"/>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph=""/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
                 
                 <muxc:NavigationViewItem Tag="stats" Content="Статистика">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE9D2;"/>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE9D2;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
                 <muxc:NavigationViewItem Tag="eventGroup" Content="События">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE787;"/>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE787;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
                 <muxc:NavigationViewItem Tag="categories" Content="Категории">
                     <muxc:NavigationViewItem.Icon>
-                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEA37;"/>
+                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xEA37;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>

@@ -46,39 +46,6 @@ namespace Salary_Control.XAML.SubPages.Categories
             return new SolidColorBrush(ColorUtils.GetCategoryIconColor(isConsumption));
         }
 
-        private async void DisplayRemoveAllCategoriesDialog(object sender, RoutedEventArgs e)
-        {
-            if (CategoriesList.Entities.Count < 1)
-            {
-                return;
-            } 
-
-            ContentDialog removeAllCategoriesDialog = new ContentDialog
-            {
-                Title = "Удалить все категории?",
-                Content = "Если вы удалите все категории, то потом не сможете отменить это действие.",
-                CloseButtonText = "Отменить",
-                PrimaryButtonText = "Удалить"
-            };
-
-            ContentDialogResult result = await removeAllCategoriesDialog.ShowAsync();
-
-            if (result == ContentDialogResult.Primary)
-            {
-                using (var context = new DBContext())
-                {
-                    context.EventCategories.RemoveRange(
-                        context.EventCategories.Where(c => true).ToArray()
-                    );
-
-                    await context.SaveChangesAsync();
-                    CategoriesList.Entities.Clear();
-
-                    emptyCategoriesBlock.Visibility = Visibility.Visible;
-                }
-            }
-        }
-
         private void OpenCreateDialog(object sender, RoutedEventArgs e)
         {
             _ = new AddCategoryDialog((category) =>
