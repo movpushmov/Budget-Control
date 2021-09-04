@@ -34,7 +34,7 @@ namespace Salary_Control.XAML.Controls
 
         public void UpdateExpenses(Dictionary<int, EventCategory> expenseses, Dictionary<int, int> totalMinus)
         {
-            if (expenseses.Count < 0)
+            if (expenseses.Count == 0 || totalMinus.Count  == 0)
             {
                 totalMinusCount.Text = "0";
                 return;
