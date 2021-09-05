@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Salary_Control.Source.API.Entities
+namespace Budget_Control.Source.API.Entities
 {
     public class Event
     {

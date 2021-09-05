@@ -1,5 +1,5 @@
 ﻿using Microsoft.Toolkit.Uwp.Helpers;
-using Salary_Control.Source.API.Entities;
+using Budget_Control.Source.API.Entities;
 using System.Collections.Generic;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
-namespace Salary_Control.Source.API.XAML_Bridges
+namespace Budget_Control.Source.API.XAML_Bridges
 {
     public static class ChartsHelper
     {

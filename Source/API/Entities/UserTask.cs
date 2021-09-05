@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Salary_Control.Source.API.Entities
+namespace Budget_Control.Source.API.Entities
 {
     public class UserTask
     {

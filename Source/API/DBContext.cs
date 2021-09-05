@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Salary_Control.Source.API.Entities;
+using Budget_Control.Source.API.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Salary_Control.Source.API
+namespace Budget_Control.Source.API
 {
     class DBContext: DbContext
     {

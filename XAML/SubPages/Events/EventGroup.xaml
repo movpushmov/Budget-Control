@@ -1,11 +1,11 @@
 ﻿<Page
-    x:Class="Salary_Control.XAML.SubPages.EventGroup"
+    x:Class="Budget_Control.XAML.SubPages.EventGroup"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Salary_Control.XAML.SubPages"
+    xmlns:local="using:Budget_Control.XAML.SubPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:mctoolkit="using:Microsoft.Toolkit.Uwp.UI.Converters" xmlns:entities="using:Salary_Control.Source.API.Entities" xmlns:categories="using:Salary_Control.XAML.SubPages.Categories"
+    xmlns:mctoolkit="using:Microsoft.Toolkit.Uwp.UI.Converters" xmlns:entities="using:Budget_Control.Source.API.Entities" xmlns:categories="using:Budget_Control.XAML.SubPages.Categories"
     mc:Ignorable="d"
 	Background="{ThemeResource BackgroundColor}">
 

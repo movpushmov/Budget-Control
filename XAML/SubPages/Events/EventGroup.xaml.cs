@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Salary_Control.Source.API;
-using Salary_Control.Source.API.Entities;
-using Salary_Control.Source.API.XAML_Bridges;
-using Salary_Control.XAML.SubPages.Events;
+using Budget_Control.Source.API;
+using Budget_Control.Source.API.Entities;
+using Budget_Control.Source.API.XAML_Bridges;
+using Budget_Control.XAML.SubPages.Events;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,7 +12,7 @@ using Windows.UI.Xaml.Controls;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Salary_Control.XAML.SubPages
+namespace Budget_Control.XAML.SubPages
 {
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.

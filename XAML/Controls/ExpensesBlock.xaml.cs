@@ -1,5 +1,5 @@
 ﻿using Microsoft.Toolkit.Uwp.Helpers;
-using Salary_Control.Source.API.Entities;
+using Budget_Control.Source.API.Entities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 
 // Документацию по шаблону элемента "Пользовательский элемент управления" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace Salary_Control.XAML.Controls
+namespace Budget_Control.XAML.Controls
 {
     public sealed partial class ExpensesBlock : UserControl
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Salary_Control.Source.API;
-using Salary_Control.Source.API.XAML_Bridges;
+using Budget_Control.Source.API;
+using Budget_Control.Source.API.XAML_Bridges;
 using System;
 using System.Linq;
 using Windows.UI.Xaml.Controls;
@@ -8,7 +8,7 @@ using WinRTXamlToolkit.Controls.DataVisualization.Charting;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Salary_Control.XAML.SubPages.Stats.Sub
+namespace Budget_Control.XAML.SubPages.Stats.Sub
 {
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.

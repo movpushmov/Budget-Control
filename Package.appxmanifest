@@ -9,13 +9,13 @@
   <Identity
     Name="8b746ef8-f001-4814-a6e8-8a2b9d3474ed"
     Publisher="CN=movpushmov"
-    Version="2.0.0.0" />
+    Version="2.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="8b746ef8-f001-4814-a6e8-8a2b9d3474ed" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Salary Control</DisplayName>
-    <PublisherDisplayName>redfo</PublisherDisplayName>
+    <DisplayName>Budget Control</DisplayName>
+    <PublisherDisplayName>movpushmov</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
