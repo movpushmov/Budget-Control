@@ -1,6 +1,6 @@
 ﻿using Microsoft.Toolkit.Uwp.Helpers;
 
-namespace Salary_Control.Source.API.XAML_Bridges.Utils
+namespace Budget_Control.Source.API.XAML_Bridges.Utils
 {
     public static class ColorUtils
     {

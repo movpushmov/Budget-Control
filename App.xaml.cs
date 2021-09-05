@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using Salary_Control.Source.API;
+using Budget_Control.Source.API;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -8,7 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace Salary_Control
+namespace Budget_Control
 {
     /// <summary>
     /// Обеспечивает зависящее от конкретного приложения поведение, дополняющее класс Application по умолчанию.

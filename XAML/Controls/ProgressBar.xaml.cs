@@ -5,7 +5,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
 
 
-namespace Salary_Control.XAML.Controls
+namespace Budget_Control.XAML.Controls
 {
     public sealed partial class ProgressBar : UserControl
     {

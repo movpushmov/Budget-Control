@@ -1,12 +1,12 @@
-﻿using Salary_Control.Source.Navigation;
-using Salary_Control.XAML.SubPages;
-using Salary_Control.XAML.SubPages.Categories;
-using Salary_Control.XAML.SubPages.Stats;
+﻿using Budget_Control.Source.Navigation;
+using Budget_Control.XAML.SubPages;
+using Budget_Control.XAML.SubPages.Categories;
+using Budget_Control.XAML.SubPages.Stats;
 using Windows.UI.Xaml.Controls;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Salary_Control.XAML
+namespace Budget_Control.XAML
 {
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 
-namespace Salary_Control.Source.Navigation
+namespace Budget_Control.Source.Navigation
 {
     static class Navigation
     {
