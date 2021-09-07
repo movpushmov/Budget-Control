@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="8b746ef8-f001-4814-a6e8-8a2b9d3474ed"
-    Publisher="CN=movpushmov"
-    Version="2.1.0.0" />
+    Name="38869movpushmov.BudgetControl"
+    Publisher="CN=B8605EC2-B42F-450D-AFDF-AEEBE094F071"
+    Version="2.1.2.0" />
 
-  <mp:PhoneIdentity PhoneProductId="8b746ef8-f001-4814-a6e8-8a2b9d3474ed" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="96871adc-e30f-4ed8-a167-5f5b411800f5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Budget Control</DisplayName>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="Salary_Control.App">
+      EntryPoint="Budget_Control.App">
       <uap:VisualElements
-        DisplayName="Salary Control"
+        DisplayName="Budget Control"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Salary Control"
+        Description="Приложение для контроля ваших доходов и расходов."
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
