@@ -1,2 +1,1 @@
-MainPackage=C:\Users\redfo\source\repos\Salary-Control\bin\x64\Release\Salary Control_2.0.0.0_x64.msix
-SymbolPackage=C:\Users\redfo\source\repos\Salary-Control\obj\x64\Release\Symbols\Salary Control_2.0.0.0_x64.appxsym
+MainPackage=C:\Users\redfo\source\repos\Budget-Control\bin\x64\Release\Budget Control_2.1.1.0_x64.msix
