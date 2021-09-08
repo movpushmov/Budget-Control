@@ -1,12 +1,12 @@
-# Salary-Control
+# Budget Control
 
-Приложение для контроля ваших доходов и расходов.
+Budget Control - простое, удобное и красивое приложение для контроля доходов и расходов, а также отслеживания текущих целей пользователя. Вы не понимаете, куда уходит весь ваш заработок? Попробуйте это приложение, каждый день записывайте ваши доходы и расходы и в конце месяца вы можете внимательно изучить статистику, которую предоставит вам приложение.
 
-# Скриншоты
+## Скачать
 
-![image](https://user-images.githubusercontent.com/49155506/131745816-b29e93c2-d046-4729-b1e8-f7698b86d413.png)
-![image](https://user-images.githubusercontent.com/49155506/131745824-d5da6ec6-e19f-4e02-878c-2fd1f0113e80.png)
-![image](https://user-images.githubusercontent.com/49155506/131745847-a6430952-ed8e-4c86-a9dc-6d958c9212d0.png)
-![image](https://user-images.githubusercontent.com/49155506/131745855-468cac46-cccd-4657-8515-82b9f0cb5b21.png)
-![image](https://user-images.githubusercontent.com/49155506/131745871-a185484b-e3d0-4260-87db-215abc8d0588.png)
-![image](https://user-images.githubusercontent.com/49155506/131745879-14e132f3-7b6e-4d4e-99ed-ec43c1ed3df2.png)
+https://www.microsoft.com/store/productId/9PC6B8J51LNK
+
+## FAQ
+
+- **У меня некорректно отображаются иконки в приложении!**
+- Вероятно, у вас отсутствует шрифт "Segoe Fluent Icons". Для Windows 11 он поставляется сразу вместе с системой, но для Windows 10 его необходимо установить отдельно: [тык](https://docs.microsoft.com/en-us/windows/apps/design/downloads/#fonts)
