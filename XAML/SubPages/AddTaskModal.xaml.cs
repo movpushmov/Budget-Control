@@ -1,6 +1,7 @@
 ﻿using Budget_Control.Source.API;
 using Budget_Control.Source.API.Entities;
 using Budget_Control.Source.API.XAML_Bridges;
+using Budget_Control.Source.API.XAML_Bridges.Utils;
 using System;
 using System.IO;
 using Windows.UI.Xaml;
@@ -12,6 +13,26 @@ namespace Budget_Control.XAML.SubPages
 {
     public sealed partial class AddTaskModal : ContentDialog
     {
+        public string TaskNameError
+        {
+            get { return (string)GetValue(TaskNameErrorProperty); }
+            set { SetValue(TaskNameErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TaskNameError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TaskNameErrorProperty =
+            DependencyProperty.Register("TaskNameError", typeof(string), typeof(AddTaskModal), new PropertyMetadata(ValidationHelper.GetErrorText(ErrorType.FieldRequiredError)));
+
+        public string TaskCostError
+        {
+            get { return (string)GetValue(TaskCostErrorProperty); }
+            set { SetValue(TaskCostErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TaskCostError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TaskCostErrorProperty =
+            DependencyProperty.Register("TaskCostError", typeof(string), typeof(AddTaskModal), new PropertyMetadata(ValidationHelper.GetErrorText(ErrorType.FieldRequiredError)));
+
         public string FileName
         {
             get { return (string)GetValue(FileNameProperty); }
@@ -42,14 +63,14 @@ namespace Budget_Control.XAML.SubPages
             string name = taskName.Text;
             bool success = int.TryParse(taskCost.Text, out int cost);
 
-            if (success && cost > 0)
+            if (success && cost > 0 && !string.IsNullOrEmpty(name) && !string.IsNullOrWhiteSpace(name))
             {
                 var task = new UserTask()
                 {
                     Name = name,
                     Cost = cost,
                     CurrentAmount = _currentAmount,
-                    ImagePath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName),
+                    ImagePath = FileName != "" ? Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName) : "",
                 };
 
                 using (var context = new DBContext())
@@ -59,6 +80,28 @@ namespace Budget_Control.XAML.SubPages
 
                     _list.Entities.Add(task);
                 }
+            }
+            else
+            {
+                if (!success || cost < 0)
+                {
+                    TaskCostError = ValidationHelper.GetErrorText(ErrorType.InvalidCost);
+                }
+                else
+                {
+                    TaskCostError = "";
+                }
+
+                if (string.IsNullOrEmpty(name) && string.IsNullOrWhiteSpace(name))
+                {
+                    TaskNameError = ValidationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                }
+                else
+                {
+                    TaskNameError = "";
+                }
+
+                args.Cancel = true;
             }
         }
 

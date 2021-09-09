@@ -5,7 +5,7 @@
     xmlns:local="using:Budget_Control.XAML.SubPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:Budget_Control.XAML.Controls" xmlns:entities="using:Budget_Control.Source.API.Entities"
+    xmlns:controls="using:Budget_Control.XAML.Controls" xmlns:entities="using:Budget_Control.Source.API.Entities" xmlns:utils="using:Budget_Control.Source.API.XAML_Bridges.Utils"
     mc:Ignorable="d"
 	Background="{ThemeResource BackgroundColor}">
 
@@ -93,7 +93,7 @@
                     <FlipView.ItemTemplate>
                         <DataTemplate x:DataType="entities:UserTask">
                             <StackPanel Orientation="Vertical">
-                                <Image Source="{x:Bind ImagePath}" MaxHeight="240"/>
+                                <Image Source="{x:Bind utils:ValidationHelper.GetPathOrDefault(ImagePath)}" MaxHeight="240"/>
 
                                 <TextBlock
                                     FontSize="18"
@@ -102,8 +102,8 @@
                                     HorizontalAlignment="Center"
                                     />
                                 <controls:ProgressBar
-                                    Balance="{x:Bind CurrentAmount, Mode=OneWay}"
-                                    Needed="{x:Bind Cost, Mode=OneWay}"
+                                    Balance="{x:Bind CurrentAmount}"
+                                    Needed="{x:Bind Cost}"
                                     />
 
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -150,7 +150,7 @@
                 <Button
                     HorizontalAlignment="Center"
                     Grid.Row="1"
-                    Margin="0 8 0 0"
+                    Margin="0 16 0 0"
                     Style="{StaticResource AccentButtonStyle}"
                     Click="AddTaskOpenModal"
                     >

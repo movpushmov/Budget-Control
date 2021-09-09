@@ -1,5 +1,6 @@
 ﻿using Budget_Control.Source.API;
 using Budget_Control.Source.API.Entities;
+using Budget_Control.Source.API.XAML_Bridges.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,6 +22,18 @@ namespace Budget_Control.XAML.SubPages
 {
     public sealed partial class CompleteTaskDialog : ContentDialog
     {
+        public string CategoryNameError
+        {
+            get { return (string)GetValue(CategoryNameErrorProperty); }
+            set { SetValue(CategoryNameErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CategoryNameError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CategoryNameErrorProperty =
+            DependencyProperty.Register("CategoryNameError", typeof(string), typeof(CompleteTaskDialog), new PropertyMetadata(""));
+
+
+
         private List<EventCategory> _categories;
         public EventCategory Category { get; set; }
 
@@ -57,14 +70,36 @@ namespace Budget_Control.XAML.SubPages
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-            using (var context = new DBContext())
+            bool isChecked = createEvent.IsChecked ?? false;
+
+            if (isChecked && !string.IsNullOrEmpty(newEventCategory.Text) && !string.IsNullOrWhiteSpace(newEventCategory.Text))
             {
-                Category = context.EventCategories.FirstOrDefault(c => c.Name == newEventCategory.Text);
+                using (var context = new DBContext())
+                {
+                    Category = context.EventCategories.FirstOrDefault(c => c.Name == newEventCategory.Text);
+                }
+
+                if (Category == null)
+                {
+                    args.Cancel = true;
+                    CategoryNameError = ValidationHelper.GetErrorText(ErrorType.EventInvalidCategory);
+                }
+            }
+
+            if (isChecked && (string.IsNullOrEmpty(newEventCategory.Text) || string.IsNullOrWhiteSpace(newEventCategory.Text)))
+            {
+                args.Cancel = true;
+                CategoryNameError = ValidationHelper.GetErrorText(ErrorType.FieldRequiredError);
             }
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+        }
+
+        public Visibility GetErrorTextVisibility(bool isCreateEvent, string errorText)
+        {
+            return isCreateEvent && errorText != "" ? Visibility.Visible : Visibility.Collapsed;
         }
     }
 }
