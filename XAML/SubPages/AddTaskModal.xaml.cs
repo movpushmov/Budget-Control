@@ -70,7 +70,7 @@ namespace Budget_Control.XAML.SubPages
                     Name = name,
                     Cost = cost,
                     CurrentAmount = _currentAmount,
-                    ImagePath = FileName != "" ? Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName) : "",
+                    ImagePath = FileName != "" ? Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName) : "ms-appx:///Assets/DefaultTaskImage.jpg",
                 };
 
                 using (var context = new DBContext())

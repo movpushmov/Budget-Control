@@ -31,7 +31,8 @@ namespace Budget_Control.XAML.SubPages.Stats
         {
             this.InitializeComponent();
 
-            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            // TO DO: Realize runtime cross-page update without NavigationCacheMode disable.
+            // NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
         private void ComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)

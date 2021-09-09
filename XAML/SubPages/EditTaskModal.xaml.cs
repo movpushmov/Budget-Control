@@ -78,7 +78,7 @@ namespace Budget_Control.XAML.SubPages
                     {
                         task.Name = name;
                         task.Cost = cost;
-                        task.ImagePath = FileName != "" ? Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName) : "";
+                        task.ImagePath = FileName != "" ? Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName) : "ms-appx:///Assets/DefaultTaskImage.jpg";
                         task.CurrentAmount = _task.CurrentAmount;
 
                         context.SaveChanges();
