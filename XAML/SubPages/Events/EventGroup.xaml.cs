@@ -48,7 +48,8 @@ namespace Budget_Control.XAML.SubPages
         {
             InitializeComponent();
 
-            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            // TO DO: Realize runtime cross-page update without NavigationCacheMode disable.
+            // NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
 
             EventsList = new EntitiesList<Event>()
             {
