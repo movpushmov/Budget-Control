@@ -7,8 +7,8 @@
     <ProjectGuid>{91253260-D7FC-4ECD-B6F2-088DAB75283B}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Salary_Control</RootNamespace>
-    <AssemblyName>Salary Control</AssemblyName>
+    <RootNamespace>Budget_Control</RootNamespace>
+    <AssemblyName>Budget Control</AssemblyName>
     <DefaultLanguage>ru-RU</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
@@ -143,6 +143,7 @@
     <Compile Include="Source\API\Entities\EventsGroup.cs" />
     <Compile Include="Source\API\XAML Bridges\EntitiesList.cs" />
     <Compile Include="Source\API\XAML Bridges\Utils\ColorUtils.cs" />
+    <Compile Include="Source\API\XAML Bridges\Utils\ValidationHelper.cs" />
     <Compile Include="Source\Navigation\Navigation.cs" />
     <Compile Include="XAML\Controls\ProgressBar.xaml.cs">
       <DependentUpon>ProgressBar.xaml</DependentUpon>
@@ -224,6 +225,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <PRIResource Include="Resources\ru\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
     <Page Include="XAML\Controls\ProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -329,6 +333,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <PRIResource Include="Resources\en-US\Resources.resw">
+      <SubType>Designer</SubType>
+    </PRIResource>
     <None Include="Salary Control_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

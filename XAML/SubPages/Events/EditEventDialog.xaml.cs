@@ -1,6 +1,7 @@
 ﻿using Budget_Control.Source.API;
 using Budget_Control.Source.API.Entities;
 using Budget_Control.Source.API.XAML_Bridges;
+using Budget_Control.Source.API.XAML_Bridges.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,44 @@ namespace Budget_Control.XAML.SubPages.Events
 {
     public sealed partial class EditEventDialog : ContentDialog
     {
+        public string EventNameError
+        {
+            get { return (string)GetValue(EventNameErrorProperty); }
+            set { SetValue(EventNameErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for EventNameError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EventNameErrorProperty =
+            DependencyProperty.Register("EventNameError", typeof(string), typeof(EditEventDialog), new PropertyMetadata(""));
+
+
+
+        public string EventCostError
+        {
+            get { return (string)GetValue(EventCostErrorProperty); }
+            set { SetValue(EventCostErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for EventCostError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EventCostErrorProperty =
+            DependencyProperty.Register("EventCostError", typeof(string), typeof(EditEventDialog), new PropertyMetadata(""));
+
+
+
+        public string EventCategoryError
+        {
+            get { return (string)GetValue(EventCategoryErrorProperty); }
+            set { SetValue(EventCategoryErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for EventCategoryError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EventCategoryErrorProperty =
+            DependencyProperty.Register("EventCategoryError", typeof(string), typeof(EditEventDialog), new PropertyMetadata(""));
+
+
+
+
+
         private Event _event;
         private EntitiesList<Event> _eventsList;
         private List<EventCategory> _categories;
@@ -71,8 +110,36 @@ namespace Budget_Control.XAML.SubPages.Events
                 var category = context.EventCategories.FirstOrDefault(c => c.Name == eventCategory.Text);
                 var res = int.TryParse(eventCost.Text, out int cost);
 
-                if (category == null || eventName.Text == "" || eventName.Text.Trim() == "")
+                if (category == null || string.IsNullOrWhiteSpace(eventName.Text) || string.IsNullOrEmpty(eventName.Text) || !res)
                 {
+                    if (category == null)
+                    {
+                        EventCategoryError = ValidationHelper.GetErrorText(ErrorType.EventInvalidCategory);
+                    }
+                    else
+                    {
+                        EventCategoryError = "";
+                    }
+
+                    if (string.IsNullOrWhiteSpace(eventName.Text) || string.IsNullOrEmpty(eventName.Text))
+                    {
+                        EventNameError = ValidationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                    }
+                    else
+                    {
+                        EventNameError = "";
+                    }
+
+                    if (!res)
+                    {
+                        EventCostError = ValidationHelper.GetErrorText(ErrorType.InvalidCost);
+                    }
+                    else
+                    {
+                        EventCostError = "";
+                    }
+
+                    args.Cancel = true;
                     return;
                 }
 
