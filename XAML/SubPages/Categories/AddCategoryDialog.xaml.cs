@@ -4,6 +4,8 @@ using Budget_Control.Source.API.Entities;
 using Budget_Control.Source.API.XAML_Bridges;
 using System;
 using Windows.UI.Xaml.Controls;
+using Budget_Control.Source.API.XAML_Bridges.Utils;
+using Windows.UI.Xaml;
 
 // Документацию по шаблону элемента "Диалоговое окно содержимого" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -11,6 +13,18 @@ namespace Budget_Control.XAML.SubPages.Categories
 {
     public sealed partial class AddCategoryDialog : ContentDialog
     {
+        public string CategoryNameError
+        {
+            get { return (string)GetValue(CategoryNameErrorProperty); }
+            set { SetValue(CategoryNameErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CategoryNameError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CategoryNameErrorProperty =
+            DependencyProperty.Register("CategoryNameError", typeof(string), typeof(AddCategoryDialog), new PropertyMetadata(ValidationHelper.GetErrorText(ErrorType.FieldRequiredError)));
+
+
+
         private Action<EventCategory> _addCategory;
 
         public AddCategoryDialog(Action<EventCategory> action)
@@ -39,6 +53,10 @@ namespace Budget_Control.XAML.SubPages.Categories
                 }
 
                 _addCategory(eventCategory);
+            }
+            else
+            {
+                args.Cancel = true;
             }
         }
 

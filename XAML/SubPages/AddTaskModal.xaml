@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Budget_Control.XAML.SubPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:utils="using:Budget_Control.Source.API.XAML_Bridges.Utils"
     mc:Ignorable="d"
     Title="Создать задачу"
     PrimaryButtonText="Отменить"
@@ -19,7 +19,24 @@
     
     <StackPanel Margin="0 16 0 0" Orientation="Vertical">
         <TextBox PlaceholderText="Название задачи" x:Name="taskName"/>
-        <TextBox PlaceholderText="Сумма для выполнения задачи" Margin="0 16" x:Name="taskCost"/>
+
+        <TextBlock
+            Margin="0 4 0 0"
+            Foreground="Red"
+            Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(TaskNameError), Mode=OneWay}"
+            Text="{x:Bind TaskNameError, Mode=OneWay}"
+            />
+
+        <StackPanel Orientation="Vertical" Margin="0 16">
+            <TextBox PlaceholderText="Сумма для выполнения задачи" x:Name="taskCost"/>
+
+            <TextBlock
+                Margin="0 4 0 0"
+                Foreground="Red"
+                Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(TaskCostError), Mode=OneWay}"
+                Text="{x:Bind TaskCostError, Mode=OneWay}"
+                />
+        </StackPanel>
 
         <Button Click="SelectFile">
             <StackPanel Orientation="Horizontal">
