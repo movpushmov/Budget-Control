@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:utils="using:Budget_Control.Source.API.XAML_Bridges.Utils"
     Title="Изменить событие"
     PrimaryButtonText="Изменить"
     PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
@@ -20,19 +20,46 @@
 
     <StackPanel Orientation="Vertical" Margin="0 16 0 0" Width="360">
         <TextBox x:Name="eventName" PlaceholderText="Название нового события"/>
-        <TextBox 
-            x:Name="eventCost" 
-            Margin="0 16 0 16" 
+
+        <TextBlock
+            Margin="0 4 0 0"
+            Foreground="Red"
+            Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(EventNameError), Mode=OneWay}"
+            Text="{x:Bind EventNameError, Mode=OneWay}"
+            />
+
+        <StackPanel Orientation="Vertical" Margin="0 16">
+            <TextBox 
+            x:Name="eventCost"
             InputScope="Number"
             PlaceholderText="Затраченные/полученные деньги"
             />
-        <AutoSuggestBox 
-            x:Name="eventCategory" 
-            PlaceholderText="Название категории"
-            QueryIcon="Find"
-            Margin="0 0 0 8" 
-            TextChanged="CategoryNameFieldChanged"
-            />
+
+            <TextBlock
+                Margin="0 4 0 0"
+                Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(EventCostError), Mode=OneWay}"
+                Foreground="Red"
+                Text="{x:Bind EventCostError, Mode=OneWay}"
+                />
+        </StackPanel>
+
+
+        <StackPanel Orientation="Vertical" Margin="0 0 0 8">
+            <AutoSuggestBox 
+                x:Name="eventCategory" 
+                PlaceholderText="Название категории"
+                QueryIcon="Find"
+                Margin="0 0 0 0" 
+                TextChanged="CategoryNameFieldChanged"
+                />
+
+            <TextBlock
+                Margin="0 4 0 0"
+                Foreground="Red"
+                Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(EventCategoryError), Mode=OneWay}"
+                Text="{x:Bind EventCategoryError, Mode=OneWay}"
+                />
+        </StackPanel>
 
 
         <muxc:InfoBar
