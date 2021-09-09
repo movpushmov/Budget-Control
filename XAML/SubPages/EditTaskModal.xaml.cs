@@ -1,27 +1,38 @@
 ﻿using Budget_Control.Source.API;
 using Budget_Control.Source.API.Entities;
 using Budget_Control.Source.API.XAML_Bridges;
+using Budget_Control.Source.API.XAML_Bridges.Utils;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// Документацию по шаблону элемента "Диалоговое окно содержимого" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Budget_Control.XAML.SubPages
 {
     public sealed partial class EditTaskModal : ContentDialog
     {
+        public string TaskNameError
+        {
+            get { return (string)GetValue(TaskNameErrorProperty); }
+            set { SetValue(TaskNameErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TaskNameError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TaskNameErrorProperty =
+            DependencyProperty.Register("TaskNameError", typeof(string), typeof(EditTaskModal), new PropertyMetadata(""));
+
+        public string TaskCostError
+        {
+            get { return (string)GetValue(TaskCostErrorProperty); }
+            set { SetValue(TaskCostErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TaskCostError.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TaskCostErrorProperty =
+            DependencyProperty.Register("TaskCostError", typeof(string), typeof(EditTaskModal), new PropertyMetadata(""));
+
+
         public string FileName
         {
             get { return (string)GetValue(FileNameProperty); }
@@ -40,9 +51,14 @@ namespace Budget_Control.XAML.SubPages
             this.InitializeComponent();
 
             _list = list;
-            FileName = Path.GetFileName(task.ImagePath);
+
             taskName.Text = task.Name;
             taskCost.Text = task.Cost.ToString();
+
+            if (task.ImagePath != "")
+            {
+                FileName = Path.GetFileName(task.ImagePath);
+            }
 
             _task = task;
         }
@@ -52,7 +68,7 @@ namespace Budget_Control.XAML.SubPages
             string name = taskName.Text;
             bool success = int.TryParse(taskCost.Text, out int cost);
 
-            if (success)
+            if (success && cost > 0 && !string.IsNullOrEmpty(name) && !string.IsNullOrWhiteSpace(name))
             {
                 using (var context = new DBContext())
                 {
@@ -62,7 +78,7 @@ namespace Budget_Control.XAML.SubPages
                     {
                         task.Name = name;
                         task.Cost = cost;
-                        task.ImagePath = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName);
+                        task.ImagePath = FileName != "" ? Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, FileName) : "";
                         task.CurrentAmount = _task.CurrentAmount;
 
                         context.SaveChanges();
@@ -76,6 +92,28 @@ namespace Budget_Control.XAML.SubPages
                         }
                     }
                 }
+            }
+            else
+            {
+                if (!success || cost < 0)
+                {
+                    TaskCostError = ValidationHelper.GetErrorText(ErrorType.InvalidCost);
+                }
+                else
+                {
+                    TaskCostError = "";
+                }
+
+                if (string.IsNullOrEmpty(name) && string.IsNullOrWhiteSpace(name))
+                {
+                    TaskNameError = ValidationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                }
+                else
+                {
+                    TaskNameError = "";
+                }
+
+                args.Cancel = true;
             }
         }
 
