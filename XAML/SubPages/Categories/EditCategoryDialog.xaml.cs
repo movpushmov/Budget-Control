@@ -47,6 +47,15 @@ namespace Budget_Control.XAML.SubPages.Categories
             {
                 using (var dbContext = new DBContext())
                 {
+                    var categoryWithSameName = dbContext.EventCategories.FirstOrDefault(c => c.Name == categoryName.Text && c.Id != _category.Id);
+
+                    if (categoryWithSameName != null)
+                    {
+                        CategoryNameError = ValidationHelper.GetErrorText(ErrorType.CategoryNameExists);
+                        args.Cancel = true;
+                        return;
+                    }
+
                     var category = dbContext.EventCategories.FirstOrDefault(c => c.Id == _category.Id);
 
                     category.Name = categoryName.Text;

@@ -9,13 +9,14 @@
 	mc:Ignorable="d"
 	Background="{ThemeResource BackgroundColor}">
 
-	<Grid>
+	<ScrollViewer>
 		<Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height=".9*"/>
             </Grid.RowDefinitions>
-			<CommandBar DefaultLabelPosition="Right" Grid.Row="0" Margin="0 8 0 0">
+            
+            <CommandBar DefaultLabelPosition="Right" Grid.Row="0" Margin="0 8 0 0">
                 <AppBarButton 
 					Icon="Add" 
 					Label="Добавить Категорию"
@@ -27,7 +28,7 @@
                 Категории
             </TextBlock>
 
-            <ScrollViewer Margin="24 0 0 0" Grid.Row="1">
+            <Grid Margin="24 0 0 0" Grid.Row="1">
                 <ListView ItemsSource="{x:Bind CategoriesList.Entities}" SelectionMode="Extended" Margin="0 16 0 0">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
@@ -112,27 +113,28 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </ScrollViewer>
-        </Grid>
+            </Grid>
 
-        <StackPanel 
-            Orientation="Vertical"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            x:Name="emptyCategoriesBlock"
+            <StackPanel 
+                Orientation="Vertical"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                x:Name="emptyCategoriesBlock"
+                Grid.Row="1"
             >
-            <FontIcon Glyph="&#xE9CE;" FontSize="48"/>
+                <FontIcon Glyph="&#xE9CE;" FontSize="48"/>
 
-            <TextBlock
+                <TextBlock
                 FontSize="20"
                 HorizontalAlignment="Center"
                 Margin="0 8 0 4"
                 >
                     Упс! Похоже, что у вас нет созданных категорий.
-            </TextBlock>
-            <TextBlock FontSize="15" HorizontalAlignment="Center" Foreground="Gray">
+                </TextBlock>
+                <TextBlock FontSize="15" HorizontalAlignment="Center" Foreground="Gray">
                     Создать категорию вы сможете с помощью кнопки выше.
-            </TextBlock>
-        </StackPanel>
-    </Grid>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

@@ -13,8 +13,7 @@
         <mctoolkit:BoolNegationConverter x:Key="boolToNegative"/>
     </Page.Resources>
 
-    <Grid>
-
+    <ScrollViewer>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -63,7 +62,7 @@
                         </Paragraph>
                     </RichTextBlock>
 
-                    <ScrollViewer Margin="0 24 0 0" Grid.Row="1">
+                    <Grid Margin="0 24 0 0" Grid.Row="1">
                         <ListView ItemsSource="{x:Bind EventsList.Entities}" SelectionMode="Extended" Margin="0 16 0 0">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
@@ -195,9 +194,9 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </ScrollViewer>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>

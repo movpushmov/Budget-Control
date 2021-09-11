@@ -6,6 +6,7 @@ using System;
 using Windows.UI.Xaml.Controls;
 using Budget_Control.Source.API.XAML_Bridges.Utils;
 using Windows.UI.Xaml;
+using System.Linq;
 
 // Документацию по шаблону элемента "Диалоговое окно содержимого" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -47,8 +48,17 @@ namespace Budget_Control.XAML.SubPages.Categories
 
                 using (var dbContext = new DBContext())
                 {
-                    dbContext.EventCategories.Add(eventCategory);
+                    var category = dbContext.EventCategories.FirstOrDefault(c => c.Name == categoryName.Text);
 
+                    if (category != null)
+                    {
+                        CategoryNameError = ValidationHelper.GetErrorText(ErrorType.CategoryNameExists);
+
+                        args.Cancel = true;
+                        return;
+                    }
+
+                    dbContext.EventCategories.Add(eventCategory);
                     dbContext.SaveChanges();
                 }
 

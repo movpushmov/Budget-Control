@@ -11,7 +11,8 @@ namespace Budget_Control.Source.API.XAML_Bridges.Utils
     {
         FieldRequiredError,
         EventInvalidCategory,
-        InvalidCost
+        InvalidCost,
+        CategoryNameExists
     }
 
     public static class ValidationHelper
