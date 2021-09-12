@@ -24,9 +24,15 @@ namespace Budget_Control.XAML
 
         private void NavigationViewSelectionChanged(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs args)
         {
+            if (args.IsSettingsSelected)
+            {
+                Navigation.Navigate(typeof(Settings.Settings));
+                return;
+            }
+
             var item = (Microsoft.UI.Xaml.Controls.NavigationViewItem)sender.SelectedItem;
 
-            switch(item.Tag)
+            switch (item.Tag)
             {
                 case "main":
                     {

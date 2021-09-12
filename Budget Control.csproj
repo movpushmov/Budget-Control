@@ -143,10 +143,13 @@
     <Compile Include="Source\API\Entities\EventsGroup.cs" />
     <Compile Include="Source\API\XAML Bridges\EntitiesList.cs" />
     <Compile Include="Source\API\XAML Bridges\Utils\ColorUtils.cs" />
-    <Compile Include="Source\API\XAML Bridges\Utils\ValidationHelper.cs" />
+    <Compile Include="Source\API\XAML Bridges\Utils\TranslationHelper.cs" />
     <Compile Include="Source\Navigation\Navigation.cs" />
     <Compile Include="XAML\Controls\ProgressBar.xaml.cs">
       <DependentUpon>ProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\Settings\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="XAML\SubPages\AddTaskModal.xaml.cs">
       <DependentUpon>AddTaskModal.xaml</DependentUpon>
@@ -208,6 +211,7 @@
   <ItemGroup>
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Assets\DefaultTaskImage.jpg" />
+    <Content Include="Assets\AboutLogo.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -230,6 +234,10 @@
       <SubType>Designer</SubType>
     </PRIResource>
     <Page Include="XAML\Controls\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\Settings\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

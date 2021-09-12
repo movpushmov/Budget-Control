@@ -6,8 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Grid>
         <muxc:NavigationView 
@@ -15,7 +14,6 @@
             IsBackButtonVisible="Collapsed"
             x:Name="navigationView"
             IsPaneOpen="True"
-            IsSettingsVisible="False"
             OpenPaneLength="250"
             SelectionChanged="NavigationViewSelectionChanged"
             >
@@ -45,19 +43,9 @@
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-
-                <Frame 
-                    x:Name="rootFrame"
-                    />
-            </Grid>
+            <Frame
+                x:Name="rootFrame"
+                />
         </muxc:NavigationView>
     </Grid>
 </Page>

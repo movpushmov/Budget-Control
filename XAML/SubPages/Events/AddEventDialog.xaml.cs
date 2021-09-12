@@ -22,7 +22,7 @@ namespace Budget_Control.XAML.SubPages.Events
 
         // Using a DependencyProperty as the backing store for EventNameError.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty EventNameErrorProperty =
-            DependencyProperty.Register("EventNameError", typeof(string), typeof(AddEventDialog), new PropertyMetadata(ValidationHelper.GetErrorText(ErrorType.FieldRequiredError)));
+            DependencyProperty.Register("EventNameError", typeof(string), typeof(AddEventDialog), new PropertyMetadata(TranslationHelper.GetErrorText(ErrorType.FieldRequiredError)));
 
 
 
@@ -34,7 +34,7 @@ namespace Budget_Control.XAML.SubPages.Events
 
         // Using a DependencyProperty as the backing store for EventCostError.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty EventCostErrorProperty =
-            DependencyProperty.Register("EventCostError", typeof(string), typeof(AddEventDialog), new PropertyMetadata(ValidationHelper.GetErrorText(ErrorType.FieldRequiredError)));
+            DependencyProperty.Register("EventCostError", typeof(string), typeof(AddEventDialog), new PropertyMetadata(TranslationHelper.GetErrorText(ErrorType.FieldRequiredError)));
 
 
 
@@ -46,7 +46,7 @@ namespace Budget_Control.XAML.SubPages.Events
 
         // Using a DependencyProperty as the backing store for EventCategoryError.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty EventCategoryErrorProperty =
-            DependencyProperty.Register("EventCategoryError", typeof(string), typeof(AddEventDialog), new PropertyMetadata(ValidationHelper.GetErrorText(ErrorType.FieldRequiredError)));
+            DependencyProperty.Register("EventCategoryError", typeof(string), typeof(AddEventDialog), new PropertyMetadata(TranslationHelper.GetErrorText(ErrorType.FieldRequiredError)));
 
 
 
@@ -89,7 +89,7 @@ namespace Budget_Control.XAML.SubPages.Events
                 {
                     if (category == null)
                     {
-                        EventCategoryError = ValidationHelper.GetErrorText(ErrorType.EventInvalidCategory);
+                        EventCategoryError = TranslationHelper.GetErrorText(ErrorType.EventInvalidCategory);
                     }
                     else
                     {
@@ -98,7 +98,7 @@ namespace Budget_Control.XAML.SubPages.Events
 
                     if (string.IsNullOrWhiteSpace(newEventName.Text) || string.IsNullOrEmpty(newEventName.Text))
                     {
-                        EventNameError = ValidationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                        EventNameError = TranslationHelper.GetErrorText(ErrorType.FieldRequiredError);
                     }
                     else
                     {
@@ -107,7 +107,7 @@ namespace Budget_Control.XAML.SubPages.Events
 
                     if (!res)
                     {
-                        EventCostError = ValidationHelper.GetErrorText(ErrorType.InvalidCost);
+                        EventCostError = TranslationHelper.GetErrorText(ErrorType.InvalidCost);
                     }
                     else
                     {

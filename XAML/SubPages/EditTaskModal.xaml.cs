@@ -97,7 +97,7 @@ namespace Budget_Control.XAML.SubPages
             {
                 if (!success || cost < 0)
                 {
-                    TaskCostError = ValidationHelper.GetErrorText(ErrorType.InvalidCost);
+                    TaskCostError = TranslationHelper.GetErrorText(ErrorType.InvalidCost);
                 }
                 else
                 {
@@ -106,7 +106,7 @@ namespace Budget_Control.XAML.SubPages
 
                 if (string.IsNullOrEmpty(name) && string.IsNullOrWhiteSpace(name))
                 {
-                    TaskNameError = ValidationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                    TaskNameError = TranslationHelper.GetErrorText(ErrorType.FieldRequiredError);
                 }
                 else
                 {

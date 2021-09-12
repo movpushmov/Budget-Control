@@ -15,11 +15,11 @@ namespace Budget_Control.Source.API.XAML_Bridges.Utils
         CategoryNameExists
     }
 
-    public static class ValidationHelper
+    public static class TranslationHelper
     {
         private static ResourceLoader _resourceLoader;
 
-        static ValidationHelper()
+        static TranslationHelper()
         {
             _resourceLoader = new ResourceLoader();
         }

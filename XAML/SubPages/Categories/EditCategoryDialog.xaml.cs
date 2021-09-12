@@ -51,7 +51,7 @@ namespace Budget_Control.XAML.SubPages.Categories
 
                     if (categoryWithSameName != null)
                     {
-                        CategoryNameError = ValidationHelper.GetErrorText(ErrorType.CategoryNameExists);
+                        CategoryNameError = TranslationHelper.GetErrorText(ErrorType.CategoryNameExists);
                         args.Cancel = true;
                         return;
                     }
@@ -75,7 +75,7 @@ namespace Budget_Control.XAML.SubPages.Categories
             }
             else
             {
-                CategoryNameError = ValidationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                CategoryNameError = TranslationHelper.GetErrorText(ErrorType.FieldRequiredError);
                 args.Cancel = true;
             }
         }

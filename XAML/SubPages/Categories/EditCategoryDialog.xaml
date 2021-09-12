@@ -28,7 +28,7 @@
         <TextBlock
             Margin="0 4 0 0"
             Foreground="Red"
-            Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(CategoryNameError), Mode=OneWay}"
+            Visibility="{x:Bind utils:TranslationHelper.IsErrorBlockVisible(CategoryNameError), Mode=OneWay}"
             Text="{x:Bind CategoryNameError, Mode=OneWay}"
             />
 

@@ -24,7 +24,7 @@
         <TextBlock
             Margin="0 4 0 0"
             Foreground="Red"
-            Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(EventNameError), Mode=OneWay}"
+            Visibility="{x:Bind utils:TranslationHelper.IsErrorBlockVisible(EventNameError), Mode=OneWay}"
             Text="{x:Bind EventNameError, Mode=OneWay}"
             />
 
@@ -37,7 +37,7 @@
 
             <TextBlock
                 Margin="0 4 0 0"
-                Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(EventCostError), Mode=OneWay}"
+                Visibility="{x:Bind utils:TranslationHelper.IsErrorBlockVisible(EventCostError), Mode=OneWay}"
                 Foreground="Red"
                 Text="{x:Bind EventCostError, Mode=OneWay}"
                 />
@@ -56,7 +56,7 @@
             <TextBlock
                 Margin="0 4 0 0"
                 Foreground="Red"
-                Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(EventCategoryError), Mode=OneWay}"
+                Visibility="{x:Bind utils:TranslationHelper.IsErrorBlockVisible(EventCategoryError), Mode=OneWay}"
                 Text="{x:Bind EventCategoryError, Mode=OneWay}"
                 />
         </StackPanel>

@@ -82,14 +82,14 @@ namespace Budget_Control.XAML.SubPages
                 if (Category == null)
                 {
                     args.Cancel = true;
-                    CategoryNameError = ValidationHelper.GetErrorText(ErrorType.EventInvalidCategory);
+                    CategoryNameError = TranslationHelper.GetErrorText(ErrorType.EventInvalidCategory);
                 }
             }
 
             if (isChecked && (string.IsNullOrEmpty(newEventCategory.Text) || string.IsNullOrWhiteSpace(newEventCategory.Text)))
             {
                 args.Cancel = true;
-                CategoryNameError = ValidationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                CategoryNameError = TranslationHelper.GetErrorText(ErrorType.FieldRequiredError);
             }
         }
 

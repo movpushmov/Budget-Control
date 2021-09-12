@@ -114,7 +114,7 @@ namespace Budget_Control.XAML.SubPages.Events
                 {
                     if (category == null)
                     {
-                        EventCategoryError = ValidationHelper.GetErrorText(ErrorType.EventInvalidCategory);
+                        EventCategoryError = TranslationHelper.GetErrorText(ErrorType.EventInvalidCategory);
                     }
                     else
                     {
@@ -123,7 +123,7 @@ namespace Budget_Control.XAML.SubPages.Events
 
                     if (string.IsNullOrWhiteSpace(eventName.Text) || string.IsNullOrEmpty(eventName.Text))
                     {
-                        EventNameError = ValidationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                        EventNameError = TranslationHelper.GetErrorText(ErrorType.FieldRequiredError);
                     }
                     else
                     {
@@ -132,7 +132,7 @@ namespace Budget_Control.XAML.SubPages.Events
 
                     if (!res)
                     {
-                        EventCostError = ValidationHelper.GetErrorText(ErrorType.InvalidCost);
+                        EventCostError = TranslationHelper.GetErrorText(ErrorType.InvalidCost);
                     }
                     else
                     {
