@@ -150,7 +150,7 @@ namespace Budget_Control.XAML.SubPages.Events
                     if (ev != null)
                     {
                         ev.Category = category;
-                        ev.Cost = cost;
+                        ev.Cost = Math.Abs(cost);
                         ev.Name = eventName.Text;
 
                         context.SaveChanges();

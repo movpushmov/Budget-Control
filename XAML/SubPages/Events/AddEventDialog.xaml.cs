@@ -125,7 +125,7 @@ namespace Budget_Control.XAML.SubPages.Events
                         Category = category,
                         EventsGroup = eventsGroup,
                         Name = newEventName.Text,
-                        Cost = cost
+                        Cost = Math.Abs(cost)
                     };
 
                     context.Events.Add(newEvent);
