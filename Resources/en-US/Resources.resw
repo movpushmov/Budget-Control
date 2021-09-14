@@ -153,6 +153,9 @@
   <data name="AmountBlockTitle.Text" xml:space="preserve">
     <value>Your funds:</value>
   </data>
+  <data name="BeginningOfTheBillingPeriod.Text" xml:space="preserve">
+    <value>Beginning of the billing period</value>
+  </data>
   <data name="CategoriesListEmptyDescription.Text" xml:space="preserve">
     <value>You can create a category using the button above.</value>
   </data>
@@ -192,6 +195,9 @@
   <data name="CompleteTaskDialogInfo.Title" xml:space="preserve">
     <value>Note</value>
   </data>
+  <data name="CountButton.Content" xml:space="preserve">
+    <value>Count</value>
+  </data>
   <data name="CreateTaskButton.Content" xml:space="preserve">
     <value>Create target</value>
   </data>
@@ -227,6 +233,9 @@
   </data>
   <data name="EditTaskModal.Title" xml:space="preserve">
     <value>Edit target</value>
+  </data>
+  <data name="EndOfTheBillingPeriod.Text" xml:space="preserve">
+    <value>End of the billing period</value>
   </data>
   <data name="EventCostField.PlaceholderText" xml:space="preserve">
     <value>Received/Spended money</value>
@@ -351,6 +360,9 @@
   <data name="SettingsVersionWord.Text" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="SixMonthsTemplateBtn.Content" xml:space="preserve">
+    <value>6 Months</value>
+  </data>
   <data name="TaskCostField.PlaceholderText" xml:space="preserve">
     <value>Target cost</value>
   </data>
@@ -368,5 +380,14 @@
   </data>
   <data name="TaskWithoutEventCompleted" xml:space="preserve">
     <value>Congratulations, you're complete the target "{taskName}" and select variant "Don't create event", therefore, nowhere will it be noted that you spent money on it.</value>
+  </data>
+  <data name="ThreeMonthsTemplateBtn.Content" xml:space="preserve">
+    <value>3 Months</value>
+  </data>
+  <data name="TotalAmount.Text" xml:space="preserve">
+    <value>Total received for this period:</value>
+  </data>
+  <data name="YearTemplateBtn.Content" xml:space="preserve">
+    <value>1 Year</value>
   </data>
 </root>

@@ -190,18 +190,6 @@
     <Compile Include="XAML\SubPages\Stats\Stats.xaml.cs">
       <DependentUpon>Stats.xaml</DependentUpon>
     </Compile>
-    <Compile Include="XAML\SubPages\Stats\Sub\CustomTimeStats.xaml.cs">
-      <DependentUpon>CustomTimeStats.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XAML\SubPages\Stats\Sub\SixMonthsStats.xaml.cs">
-      <DependentUpon>SixMonthsStats.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XAML\SubPages\Stats\Sub\ThreeMonthsStats.xaml.cs">
-      <DependentUpon>ThreeMonthsStats.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XAML\SubPages\Stats\Sub\YearStats.xaml.cs">
-      <DependentUpon>YearStats.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -291,22 +279,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\SubPages\Stats\Stats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\Stats\Sub\CustomTimeStats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\Stats\Sub\SixMonthsStats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\Stats\Sub\ThreeMonthsStats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\Stats\Sub\YearStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

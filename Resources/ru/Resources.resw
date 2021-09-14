@@ -153,6 +153,9 @@
   <data name="AmountBlockTitle.Text" xml:space="preserve">
     <value>Ваши средства:</value>
   </data>
+  <data name="BeginningOfTheBillingPeriod.Text" xml:space="preserve">
+    <value>Начало расчётного периода</value>
+  </data>
   <data name="CategoriesListEmptyDescription.Text" xml:space="preserve">
     <value>Создать категорию вы сможете с помощью кнопки выше.</value>
   </data>
@@ -192,6 +195,9 @@
   <data name="CompleteTaskDialogInfo.Title" xml:space="preserve">
     <value>Обратите внимание</value>
   </data>
+  <data name="CountButton.Content" xml:space="preserve">
+    <value>Рассчитать</value>
+  </data>
   <data name="CreateTaskButton.Content" xml:space="preserve">
     <value>Создать цель</value>
   </data>
@@ -227,6 +233,9 @@
   </data>
   <data name="EditTaskModal.Title" xml:space="preserve">
     <value>Редактировать задачу</value>
+  </data>
+  <data name="EndOfTheBillingPeriod.Text" xml:space="preserve">
+    <value>Конец расчётного периода</value>
   </data>
   <data name="EventCostField.PlaceholderText" xml:space="preserve">
     <value>Затраченные/полученные деньги</value>
@@ -348,6 +357,9 @@
   <data name="SettingsVersionWord.Text" xml:space="preserve">
     <value>Версия</value>
   </data>
+  <data name="SixMonthsTemplateBtn.Content" xml:space="preserve">
+    <value>6 Месяцев</value>
+  </data>
   <data name="TaskCostField.PlaceholderText" xml:space="preserve">
     <value>Сумма для выполнения задачи</value>
   </data>
@@ -365,5 +377,14 @@
   </data>
   <data name="TaskWithoutEventCompleted" xml:space="preserve">
     <value>Поздравляем, вы выполнили цель "{taskName}" и выбрали вариант "Не создавать событие", поэтому нигде не будет отмечено, что вы потратили деньги на неё.</value>
+  </data>
+  <data name="ThreeMonthsTemplateBtn.Content" xml:space="preserve">
+    <value>3 Месяца</value>
+  </data>
+  <data name="TotalAmount.Text" xml:space="preserve">
+    <value>Всего получено за промежуток:</value>
+  </data>
+  <data name="YearTemplateBtn.Content" xml:space="preserve">
+    <value>1 Год</value>
   </data>
 </root>
