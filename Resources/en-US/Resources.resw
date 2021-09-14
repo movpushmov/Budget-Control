@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCategoryButton.Label" xml:space="preserve">
+    <value>Add category</value>
+  </data>
+  <data name="AddCategoryDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="AddCategoryDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="AddCategoryDialog.Title" xml:space="preserve">
+    <value>Create category</value>
+  </data>
+  <data name="AddEventButton.Label" xml:space="preserve">
+    <value>Create event</value>
+  </data>
+  <data name="AddEventDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="AddEventDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="AddEventDialog.Title" xml:space="preserve">
+    <value>Create event</value>
+  </data>
   <data name="AddTaskModal.PrimaryButtonText" xml:space="preserve">
     <value>Create</value>
   </data>
@@ -129,11 +153,23 @@
   <data name="AmountBlockTitle.Text" xml:space="preserve">
     <value>Your funds:</value>
   </data>
+  <data name="CategoriesListEmptyDescription.Text" xml:space="preserve">
+    <value>You can create a category using the button above.</value>
+  </data>
+  <data name="CategoriesListEmptyTitle.Text" xml:space="preserve">
+    <value>Oops! It looks like you don't have any categories created.</value>
+  </data>
+  <data name="CategoriesPageTitle.Text" xml:space="preserve">
+    <value>Categories</value>
+  </data>
   <data name="CategoryNameExists" xml:space="preserve">
     <value>This category name is already exists.</value>
   </data>
   <data name="CategoryNameField.PlaceholderText" xml:space="preserve">
     <value>Category name</value>
+  </data>
+  <data name="CheckCategory.Text" xml:space="preserve">
+    <value>Show category</value>
   </data>
   <data name="CompletedTaskToastTitle" xml:space="preserve">
     <value>You're complete the target!</value>
@@ -159,8 +195,29 @@
   <data name="CreateTaskButton.Content" xml:space="preserve">
     <value>Create target</value>
   </data>
+  <data name="DefaultCurrency.Text" xml:space="preserve">
+    <value>$</value>
+  </data>
   <data name="EditButton.Content" xml:space="preserve">
     <value>Edit</value>
+  </data>
+  <data name="EditCategoryDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditCategoryDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EditCategoryDialog.Title" xml:space="preserve">
+    <value>Edit category</value>
+  </data>
+  <data name="EditEventDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditEventDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EditEventDialog.Title" xml:space="preserve">
+    <value>Edit event</value>
   </data>
   <data name="EditTaskModal.PrimaryButtonText" xml:space="preserve">
     <value>Edit</value>
@@ -171,17 +228,47 @@
   <data name="EditTaskModal.Title" xml:space="preserve">
     <value>Edit target</value>
   </data>
+  <data name="EventCostField.PlaceholderText" xml:space="preserve">
+    <value>Received/Spended money</value>
+  </data>
   <data name="EventInvalidCategory" xml:space="preserve">
     <value>Category which you select doesn't exists.</value>
+  </data>
+  <data name="EventNameField.PlaceholderText" xml:space="preserve">
+    <value>Event name</value>
+  </data>
+  <data name="EventsGroupCalendar.Header" xml:space="preserve">
+    <value>Select events group date</value>
+  </data>
+  <data name="EventsOnCurrentDate.Text" xml:space="preserve">
+    <value>Events that happend in this day:</value>
+  </data>
+  <data name="EventsPageTitle.Text" xml:space="preserve">
+    <value>Events for the selected date</value>
+  </data>
+  <data name="ExpenseEventNote.Message" xml:space="preserve">
+    <value>The application itself determines whether this event is income or expense.</value>
+  </data>
+  <data name="ExpenseEventNote.Title" xml:space="preserve">
+    <value>Note</value>
   </data>
   <data name="ExpensesBlockTitle.Text" xml:space="preserve">
     <value>Expenses for the</value>
   </data>
+  <data name="ExpensesCategory" xml:space="preserve">
+    <value>Expenses category</value>
+  </data>
   <data name="FieldRequiredError" xml:space="preserve">
     <value>This field is required.</value>
   </data>
+  <data name="IncomesCategory" xml:space="preserve">
+    <value>Incomes category</value>
+  </data>
   <data name="InvalidCost" xml:space="preserve">
     <value>Cost is invalid.</value>
+  </data>
+  <data name="IsExpensesCategoryCheckBox.Content" xml:space="preserve">
+    <value>Expenses category</value>
   </data>
   <data name="MainPageTitle.Text" xml:space="preserve">
     <value>Home</value>
@@ -192,6 +279,9 @@
   <data name="RemoveButton.Content" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="RemoveCategoryTitle" xml:space="preserve">
+    <value>Remove this category?</value>
+  </data>
   <data name="RemoveDialogCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -200,6 +290,9 @@
   </data>
   <data name="RemoveDialogSubmit" xml:space="preserve">
     <value>Remove</value>
+  </data>
+  <data name="RemoveEventTitle" xml:space="preserve">
+    <value>Remove this event?</value>
   </data>
   <data name="RemoveTaskDialogTitle" xml:space="preserve">
     <value>Remove target?</value>
@@ -271,7 +364,7 @@
     <value>Now you don't have any target</value>
   </data>
   <data name="TaskWithEventCompleted" xml:space="preserve">
-    <value>Congratulations, you're complete the target "{taskName}" and it cost you {cost} ₽. This event has already been created for today.</value>
+    <value>Congratulations, you're complete the target "{taskName}" and it cost you {cost}$. This event has already been created for today.</value>
   </data>
   <data name="TaskWithoutEventCompleted" xml:space="preserve">
     <value>Congratulations, you're complete the target "{taskName}" and select variant "Don't create event", therefore, nowhere will it be noted that you spent money on it.</value>

@@ -27,8 +27,7 @@
             </TextBlock>
 
             <TextBlock FontSize="14" HorizontalAlignment="Right">
-                <Run x:Name="totalMinusCount"></Run>
-                <Run>₽</Run>
+                <Run x:Name="totalMinusCount"/><Run x:Uid="DefaultCurrency"/>
             </TextBlock>
         </Grid>
 

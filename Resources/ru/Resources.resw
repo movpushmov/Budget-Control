@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddCategoryButton.Label" xml:space="preserve">
+    <value>Добавить категорию</value>
+  </data>
+  <data name="AddCategoryDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="AddCategoryDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="AddCategoryDialog.Title" xml:space="preserve">
+    <value>Создание новой категории</value>
+  </data>
+  <data name="AddEventButton.Label" xml:space="preserve">
+    <value>Создать событие</value>
+  </data>
+  <data name="AddEventDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="AddEventDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="AddEventDialog.Title" xml:space="preserve">
+    <value>Создать событие</value>
+  </data>
   <data name="AddTaskModal.PrimaryButtonText" xml:space="preserve">
     <value>Создать</value>
   </data>
@@ -129,11 +153,23 @@
   <data name="AmountBlockTitle.Text" xml:space="preserve">
     <value>Ваши средства:</value>
   </data>
+  <data name="CategoriesListEmptyDescription.Text" xml:space="preserve">
+    <value>Создать категорию вы сможете с помощью кнопки выше.</value>
+  </data>
+  <data name="CategoriesListEmptyTitle.Text" xml:space="preserve">
+    <value>Упс! Похоже, что у вас нет созданных категорий.</value>
+  </data>
+  <data name="CategoriesPageTitle.Text" xml:space="preserve">
+    <value>Категории</value>
+  </data>
   <data name="CategoryNameExists" xml:space="preserve">
     <value>Данное имя категории уже занято.</value>
   </data>
   <data name="CategoryNameField.PlaceholderText" xml:space="preserve">
     <value>Название категории</value>
+  </data>
+  <data name="CheckCategory.Text" xml:space="preserve">
+    <value>Посмотреть категорию</value>
   </data>
   <data name="CompletedTaskToastTitle" xml:space="preserve">
     <value>Вы выполнили цель</value>
@@ -159,8 +195,29 @@
   <data name="CreateTaskButton.Content" xml:space="preserve">
     <value>Создать цель</value>
   </data>
+  <data name="DefaultCurrency.Text" xml:space="preserve">
+    <value> ₽</value>
+  </data>
   <data name="EditButton.Content" xml:space="preserve">
     <value>Редактировать</value>
+  </data>
+  <data name="EditCategoryDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="EditCategoryDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="EditCategoryDialog.Title" xml:space="preserve">
+    <value>Редактирование категории</value>
+  </data>
+  <data name="EditEventDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Изменить</value>
+  </data>
+  <data name="EditEventDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="EditEventDialog.Title" xml:space="preserve">
+    <value>Изменить событие</value>
   </data>
   <data name="EditTaskModal.PrimaryButtonText" xml:space="preserve">
     <value>Редактировать</value>
@@ -171,23 +228,56 @@
   <data name="EditTaskModal.Title" xml:space="preserve">
     <value>Редактировать задачу</value>
   </data>
+  <data name="EventCostField.PlaceholderText" xml:space="preserve">
+    <value>Затраченные/полученные деньги</value>
+  </data>
   <data name="EventInvalidCategory" xml:space="preserve">
     <value>Выбранная вами категория не существует.</value>
+  </data>
+  <data name="EventNameField.PlaceholderText" xml:space="preserve">
+    <value>Название события</value>
+  </data>
+  <data name="EventsGroupCalendar.Header" xml:space="preserve">
+    <value>Выберите дату группы событий</value>
+  </data>
+  <data name="EventsOnCurrentDate.Text" xml:space="preserve">
+    <value>Cобытия, которые произошли в этот день:</value>
+  </data>
+  <data name="EventsPageTitle.Text" xml:space="preserve">
+    <value>События за выбранную дату</value>
+  </data>
+  <data name="ExpenseEventNote.Message" xml:space="preserve">
+    <value>Приложение само определяет, доходное это событие, или расходное.</value>
+  </data>
+  <data name="ExpenseEventNote.Title" xml:space="preserve">
+    <value>Обратите внимание</value>
   </data>
   <data name="ExpensesBlockTitle.Text" xml:space="preserve">
     <value>Траты за</value>
   </data>
+  <data name="ExpensesCategory" xml:space="preserve">
+    <value>Категория для расходов</value>
+  </data>
   <data name="FieldRequiredError" xml:space="preserve">
     <value>Данное поле обязательно.</value>
   </data>
+  <data name="IncomesCategory" xml:space="preserve">
+    <value>Категория для доходов</value>
+  </data>
   <data name="InvalidCost" xml:space="preserve">
     <value>Неверно указана цена.</value>
+  </data>
+  <data name="IsExpensesCategoryCheckBox.Content" xml:space="preserve">
+    <value>Категория расходов</value>
   </data>
   <data name="MainPageTitle.Text" xml:space="preserve">
     <value>Главная</value>
   </data>
   <data name="RemoveButton.Content" xml:space="preserve">
     <value>Удалить</value>
+  </data>
+  <data name="RemoveCategoryTitle" xml:space="preserve">
+    <value>Удалить данную категорию?</value>
   </data>
   <data name="RemoveDialogCancel" xml:space="preserve">
     <value>Отменить</value>
@@ -197,6 +287,9 @@
   </data>
   <data name="RemoveDialogSubmit" xml:space="preserve">
     <value>Удалить</value>
+  </data>
+  <data name="RemoveEventTitle" xml:space="preserve">
+    <value>Удалить данное событие?</value>
   </data>
   <data name="RemoveTaskDialogTitle" xml:space="preserve">
     <value>Удалить задачу?</value>

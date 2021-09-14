@@ -158,22 +158,22 @@ namespace Budget_Control.XAML.SubPages
 
         private async void SetTaskAsCompleted(object sender, RoutedEventArgs e)
         {
-            var userTask = (sender as Button).Tag as UserTask;
+            var dialog = new CompleteTaskDialog();
 
-            using (var context = new DBContext())
+            if (await dialog.ShowAsync() == ContentDialogResult.Primary)
             {
-                var task = context.UserTasks.FirstOrDefault(x => x.Id == userTask.Id);
+                var userTask = (sender as Button).Tag as UserTask;
 
-                if (task != null)
+                using (var context = new DBContext())
                 {
-                    task.IsCompleted = true;
+                    var task = context.UserTasks.FirstOrDefault(x => x.Id == userTask.Id);
 
-                    context.SaveChanges();
-
-                    var dialog = new CompleteTaskDialog();
-                    
-                    if (await dialog.ShowAsync() == ContentDialogResult.Primary)
+                    if (task != null)
                     {
+                        task.IsCompleted = true;
+
+                        context.SaveChanges();
+
                         if (dialog.Category != null)
                         {
                             var fixedTS = new DateTime(

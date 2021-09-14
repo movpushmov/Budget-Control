@@ -18,7 +18,7 @@
         <TextBlock HorizontalAlignment="Center" TextAlignment="Center">
             <Run Text="{x:Bind Balance, Mode=OneWay}"/>
             /
-            <Run Text="{x:Bind Needed, Mode=OneWay}"/> ₽
+            <Run Text="{x:Bind Needed, Mode=OneWay}"/><Run x:Uid="DefaultCurrency"/>
         </TextBlock>
 
         <StackPanel

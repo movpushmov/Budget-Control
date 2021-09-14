@@ -2,11 +2,9 @@
 using Budget_Control.Source.API.Entities;
 using Budget_Control.Source.API.XAML_Bridges;
 using Budget_Control.Source.API.XAML_Bridges.Utils;
-using Budget_Control.Source.Navigation;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -64,13 +62,13 @@ namespace Budget_Control.XAML.SubPages.Categories
         {
             var dialog = new ContentDialog()
             {
-                Title = "Удалить данную категорию?",
-                Content = new TextBlock() { Text = "Это действие нельзя будет отменить." },
+                Title = TranslationHelper.GetText(TextType.RemoveCategoryTitle),
+                Content = new TextBlock() { Text = TranslationHelper.GetText(TextType.RemoveDialogDescription) },
 
-                SecondaryButtonStyle = this.Resources["AccentButtonStyle"] as Style,
+                SecondaryButtonStyle = Resources["AccentButtonStyle"] as Style,
 
-                PrimaryButtonText = "Удалить",
-                SecondaryButtonText = "Отменить"
+                PrimaryButtonText = TranslationHelper.GetText(TextType.RemoveDialogSubmit),
+                SecondaryButtonText = TranslationHelper.GetText(TextType.RemoveDialogCancel)
             };
 
             var res = await dialog.ShowAsync();
@@ -93,7 +91,8 @@ namespace Budget_Control.XAML.SubPages.Categories
 
         public static string GetCategoryTooltip(bool isConsumption)
         {
-            return isConsumption ? "Категория для расходов" : "Категория для доходов";
+            return isConsumption ?
+                TranslationHelper.GetText(TextType.ExpensesCategory) : TranslationHelper.GetText(TextType.IncomesCategory);
         }
     }
 }

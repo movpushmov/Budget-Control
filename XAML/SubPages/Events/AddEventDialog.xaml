@@ -8,10 +8,8 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:utils="using:Budget_Control.Source.API.XAML_Bridges.Utils"
     mc:Ignorable="d"
-    Title="Создание события"
-    PrimaryButtonText="Создать"
+    x:Uid="AddEventDialog"
     PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
-    SecondaryButtonText="Отменить"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
@@ -20,7 +18,7 @@
     </ContentDialog.Resources>
 
     <StackPanel Orientation="Vertical" Margin="0 16 0 0" Width="360">
-        <TextBox x:Name="newEventName" PlaceholderText="Название нового события"/>
+        <TextBox x:Name="newEventName" x:Uid="EventNameField"/>
 
         <TextBlock
             Margin="0 4 0 0"
@@ -31,10 +29,10 @@
 
         <StackPanel Orientation="Vertical" Margin="0 16">
             <TextBox 
-            x:Name="newEventCost"
-            InputScope="Number"
-            PlaceholderText="Затраченные/полученные деньги"
-            />
+                x:Name="newEventCost"
+                InputScope="Number"
+                x:Uid="EventCostField"
+                />
 
             <TextBlock
                 Margin="0 4 0 0"
@@ -48,7 +46,7 @@
         <StackPanel Orientation="Vertical" Margin="0 0 0 8">
             <AutoSuggestBox 
                 x:Name="newEventCategory" 
-                PlaceholderText="Название категории"
+                x:Uid="CategoryNameField"
                 QueryIcon="Find"
                 Margin="0 0 0 0" 
                 TextChanged="CategoryNameFieldChanged"
@@ -66,9 +64,7 @@
             Severity="Informational"
             IsOpen="True"
             IsClosable="False"
-            Title="Обратите внимание"
-            Message="Приложение само определяет,
-            доходное это событие, или расходное."
+            x:Uid="ExpenseEventNote"
         />
     </StackPanel>
 </ContentDialog>

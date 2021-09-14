@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Budget_Control.Source.API.XAML_Bridges.Utils;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -127,13 +128,13 @@ namespace Budget_Control.XAML.SubPages
         {
             var dialog = new ContentDialog()
             {
-                Title = "Удалить данное событие?",
-                Content = new TextBlock() { Text = "Это действие нельзя будет отменить." },
+                Title = TranslationHelper.GetText(TextType.RemoveEventTitle),
+                Content = new TextBlock() { Text = TranslationHelper.GetText(TextType.RemoveDialogDescription) },
 
-                SecondaryButtonStyle = this.Resources["AccentButtonStyle"] as Style,
+                SecondaryButtonStyle = Resources["AccentButtonStyle"] as Style,
 
-                PrimaryButtonText = "Удалить",
-                SecondaryButtonText = "Отменить"
+                PrimaryButtonText = TranslationHelper.GetText(TextType.RemoveDialogSubmit),
+                SecondaryButtonText = TranslationHelper.GetText(TextType.RemoveDialogCancel)
             };
 
             var res = await dialog.ShowAsync();

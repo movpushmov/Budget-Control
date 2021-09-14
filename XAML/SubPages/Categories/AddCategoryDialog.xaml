@@ -7,9 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:utils="using:Budget_Control.Source.API.XAML_Bridges.Utils"
     mc:Ignorable="d"
-    Title="Добавление новой категории"
-    PrimaryButtonText="Добавить"
-    SecondaryButtonText="Отменить"
+    x:Uid="AddCategoryDialog"
     PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
@@ -20,7 +18,7 @@
 
     <StackPanel Orientation="Vertical">
         <TextBox 
-            PlaceholderText="Название категории" 
+            x:Uid="CategoryNameField"
             Margin="0 12 0 0"
             x:Name="categoryName"
             />
@@ -33,7 +31,7 @@
             />
 
         <CheckBox
-            Content="Категория расходов"
+            x:Uid="IsExpensesCategoryCheckBox"
             Margin="0 8 0 20"
             x:Name="categoryIsConsumption"
             />

@@ -10,9 +10,15 @@ namespace Budget_Control.Source.API.XAML_Bridges.Utils
     public enum TextType
     {
         FieldRequiredError,
+
         EventInvalidCategory,
+        ExpensesCategory,
+
         InvalidCost,
+        IncomesCategory,
+
         CategoryNameExists,
+        CompletedTaskToastTitle,
 
         SettingsSendReport,
         SettingsSendReportDesc,
@@ -24,16 +30,17 @@ namespace Budget_Control.Source.API.XAML_Bridges.Utils
         SettingsDonationsDesc,
         SettingsPrivacyPolicy,
         SettingsPrivacyPolicyDesc,
-
         SearchNotFound,
+
         TaskWithoutEventCompleted,
         TaskWithEventCompleted,
-        CompletedTaskToastTitle,
 
         RemoveTaskDialogTitle,
         RemoveDialogDescription,
         RemoveDialogCancel,
         RemoveDialogSubmit,
+        RemoveCategoryTitle,
+        RemoveEventTitle,
     }
 
     public static class TranslationHelper

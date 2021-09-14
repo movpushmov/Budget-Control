@@ -59,8 +59,7 @@
                 <TextBlock FontWeight="Bold" x:Uid="AmountBlockTitle"/>
 
                 <TextBlock FontWeight="Bold" Grid.Row="1">
-                    <Run Text="{x:Bind TotalAmount, Mode=OneWay}"/>
-                    <Run>₽</Run>
+                    <Run Text="{x:Bind TotalAmount, Mode=OneWay}"/><Run x:Uid="DefaultCurrency"/>
                 </TextBlock>
             </Grid>
         </Grid>
