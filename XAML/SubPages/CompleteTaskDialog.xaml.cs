@@ -62,7 +62,7 @@ namespace Budget_Control.XAML.SubPages
                     }
                     else
                     {
-                        sender.ItemsSource = new List<string>() { "Ничего не найдено" };
+                        sender.ItemsSource = new List<string>() { TranslationHelper.GetText(TextType.SearchNotFound) };
                     }
                 }
             }

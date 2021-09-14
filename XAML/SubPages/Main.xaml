@@ -26,9 +26,13 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="24 20 0 0" HorizontalAlignment="Left" Grid.Row="0">
-                Главная
-            </TextBlock>
+            <TextBlock
+                Style="{StaticResource SubtitleTextBlockStyle}"
+                Margin="24 20 0 0"
+                HorizontalAlignment="Left"
+                Grid.Row="0"
+                x:Uid="MainPageTitle"
+                />
 
             <Grid Grid.Row="1"  HorizontalAlignment="Left">
                 <controls:ExpensesBlock x:Name="expensesBlock" Margin="24, 24, 0, 16"/>
@@ -52,9 +56,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock FontWeight="Bold">
-                    Ваши средства:
-                </TextBlock>
+                <TextBlock FontWeight="Bold" x:Uid="AmountBlockTitle"/>
 
                 <TextBlock FontWeight="Bold" Grid.Row="1">
                     <Run Text="{x:Bind TotalAmount, Mode=OneWay}"/>
@@ -78,10 +80,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            
-            <TextBlock FontWeight="Bold">
-                Ваши цели:
-            </TextBlock>
+
+            <TextBlock FontWeight="Bold" x:Uid="TasksBlockTitle"/>
 
             <Grid Grid.Row="1" Padding="0 16 0 8">
                 <Grid.RowDefinitions>
@@ -119,16 +119,14 @@
                                         Click="EditTaskModalOpen"
                                         Tag="{x:Bind (entities:UserTask)}"
                                         Margin="8 0 0 0"
-                                        >
-                                        Редактировать
-                                    </Button>
+                                        x:Uid="EditButton"
+                                        />
                                     <Button
                                         Margin="8 0 0 0"
                                         Click="RemoveTaskOpenModal"
                                         Tag="{x:Bind (entities:UserTask)}"
-                                        >
-                                        Удалить
-                                    </Button>
+                                        x:Uid="RemoveButton"
+                                        />
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>
@@ -142,9 +140,7 @@
                     </Grid.RowDefinitions>
 
                     <FontIcon Glyph="&#xE9CE;" FontSize="32"/>
-                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" Margin="0 8 0 16">
-                        В данный момент у вас нет целей.
-                    </TextBlock>
+                    <TextBlock Grid.Row="1" HorizontalAlignment="Center" Margin="0 8 0 16" x:Uid="TasksNotFound"/>
                 </Grid>
 
                 <Button
@@ -153,9 +149,8 @@
                     Margin="0 16 0 0"
                     Style="{StaticResource AccentButtonStyle}"
                     Click="AddTaskOpenModal"
-                    >
-                    Создать цель
-                </Button>
+                    x:Uid="CreateTaskButton"
+                    />
             </Grid>
         </Grid>
     </Grid>

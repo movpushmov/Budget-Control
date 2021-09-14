@@ -117,17 +117,89 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddTaskModal.PrimaryButtonText" xml:space="preserve">
+    <value>Создать</value>
+  </data>
+  <data name="AddTaskModal.SecondaryButtonText" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="AddTaskModal.Title" xml:space="preserve">
+    <value>Создать задачу</value>
+  </data>
+  <data name="AmountBlockTitle.Text" xml:space="preserve">
+    <value>Ваши средства:</value>
+  </data>
   <data name="CategoryNameExists" xml:space="preserve">
     <value>Данное имя категории уже занято.</value>
   </data>
+  <data name="CategoryNameField.PlaceholderText" xml:space="preserve">
+    <value>Название категории</value>
+  </data>
+  <data name="CompletedTaskToastTitle" xml:space="preserve">
+    <value>Вы выполнили цель</value>
+  </data>
+  <data name="CompleteTaskDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Отметить</value>
+  </data>
+  <data name="CompleteTaskDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="CompleteTaskDialog.Title" xml:space="preserve">
+    <value>Отметить цель как выполненную</value>
+  </data>
+  <data name="CompleteTaskDialogCheckBox.Content" xml:space="preserve">
+    <value>Создать расходное событие для цели</value>
+  </data>
+  <data name="CompleteTaskDialogInfo.Message" xml:space="preserve">
+    <value>Вы можете создать расходное событие, которое будет отнесено к данной цели.</value>
+  </data>
+  <data name="CompleteTaskDialogInfo.Title" xml:space="preserve">
+    <value>Обратите внимание</value>
+  </data>
+  <data name="CreateTaskButton.Content" xml:space="preserve">
+    <value>Создать цель</value>
+  </data>
+  <data name="EditButton.Content" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="EditTaskModal.PrimaryButtonText" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="EditTaskModal.SecondaryButtonText" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="EditTaskModal.Title" xml:space="preserve">
+    <value>Редактировать задачу</value>
+  </data>
   <data name="EventInvalidCategory" xml:space="preserve">
     <value>Выбранная вами категория не существует.</value>
+  </data>
+  <data name="ExpensesBlockTitle.Text" xml:space="preserve">
+    <value>Траты за</value>
   </data>
   <data name="FieldRequiredError" xml:space="preserve">
     <value>Данное поле обязательно.</value>
   </data>
   <data name="InvalidCost" xml:space="preserve">
     <value>Неверно указана цена.</value>
+  </data>
+  <data name="MainPageTitle.Text" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="RemoveButton.Content" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="RemoveDialogCancel" xml:space="preserve">
+    <value>Отменить</value>
+  </data>
+  <data name="RemoveDialogDescription" xml:space="preserve">
+    <value>Это действие нельзя будет отменить.</value>
+  </data>
+  <data name="RemoveDialogSubmit" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="RemoveTaskDialogTitle" xml:space="preserve">
+    <value>Удалить задачу?</value>
   </data>
   <data name="RootNavCategories.Content" xml:space="preserve">
     <value>Категории</value>
@@ -140,6 +212,12 @@
   </data>
   <data name="RootNavStats.Content" xml:space="preserve">
     <value>Статистика</value>
+  </data>
+  <data name="SearchNotFound" xml:space="preserve">
+    <value>Ничего не найдено</value>
+  </data>
+  <data name="SelectFileText.Text" xml:space="preserve">
+    <value>Выберите файл</value>
   </data>
   <data name="SettingsAuthors" xml:space="preserve">
     <value>Авторы</value>
@@ -176,5 +254,23 @@
   </data>
   <data name="SettingsVersionWord.Text" xml:space="preserve">
     <value>Версия</value>
+  </data>
+  <data name="TaskCostField.PlaceholderText" xml:space="preserve">
+    <value>Сумма для выполнения задачи</value>
+  </data>
+  <data name="TaskNameField.PlaceholderText" xml:space="preserve">
+    <value>Название задачи</value>
+  </data>
+  <data name="TasksBlockTitle.Text" xml:space="preserve">
+    <value>Ваши цели:</value>
+  </data>
+  <data name="TasksNotFound.Text" xml:space="preserve">
+    <value>В данный момент у вас нет целей.</value>
+  </data>
+  <data name="TaskWithEventCompleted" xml:space="preserve">
+    <value>Поздравляем, вы выполнили цель "{taskName}" и она обошлась вам в {cost} ₽. Данное событие уже создано на сегодняшнюю дату.</value>
+  </data>
+  <data name="TaskWithoutEventCompleted" xml:space="preserve">
+    <value>Поздравляем, вы выполнили цель "{taskName}" и выбрали вариант "Не создавать событие", поэтому нигде не будет отмечено, что вы потратили деньги на неё.</value>
   </data>
 </root>

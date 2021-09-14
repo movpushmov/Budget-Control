@@ -6,10 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:utils="using:Budget_Control.Source.API.XAML_Bridges.Utils"
     mc:Ignorable="d"
-    Title="Создать задачу"
-    PrimaryButtonText="Отменить"
-    SecondaryButtonText="Создать"
-    SecondaryButtonStyle="{StaticResource AccentButtonStyle}"
+    x:Uid="AddTaskModal"
+    PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
@@ -18,7 +16,7 @@
     </ContentDialog.Resources>
     
     <StackPanel Margin="0 16 0 0" Orientation="Vertical">
-        <TextBox PlaceholderText="Название задачи" x:Name="taskName"/>
+        <TextBox x:Uid="TaskNameField" x:Name="taskName"/>
 
         <TextBlock
             Margin="0 4 0 0"
@@ -28,7 +26,7 @@
             />
 
         <StackPanel Orientation="Vertical" Margin="0 16">
-            <TextBox PlaceholderText="Сумма для выполнения задачи" x:Name="taskCost"/>
+            <TextBox x:Uid="TaskCostField" x:Name="taskCost"/>
 
             <TextBlock
                 Margin="0 4 0 0"
@@ -41,7 +39,7 @@
         <Button Click="SelectFile">
             <StackPanel Orientation="Horizontal">
                 <FontIcon Glyph="" FontFamily="Segoe Fluent Icons" HorizontalAlignment="Center"/>
-                <TextBlock HorizontalAlignment="Center" Margin="4 0 0 0">Выберите файл</TextBlock>
+                <TextBlock HorizontalAlignment="Center" Margin="4 0 0 0" x:Uid="SelectFileText"/>
             </StackPanel>
         </Button>
 

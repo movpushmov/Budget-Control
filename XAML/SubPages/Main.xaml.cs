@@ -20,6 +20,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Budget_Control.Source.API.XAML_Bridges.Utils;
 
 // Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -105,7 +106,7 @@ namespace Budget_Control.XAML.SubPages
         {
             var response = await new AddTaskModal(TasksList, TotalAmount).ShowAsync();
 
-            if (response == ContentDialogResult.Secondary)
+            if (response == ContentDialogResult.Primary)
             {
                 tasksList.Visibility = Visibility.Visible;
                 noTasks.Visibility = Visibility.Collapsed;
@@ -116,11 +117,11 @@ namespace Budget_Control.XAML.SubPages
         {
             var dialog = new ContentDialog()
             {
-                Title = "Удалить задачу?",
-                Content = "Это действие нельзя будет отменить.",
-                PrimaryButtonText = "Удалить",
-                SecondaryButtonText = "Отменить",
-                SecondaryButtonStyle = this.Resources["AccentButtonStyle"] as Style
+                Title = TranslationHelper.GetText(TextType.RemoveTaskDialogTitle),
+                Content = TranslationHelper.GetText(TextType.RemoveDialogDescription),
+                PrimaryButtonText = TranslationHelper.GetText(TextType.RemoveDialogSubmit),
+                SecondaryButtonText = TranslationHelper.GetText(TextType.RemoveDialogCancel),
+                SecondaryButtonStyle = Resources["AccentButtonStyle"] as Style
             };
 
             var result = await dialog.ShowAsync();
@@ -214,10 +215,6 @@ namespace Budget_Control.XAML.SubPages
                             noTasks.Visibility = Visibility.Visible;
                         }
 
-                        string toastText = dialog.Category != null ?
-                            $"и она обошлась вам в {userTask.Cost} ₽. Данное событие уже создано на сегодняшнюю дату." :
-                            "и выбрали вариант \"Не создавать событие\", поэтому нигде не будет отмечено, что вы потратили деньги на неё.";
-
                         var toastContent = new ToastContent()
                         {
                             Visual = new ToastVisual()
@@ -228,11 +225,17 @@ namespace Budget_Control.XAML.SubPages
                                     {
                                         new AdaptiveText()
                                         {
-                                            Text = "Вы выполнили цель"
+                                            Text = TranslationHelper.GetText(TextType.CompletedTaskToastTitle)
                                         },
                                         new AdaptiveText()
                                         {
-                                            Text = $"Поздравляем, вы выполнили цель \"{userTask.Name}\" {toastText}"
+                                            Text = dialog.Category != null ?
+                                                TranslationHelper.GetText(TextType.TaskWithEventCompleted)
+                                                    .Replace("{cost}", task.Cost.ToString())
+                                                    .Replace("{taskName}", task.Name)
+                                                :
+                                                TranslationHelper.GetText(TextType.TaskWithoutEventCompleted)
+                                                    .Replace("{taskName}", task.Name)
                                         },
                                         new AdaptiveImage()
                                         {

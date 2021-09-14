@@ -23,7 +23,17 @@ namespace Budget_Control.Source.API.XAML_Bridges.Utils
         SettingsDonations,
         SettingsDonationsDesc,
         SettingsPrivacyPolicy,
-        SettingsPrivacyPolicyDesc
+        SettingsPrivacyPolicyDesc,
+
+        SearchNotFound,
+        TaskWithoutEventCompleted,
+        TaskWithEventCompleted,
+        CompletedTaskToastTitle,
+
+        RemoveTaskDialogTitle,
+        RemoveDialogDescription,
+        RemoveDialogCancel,
+        RemoveDialogSubmit,
     }
 
     public static class TranslationHelper

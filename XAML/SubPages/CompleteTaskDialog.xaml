@@ -6,9 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="Отметить цель как выполненную"
-    PrimaryButtonText="Отметить"
-    SecondaryButtonText="Отмена"
+    x:Uid="CompleteTaskDialog"
     PrimaryButtonStyle="{ThemeResource AccentButtonStyle}"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
@@ -23,20 +21,18 @@
             Severity="Informational"
             IsOpen="True"
             IsClosable="False"
-            Title="Обратите внимание"
-            Message="Вы можете создать расходное событие,
-            которое будет отнесено к данной цели."
+            x:Uid="CompleteTaskDialogInfo"
         />
 
         <CheckBox
             x:Name="createEvent"
-            Content="Создать расходное событие для цели"
+            x:Uid="CompleteTaskDialogCheckBox"
             Margin="0 8 0 8" 
             />
         <AutoSuggestBox 
             x:Name="newEventCategory" 
             IsEnabled="{x:Bind (x:Boolean)createEvent.IsChecked, Mode=OneWay}"
-            PlaceholderText="Название категории"
+            x:Uid="CategoryNameField"
             QueryIcon="Find"
             TextChanged="CategoryNameFieldChanged"
             />

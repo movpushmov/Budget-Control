@@ -117,11 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddTaskModal.PrimaryButtonText" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="AddTaskModal.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="AddTaskModal.Title" xml:space="preserve">
+    <value>Create target</value>
+  </data>
+  <data name="AmountBlockTitle.Text" xml:space="preserve">
+    <value>Your funds:</value>
+  </data>
   <data name="CategoryNameExists" xml:space="preserve">
     <value>This category name is already exists.</value>
   </data>
+  <data name="CategoryNameField.PlaceholderText" xml:space="preserve">
+    <value>Category name</value>
+  </data>
+  <data name="CompletedTaskToastTitle" xml:space="preserve">
+    <value>You're complete the target!</value>
+  </data>
+  <data name="CompleteTaskDialog.PrimaryButtonText" xml:space="preserve">
+    <value>Mark</value>
+  </data>
+  <data name="CompleteTaskDialog.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CompleteTaskDialog.Title" xml:space="preserve">
+    <value>Mark target as completed?</value>
+  </data>
+  <data name="CompleteTaskDialogCheckBox.Content" xml:space="preserve">
+    <value>Create an expense event for a target</value>
+  </data>
+  <data name="CompleteTaskDialogInfo.Message" xml:space="preserve">
+    <value>You can create an expense event that will be attributed to this target.</value>
+  </data>
+  <data name="CompleteTaskDialogInfo.Title" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="CreateTaskButton.Content" xml:space="preserve">
+    <value>Create target</value>
+  </data>
+  <data name="EditButton.Content" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditTaskModal.PrimaryButtonText" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="EditTaskModal.SecondaryButtonText" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EditTaskModal.Title" xml:space="preserve">
+    <value>Edit target</value>
+  </data>
   <data name="EventInvalidCategory" xml:space="preserve">
     <value>Category which you select doesn't exists.</value>
+  </data>
+  <data name="ExpensesBlockTitle.Text" xml:space="preserve">
+    <value>Expenses for the</value>
   </data>
   <data name="FieldRequiredError" xml:space="preserve">
     <value>This field is required.</value>
@@ -129,8 +183,26 @@
   <data name="InvalidCost" xml:space="preserve">
     <value>Cost is invalid.</value>
   </data>
+  <data name="MainPageTitle.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="MainTitle.Text" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="RemoveButton.Content" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RemoveDialogCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="RemoveDialogDescription" xml:space="preserve">
+    <value>This action cannot be undone.</value>
+  </data>
+  <data name="RemoveDialogSubmit" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RemoveTaskDialogTitle" xml:space="preserve">
+    <value>Remove target?</value>
   </data>
   <data name="RootNavCategories.Content" xml:space="preserve">
     <value>Categories</value>
@@ -143,6 +215,12 @@
   </data>
   <data name="RootNavStats.Content" xml:space="preserve">
     <value>Statistic</value>
+  </data>
+  <data name="SearchNotFound" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="SelectFileText.Text" xml:space="preserve">
+    <value>Select file</value>
   </data>
   <data name="SettingsAuthors" xml:space="preserve">
     <value>Authors</value>
@@ -179,5 +257,23 @@
   </data>
   <data name="SettingsVersionWord.Text" xml:space="preserve">
     <value>Version</value>
+  </data>
+  <data name="TaskCostField.PlaceholderText" xml:space="preserve">
+    <value>Target cost</value>
+  </data>
+  <data name="TaskNameField.PlaceholderText" xml:space="preserve">
+    <value>Target name</value>
+  </data>
+  <data name="TasksBlockTitle.Text" xml:space="preserve">
+    <value>Your targets:</value>
+  </data>
+  <data name="TasksNotFound.Text" xml:space="preserve">
+    <value>Now you don't have any target</value>
+  </data>
+  <data name="TaskWithEventCompleted" xml:space="preserve">
+    <value>Congratulations, you're complete the target "{taskName}" and it cost you {cost} ₽. This event has already been created for today.</value>
+  </data>
+  <data name="TaskWithoutEventCompleted" xml:space="preserve">
+    <value>Congratulations, you're complete the target "{taskName}" and select variant "Don't create event", therefore, nowhere will it be noted that you spent money on it.</value>
   </data>
 </root>

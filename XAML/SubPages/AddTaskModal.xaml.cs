@@ -56,10 +56,6 @@ namespace Budget_Control.XAML.SubPages
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
-        }
-
-        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-        {
             string name = taskName.Text;
             bool success = int.TryParse(taskCost.Text, out int cost);
 
@@ -103,6 +99,10 @@ namespace Budget_Control.XAML.SubPages
 
                 args.Cancel = true;
             }
+        }
+
+        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
         }
 
         private void SelectFile(object sender, Windows.UI.Xaml.RoutedEventArgs e)

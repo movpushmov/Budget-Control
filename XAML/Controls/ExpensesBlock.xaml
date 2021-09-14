@@ -22,10 +22,8 @@
         
         <Grid>
             <TextBlock FontSize="14" FontWeight="Bold">
-                <Run>
-                    Траты за
-                </Run>
-                <Run x:Name="monthName" Text="август"/>
+                <Run x:Uid="ExpensesBlockTitle"/>
+                <Run x:Name="monthName"/>
             </TextBlock>
 
             <TextBlock FontSize="14" HorizontalAlignment="Right">
