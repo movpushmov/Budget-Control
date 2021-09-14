@@ -23,14 +23,18 @@
             <CommandBar DefaultLabelPosition="Right" Grid.Row="0">
                 <AppBarButton 
 					Icon="Add" 
-					Label="Создать событие"
+                    x:Uid="AddEventButton"
 					Click="CreateEvent"
 				    />
             </CommandBar>
 
-            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="24 20 0 0" HorizontalAlignment="Left" Grid.Row="0">
-                События за выбранную дату
-            </TextBlock>
+            <TextBlock
+                Style="{StaticResource SubtitleTextBlockStyle}"
+                Margin="24 20 0 0"
+                HorizontalAlignment="Left"
+                Grid.Row="0"
+                x:Uid="EventsPageTitle"
+                />
 
             <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
@@ -52,13 +56,13 @@
                     <CalendarDatePicker
                         x:Name="calendarDatePicker"
                         DateChanged="CalendarDatePickerDateChanged"
-                        Header="Выберите дату группы событий"
+                        x:Uid="EventsGroupCalendar"
                         Grid.Row="0"
                         />
 
                     <RichTextBlock Margin="0 10 0 0" Grid.Row="1">
                         <Paragraph>
-                            <Run>Cобытия, которые произошли в этот день:</Run>
+                            <Run x:Uid="EventsOnCurrentDate"/>
                         </Paragraph>
                     </RichTextBlock>
 
@@ -132,8 +136,7 @@
                                                         Grid.Row="1"
                                                         Grid.Column="2"
                                                     >
-                                                        <Run Text="{x:Bind Cost}"/>
-                                                        <Run Text="₽"/>
+                                                        <Run Text="{x:Bind Cost}"/><Run x:Uid="DefaultCurrency"/>
                                                 </TextBlock>
                                             </Grid>
                                         </Grid>
@@ -152,12 +155,8 @@
                                                 <ColumnDefinition Width="Auto"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <Button Margin="0 0 8 0" Click="EditEvent" Tag="{x:Bind (entities:Event)}">
-                                                Редактировать
-                                            </Button>
-                                            <Button Click="RemoveEvent" Tag="{x:Bind (entities:Event)}" Grid.Column="1">
-                                                Удалить
-                                            </Button>
+                                            <Button Margin="0 0 8 0" Click="EditEvent" Tag="{x:Bind (entities:Event)}" x:Uid="EditButton"/>
+                                            <Button Click="RemoveEvent" Tag="{x:Bind (entities:Event)}" Grid.Column="1" x:Uid="RemoveButton"/>
                                         </Grid>
 
                                         <Button HorizontalAlignment="Right" Margin="0 0 12 0" Height="32" CornerRadius="8">
@@ -187,7 +186,7 @@
 
                                             <StackPanel Orientation="Horizontal">
                                                 <FontIcon VerticalAlignment="Center" Glyph="&#xE946;" FontSize="16"/>
-                                                <TextBlock Margin="8 -2 0 0" VerticalAlignment="Center">Посмотреть категорию</TextBlock>
+                                                <TextBlock Margin="8 -2 0 0" VerticalAlignment="Center" x:Uid="CheckCategory"/>
                                             </StackPanel>
                                         </Button>
                                     </Grid>

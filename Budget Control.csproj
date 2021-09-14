@@ -19,12 +19,12 @@
     <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
-    <PackageCertificateKeyFile>Salary Control_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Budget Control_TemporaryKey.pfx</PackageCertificateKeyFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
     <GenerateTestArtifacts>True</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <PackageCertificateThumbprint>
     </PackageCertificateThumbprint>
@@ -143,10 +143,13 @@
     <Compile Include="Source\API\Entities\EventsGroup.cs" />
     <Compile Include="Source\API\XAML Bridges\EntitiesList.cs" />
     <Compile Include="Source\API\XAML Bridges\Utils\ColorUtils.cs" />
-    <Compile Include="Source\API\XAML Bridges\Utils\ValidationHelper.cs" />
+    <Compile Include="Source\API\XAML Bridges\Utils\TranslationHelper.cs" />
     <Compile Include="Source\Navigation\Navigation.cs" />
     <Compile Include="XAML\Controls\ProgressBar.xaml.cs">
       <DependentUpon>ProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\Settings\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Compile Include="XAML\SubPages\AddTaskModal.xaml.cs">
       <DependentUpon>AddTaskModal.xaml</DependentUpon>
@@ -187,18 +190,6 @@
     <Compile Include="XAML\SubPages\Stats\Stats.xaml.cs">
       <DependentUpon>Stats.xaml</DependentUpon>
     </Compile>
-    <Compile Include="XAML\SubPages\Stats\Sub\CustomTimeStats.xaml.cs">
-      <DependentUpon>CustomTimeStats.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XAML\SubPages\Stats\Sub\SixMonthsStats.xaml.cs">
-      <DependentUpon>SixMonthsStats.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XAML\SubPages\Stats\Sub\ThreeMonthsStats.xaml.cs">
-      <DependentUpon>ThreeMonthsStats.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XAML\SubPages\Stats\Sub\YearStats.xaml.cs">
-      <DependentUpon>YearStats.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -206,8 +197,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Budget Control_TemporaryKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Assets\DefaultTaskImage.jpg" />
+    <Content Include="Assets\AboutLogo.png" />
+    <Content Include="Assets\SpecialThanksLogos\politcubes-logo.jpg" />
+    <Content Include="Assets\SpecialThanksLogos\frogfeed-logo.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -230,6 +225,10 @@
       <SubType>Designer</SubType>
     </PRIResource>
     <Page Include="XAML\Controls\ProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\Settings\Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -282,22 +281,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\SubPages\Stats\Stats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\Stats\Sub\CustomTimeStats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\Stats\Sub\SixMonthsStats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\Stats\Sub\ThreeMonthsStats.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="XAML\SubPages\Stats\Sub\YearStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

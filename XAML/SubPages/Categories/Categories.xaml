@@ -18,15 +18,18 @@
             
             <CommandBar DefaultLabelPosition="Right" Grid.Row="0" Margin="0 8 0 0">
                 <AppBarButton 
-					Icon="Add" 
-					Label="Добавить Категорию"
+					Icon="Add"
+                    x:Uid="AddCategoryButton"
 					Click="OpenCreateDialog"
 				/>
             </CommandBar>
 
-            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Margin="24 20 0 0" HorizontalAlignment="Left">
-                Категории
-            </TextBlock>
+            <TextBlock
+                Style="{StaticResource SubtitleTextBlockStyle}"
+                Margin="24 20 0 0"
+                HorizontalAlignment="Left"
+                x:Uid="CategoriesPageTitle"
+                />
 
             <Grid Margin="24 0 0 0" Grid.Row="1">
                 <ListView ItemsSource="{x:Bind CategoriesList.Entities}" SelectionMode="Extended" Margin="0 16 0 0">
@@ -100,13 +103,19 @@
                                             <ColumnDefinition Width="Auto"/>
                                             <ColumnDefinition Width="Auto"/>
                                         </Grid.ColumnDefinitions>
-                                        
-                                        <Button Margin="0 0 8 0" Click="EditCategory" Tag="{x:Bind (entities:EventCategory)}">
-                                            Редактировать
-                                        </Button>
-                                        <Button Click="RemoveCategory" Tag="{x:Bind (entities:EventCategory)}" Grid.Column="1">
-                                            Удалить
-                                        </Button>
+
+                                        <Button
+                                            Margin="0 0 8 0"
+                                            x:Uid="EditButton"
+                                            Click="EditCategory"
+                                            Tag="{x:Bind (entities:EventCategory)}"
+                                            />
+                                        <Button
+                                            Click="RemoveCategory"
+                                            x:Uid="RemoveButton"
+                                            Tag="{x:Bind (entities:EventCategory)}"
+                                            Grid.Column="1"
+                                            />
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -125,15 +134,17 @@
                 <FontIcon Glyph="&#xE9CE;" FontSize="48"/>
 
                 <TextBlock
-                FontSize="20"
-                HorizontalAlignment="Center"
-                Margin="0 8 0 4"
-                >
-                    Упс! Похоже, что у вас нет созданных категорий.
-                </TextBlock>
-                <TextBlock FontSize="15" HorizontalAlignment="Center" Foreground="Gray">
-                    Создать категорию вы сможете с помощью кнопки выше.
-                </TextBlock>
+                    FontSize="20"
+                    HorizontalAlignment="Center"
+                    Margin="0 8 0 4"
+                    x:Uid="CategoriesListEmptyTitle"
+                    />
+                <TextBlock
+                    FontSize="15"
+                    HorizontalAlignment="Center"
+                    Foreground="Gray"
+                    x:Uid="CategoriesListEmptyDescription"
+                    />
             </StackPanel>
         </Grid>
     </ScrollViewer>

@@ -6,6 +6,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Windows.Globalization;
 
 namespace Budget_Control
 {
@@ -60,7 +61,7 @@ namespace Budget_Control
             {
                 if (rootFrame.Content == null)
                 {
-                    // new DBContext().Database.Migrate();
+                    // ApplicationLanguages.PrimaryLanguageOverride = "en-us";
 
                     // Если стек навигации не восстанавливается для перехода к первой странице,
                     // настройка новой страницы путем передачи необходимой информации в качестве параметра

@@ -7,9 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls" xmlns:utils="using:Budget_Control.Source.API.XAML_Bridges.Utils"
     mc:Ignorable="d"
-    Title="Редактирование категории"
-    PrimaryButtonText="Изменить"
-    SecondaryButtonText="Отменить"
+    x:Uid="EditCategoryDialog"
     PrimaryButtonStyle="{StaticResource AccentButtonStyle}"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
@@ -19,8 +17,8 @@
     </ContentDialog.Resources>
 
     <StackPanel Orientation="Vertical">
-        <TextBox 
-            PlaceholderText="Название категории" 
+        <TextBox
+            x:Uid="CategoryNameField"
             Margin="0 12 0 0"
             x:Name="categoryName"
             />
@@ -28,12 +26,12 @@
         <TextBlock
             Margin="0 4 0 0"
             Foreground="Red"
-            Visibility="{x:Bind utils:ValidationHelper.IsErrorBlockVisible(CategoryNameError), Mode=OneWay}"
+            Visibility="{x:Bind utils:TranslationHelper.IsErrorBlockVisible(CategoryNameError), Mode=OneWay}"
             Text="{x:Bind CategoryNameError, Mode=OneWay}"
             />
 
         <CheckBox
-            Content="Категория расходов"
+            x:Uid="IsExpensesCategoryCheckBox"
             Margin="0 8 0 20"
             x:Name="categoryIsConsumption"
             />

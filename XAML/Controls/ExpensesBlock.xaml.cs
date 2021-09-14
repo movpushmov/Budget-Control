@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Globalization;
 
 // Документацию по шаблону элемента "Пользовательский элемент управления" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -28,7 +29,7 @@ namespace Budget_Control.XAML.Controls
         {
             this.InitializeComponent();
 
-            DateTimeFormatInfo info = CultureInfo.GetCultureInfo("ru-RU").DateTimeFormat;
+            DateTimeFormatInfo info = CultureInfo.GetCultureInfo(ApplicationLanguages.PrimaryLanguageOverride).DateTimeFormat;
             monthName.Text = info.MonthNames[DateTime.Now.Month - 1].ToLower();
         }
 

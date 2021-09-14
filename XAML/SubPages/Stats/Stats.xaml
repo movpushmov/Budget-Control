@@ -8,26 +8,55 @@
     mc:Ignorable="d"
 	Background="{ThemeResource BackgroundColor}">
 
-    <Grid>
+    <Grid Margin="50 24 0 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Orientation="Horizontal">
+            <Button x:Uid="ThreeMonthsTemplateBtn" Click="SetTimestampWithTemplate" Tag="{x:Bind local:TimestampTemplate.ThreeMonths}"/>
+            <Button x:Uid="SixMonthsTemplateBtn" Click="SetTimestampWithTemplate" Tag="{x:Bind local:TimestampTemplate.SixMonths}" Margin="8 0"/>
+            <Button x:Uid="YearTemplateBtn" Click="SetTimestampWithTemplate" Tag="{x:Bind local:TimestampTemplate.Year}"/>
+        </StackPanel>
 
-        <Frame Grid.Row="1" x:Name="chartPageFrame"/>
-        
-        <ComboBox 
-            Margin="15 15 0 15" 
-            PlaceholderText="Выберите тип отчёта"
-            SelectionChanged="ComboBoxSelectionChanged"
-            SelectedValue="Отчёт за 3 месяца"
-            Grid.Row="0"
-            >
-            <x:String>Отчёт за 3 месяца</x:String>
-            <x:String>Отчёт за 6 месяцев</x:String>
-            <x:String>Отчёт за 12 месяцев</x:String>
-            <x:String>Отчёт за произвольный промежуток</x:String>
-        </ComboBox>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 16 0 0">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0 0 0 10" x:Uid="BeginningOfTheBillingPeriod"/>
+                <DatePicker x:Name="firstDate"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="50 0 0 0">
+                <TextBlock Margin="0 0 0 10" x:Uid="EndOfTheBillingPeriod"/>
+                <DatePicker x:Name="lastDate"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Button Grid.Row="2" Margin="0 10 0 20" Click="Count" x:Uid="CountButton"/>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0 0 0 0" x:Uid="BeginningOfTheBillingPeriod"/>
+                <charting:Chart x:Name="chartPlus" Width="350" Height="350" Background="Transparent"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Margin="0 0 0 0" x:Uid="EndOfTheBillingPeriod"/>
+                <charting:Chart x:Name="chartMinus" Width="350" Height="350" Background="Transparent"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="4">
+            <TextBlock HorizontalAlignment="Center" FontSize="17" x:Uid="TotalAmount"/>
+            <TextBlock 
+                HorizontalAlignment="Center" 
+                FontSize="20"
+                Margin="20"
+                >
+                <Run x:Name="finalCount" Text="0"/><Run x:Uid="DefaultCurrency"/>
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </Page>
