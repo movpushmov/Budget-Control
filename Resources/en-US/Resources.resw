@@ -363,6 +363,9 @@
   <data name="SixMonthsTemplateBtn.Content" xml:space="preserve">
     <value>6 Months</value>
   </data>
+  <data name="SpecialThanks.Text" xml:space="preserve">
+    <value>Special thanks</value>
+  </data>
   <data name="TaskCostField.PlaceholderText" xml:space="preserve">
     <value>Target cost</value>
   </data>

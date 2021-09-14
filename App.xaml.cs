@@ -61,7 +61,7 @@ namespace Budget_Control
             {
                 if (rootFrame.Content == null)
                 {
-                    ApplicationLanguages.PrimaryLanguageOverride = "en-us";
+                    // ApplicationLanguages.PrimaryLanguageOverride = "en-us";
 
                     // Если стек навигации не восстанавливается для перехода к первой странице,
                     // настройка новой страницы путем передачи необходимой информации в качестве параметра
