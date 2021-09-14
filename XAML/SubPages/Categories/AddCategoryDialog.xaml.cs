@@ -22,7 +22,7 @@ namespace Budget_Control.XAML.SubPages.Categories
 
         // Using a DependencyProperty as the backing store for CategoryNameError.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CategoryNameErrorProperty =
-            DependencyProperty.Register("CategoryNameError", typeof(string), typeof(AddCategoryDialog), new PropertyMetadata(TranslationHelper.GetErrorText(ErrorType.FieldRequiredError)));
+            DependencyProperty.Register("CategoryNameError", typeof(string), typeof(AddCategoryDialog), new PropertyMetadata(TranslationHelper.GetText(TextType.FieldRequiredError)));
 
 
 
@@ -52,7 +52,7 @@ namespace Budget_Control.XAML.SubPages.Categories
 
                     if (category != null)
                     {
-                        CategoryNameError = TranslationHelper.GetErrorText(ErrorType.CategoryNameExists);
+                        CategoryNameError = TranslationHelper.GetText(TextType.CategoryNameExists);
 
                         args.Cancel = true;
                         return;

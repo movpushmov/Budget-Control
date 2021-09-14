@@ -7,12 +7,23 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace Budget_Control.Source.API.XAML_Bridges.Utils
 {
-    public enum ErrorType
+    public enum TextType
     {
         FieldRequiredError,
         EventInvalidCategory,
         InvalidCost,
-        CategoryNameExists
+        CategoryNameExists,
+
+        SettingsSendReport,
+        SettingsSendReportDesc,
+        SettingsReleases,
+        SettingsReleasesDesc,
+        SettingsAuthors,
+        SettingsAuthorsDesc,
+        SettingsDonations,
+        SettingsDonationsDesc,
+        SettingsPrivacyPolicy,
+        SettingsPrivacyPolicyDesc
     }
 
     public static class TranslationHelper
@@ -24,7 +35,7 @@ namespace Budget_Control.Source.API.XAML_Bridges.Utils
             _resourceLoader = new ResourceLoader();
         }
 
-        public static string GetErrorText(ErrorType type)
+        public static string GetText(TextType type)
     {
             return _resourceLoader.GetString(type.ToString());
         }

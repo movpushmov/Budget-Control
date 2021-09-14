@@ -129,4 +129,55 @@
   <data name="InvalidCost" xml:space="preserve">
     <value>Cost is invalid.</value>
   </data>
+  <data name="MainTitle.Text" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="RootNavCategories.Content" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="RootNavEventGroups.Content" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="RootNavMain.Content" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="RootNavStats.Content" xml:space="preserve">
+    <value>Statistic</value>
+  </data>
+  <data name="SettingsAuthors" xml:space="preserve">
+    <value>Authors</value>
+  </data>
+  <data name="SettingsAuthorsDesc" xml:space="preserve">
+    <value>Find out who contributed to the development of Budget Control</value>
+  </data>
+  <data name="SettingsDonations" xml:space="preserve">
+    <value>Support us</value>
+  </data>
+  <data name="SettingsDonationsDesc" xml:space="preserve">
+    <value>Support us financially</value>
+  </data>
+  <data name="SettingsPrivacyPolicy" xml:space="preserve">
+    <value>Privacy policy</value>
+  </data>
+  <data name="SettingsPrivacyPolicyDesc" xml:space="preserve">
+    <value>Read our privacy policy</value>
+  </data>
+  <data name="SettingsReleases" xml:space="preserve">
+    <value>Releases</value>
+  </data>
+  <data name="SettingsReleasesDesc" xml:space="preserve">
+    <value>Find out what's new in Budget Control</value>
+  </data>
+  <data name="SettingsSendReport" xml:space="preserve">
+    <value>Send report</value>
+  </data>
+  <data name="SettingsSendReportDesc" xml:space="preserve">
+    <value>Submit an issue report to provide developers with more information about it</value>
+  </data>
+  <data name="SettingsTitle.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsVersionWord.Text" xml:space="preserve">
+    <value>Version</value>
+  </data>
 </root>

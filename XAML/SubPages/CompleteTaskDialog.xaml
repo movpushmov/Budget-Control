@@ -44,7 +44,7 @@
         <TextBlock
             Margin="0 4 0 0"
             Foreground="Red"
-            Visibility="{x:Bind GetErrorTextVisibility((x:Boolean)createEvent.IsChecked, CategoryNameError), Mode=OneWay}"
+            Visibility="{x:Bind GetTextVisibility((x:Boolean)createEvent.IsChecked, CategoryNameError), Mode=OneWay}"
             Text="{x:Bind CategoryNameError, Mode=OneWay}"
             />
     </StackPanel>

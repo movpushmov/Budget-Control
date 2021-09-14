@@ -82,14 +82,14 @@ namespace Budget_Control.XAML.SubPages
                 if (Category == null)
                 {
                     args.Cancel = true;
-                    CategoryNameError = TranslationHelper.GetErrorText(ErrorType.EventInvalidCategory);
+                    CategoryNameError = TranslationHelper.GetText(TextType.EventInvalidCategory);
                 }
             }
 
             if (isChecked && (string.IsNullOrEmpty(newEventCategory.Text) || string.IsNullOrWhiteSpace(newEventCategory.Text)))
             {
                 args.Cancel = true;
-                CategoryNameError = TranslationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                CategoryNameError = TranslationHelper.GetText(TextType.FieldRequiredError);
             }
         }
 
@@ -97,7 +97,7 @@ namespace Budget_Control.XAML.SubPages
         {
         }
 
-        public Visibility GetErrorTextVisibility(bool isCreateEvent, string errorText)
+        public Visibility GetTextVisibility(bool isCreateEvent, string errorText)
         {
             return isCreateEvent && errorText != "" ? Visibility.Visible : Visibility.Collapsed;
         }

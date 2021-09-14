@@ -18,25 +18,25 @@
             SelectionChanged="NavigationViewSelectionChanged"
             >
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Tag="main" Content="Главная" x:Name="mainNavItem">
+                <muxc:NavigationViewItem Tag="main" x:Uid="RootNavMain" x:Name="mainNavItem">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph=""/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
-                
-                <muxc:NavigationViewItem Tag="stats" Content="Статистика">
+
+                <muxc:NavigationViewItem Tag="stats" x:Uid="RootNavStats" Content="Статистика">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE9D2;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
-                <muxc:NavigationViewItem Tag="eventGroup" Content="События">
+                <muxc:NavigationViewItem Tag="eventGroup" x:Uid="RootNavEventGroups" Content="События">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE787;"/>
                     </muxc:NavigationViewItem.Icon>
                 </muxc:NavigationViewItem>
 
-                <muxc:NavigationViewItem Tag="categories" Content="Категории">
+                <muxc:NavigationViewItem Tag="categories" x:Uid="RootNavCategories" Content="Категории">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xEA37;"/>
                     </muxc:NavigationViewItem.Icon>

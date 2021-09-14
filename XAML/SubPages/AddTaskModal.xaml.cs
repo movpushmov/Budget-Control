@@ -21,7 +21,7 @@ namespace Budget_Control.XAML.SubPages
 
         // Using a DependencyProperty as the backing store for TaskNameError.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TaskNameErrorProperty =
-            DependencyProperty.Register("TaskNameError", typeof(string), typeof(AddTaskModal), new PropertyMetadata(TranslationHelper.GetErrorText(ErrorType.FieldRequiredError)));
+            DependencyProperty.Register("TaskNameError", typeof(string), typeof(AddTaskModal), new PropertyMetadata(TranslationHelper.GetText(TextType.FieldRequiredError)));
 
         public string TaskCostError
         {
@@ -31,7 +31,7 @@ namespace Budget_Control.XAML.SubPages
 
         // Using a DependencyProperty as the backing store for TaskCostError.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TaskCostErrorProperty =
-            DependencyProperty.Register("TaskCostError", typeof(string), typeof(AddTaskModal), new PropertyMetadata(TranslationHelper.GetErrorText(ErrorType.FieldRequiredError)));
+            DependencyProperty.Register("TaskCostError", typeof(string), typeof(AddTaskModal), new PropertyMetadata(TranslationHelper.GetText(TextType.FieldRequiredError)));
 
         public string FileName
         {
@@ -85,7 +85,7 @@ namespace Budget_Control.XAML.SubPages
             {
                 if (!success || cost < 0)
                 {
-                    TaskCostError = TranslationHelper.GetErrorText(ErrorType.InvalidCost);
+                    TaskCostError = TranslationHelper.GetText(TextType.InvalidCost);
                 }
                 else
                 {
@@ -94,7 +94,7 @@ namespace Budget_Control.XAML.SubPages
 
                 if (string.IsNullOrEmpty(name) && string.IsNullOrWhiteSpace(name))
                 {
-                    TaskNameError = TranslationHelper.GetErrorText(ErrorType.FieldRequiredError);
+                    TaskNameError = TranslationHelper.GetText(TextType.FieldRequiredError);
                 }
                 else
                 {

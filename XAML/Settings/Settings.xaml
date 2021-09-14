@@ -34,9 +34,8 @@
                 Margin="24 24 0 0"
                 FontSize="22"
                 FontWeight="Medium"
-            >
-                Параметры   
-            </TextBlock>
+                x:Uid="SettingsTitle"
+            />
 
             <Grid Grid.Row="1" Margin="24 12 0 0">
                 <Grid.ColumnDefinitions>
@@ -62,8 +61,8 @@
                         Margin="0 4 0 0"
                         Foreground="{ThemeResource AppVersionColor}"
                         >
-                        <Run>Версия</Run>
-                        <Run>2.3.0</Run>
+                        <Run x:Uid="SettingsVersionWord"/>
+                        <Run x:Name="appVersion"></Run>
                     </TextBlock>
                 </Grid>
             </Grid>
@@ -83,7 +82,7 @@
 
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local:AboutItem">
-                        <Button BorderThickness="0" Margin="0 2" Background="Transparent">
+                        <Button BorderThickness="0" Margin="0 2" Background="Transparent" Click="Redirect" Tag="{x:Bind Link}">
                             <StackPanel Orientation="Horizontal">
                                 <FontIcon Glyph="{x:Bind Icon}" FontFamily="Segoe Fluent Icons"/>
 
@@ -96,36 +95,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
-            <Grid Grid.Row="3" Margin="24 24 0 0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock
-                    FontSize="18"
-                    FontWeight="Medium"
-                    Grid.Row="0"
-                >
-                    Персонализация
-                </TextBlock>
-
-                <TextBlock
-                    FontSize="16"
-                    Grid.Row="1"
-                    Margin="0 12"
-                >
-                    Тема
-                </TextBlock>
-
-                <ComboBox Grid.Row="2" MinWidth="200" SelectedValue="system">
-                    <ComboBoxItem IsSelected="True">Системная</ComboBoxItem>
-                    <ComboBoxItem>Тёмная</ComboBoxItem>
-                    <ComboBoxItem>Светлая</ComboBoxItem>
-                </ComboBox>
-            </Grid>
         </Grid>
     </Grid>
 </Page>
