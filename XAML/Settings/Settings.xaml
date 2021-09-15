@@ -85,7 +85,7 @@
                         <DataTemplate x:DataType="local:AboutItem">
                             <Button BorderThickness="0" Margin="0 2" Background="Transparent" Click="Redirect" Tag="{x:Bind Link}">
                                 <StackPanel Orientation="Horizontal">
-                                    <FontIcon Glyph="{x:Bind Icon}" FontFamily="Segoe Fluent Icons"/>
+                                    <FontIcon Glyph="{x:Bind Icon}" FontFamily="{StaticResource SegoeFluentIcons}"/>
 
                                     <StackPanel Orientation="Vertical" Margin="12 0 0 0">
                                         <TextBlock Text="{x:Bind Title}"/>

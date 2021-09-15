@@ -112,7 +112,7 @@
                                         Style="{x:Bind local:Main.GetCompleteButtonStyle(CurrentAmount, Cost)}"
                                         Tag="{x:Bind (entities:UserTask)}"
                                         >
-                                        <FontIcon FontFamily="Segoe Fluent Icons" Glyph=""/>
+                                        <FontIcon FontFamily="{StaticResource SegoeFluentIcons}" Glyph=""/>
                                     </Button>
                                     <Button
                                         Click="EditTaskModalOpen"

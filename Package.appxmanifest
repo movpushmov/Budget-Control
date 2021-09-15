@@ -9,7 +9,7 @@
   <Identity
     Name="38869movpushmov.BudgetControl"
     Publisher="CN=movpushmov"
-    Version="2.2.2.0" />
+    Version="2.3.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="96871adc-e30f-4ed8-a167-5f5b411800f5" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
