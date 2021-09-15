@@ -5,8 +5,3 @@ Budget Control - простое, удобное и красивое прилож
 ## Скачать
 
 https://www.microsoft.com/store/productId/9PC6B8J51LNK
-
-## FAQ
-
-- **У меня некорректно отображаются иконки в приложении!**
-- Вероятно, у вас отсутствует шрифт "Segoe Fluent Icons". Для Windows 11 он поставляется сразу вместе с системой, но для Windows 10 его необходимо установить отдельно: [тык](https://docs.microsoft.com/en-us/windows/apps/design/downloads/#fonts)
