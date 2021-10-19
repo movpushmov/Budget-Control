@@ -27,6 +27,8 @@ namespace Budget_Control.XAML.Presetting
     /// </summary>
     public sealed partial class SelectCurrencies : Page
     {
+        private PageParameters<List<Currency>> _pageParameters;
+
         public List<Currency> Currencies = new List<Currency>();
         public ObservableCollection<Currency> SelectedCurrencies = new ObservableCollection<Currency>();
 
@@ -56,6 +58,11 @@ namespace Budget_Control.XAML.Presetting
             this.InitializeComponent();
 
             Currencies = LogicManager.CurrenciesManager.GetCurrencies();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            _pageParameters = (PageParameters<List<Currency>>)e.Parameter;
         }
 
         public static string FormatName(Currency currency)

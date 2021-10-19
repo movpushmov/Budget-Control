@@ -21,12 +21,10 @@ namespace Budget_Control.XAML.Presetting
 {
     public class PageParameters<T>
     {
-        public Action Previous { get; set; }
         public Action<T> Next { get; set; }
 
-        public PageParameters(Action prev, Action<T> next)
+        public PageParameters(Action<T> next)
         {
-            Previous = prev;
             Next = next;
         }
     }
@@ -45,16 +43,7 @@ namespace Budget_Control.XAML.Presetting
 
             currentPage.Navigate(
                 typeof(SelectMode),
-                new PageParameters<CurrenciesUpdateMode>(null, Next)
-            );
-        }
-
-        public void Previous()
-        {
-            currentPage.Navigate(
-                typeof(SelectMode),
-                new PageParameters<CurrenciesUpdateMode>(null, Next),
-                new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromLeft }
+                new PageParameters<CurrenciesUpdateMode>(Next)
             );
         }
 
@@ -63,14 +52,19 @@ namespace Budget_Control.XAML.Presetting
             _mode = mode;
             currentPage.Navigate(
                 typeof(SelectCurrencies),
-                new PageParameters<List<Currency>>(Previous, Finish),
+                new PageParameters<List<Currency>>(Finish),
                 new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight }
             );
         }
 
         public void Finish(List<Currency> currencies)
         {
-
+            _selectedCurrencies = currencies;
+            currentPage.Navigate(
+                typeof(MainPage),
+                new PageParameters<List<Currency>>(Finish),
+                new SlideNavigationTransitionInfo() { Effect = SlideNavigationTransitionEffect.FromRight }
+            );
         }
     }
 }
