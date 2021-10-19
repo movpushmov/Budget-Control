@@ -41,6 +41,8 @@ namespace Budget_Control.Source.API.XAML_Bridges.Utils
         RemoveDialogSubmit,
         RemoveCategoryTitle,
         RemoveEventTitle,
+
+        NothingNotFound,
     }
 
     public static class TranslationHelper

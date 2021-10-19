@@ -151,7 +151,7 @@ namespace Budget_Control.XAML.SubPages.Events
                     }
                     else
                     {
-                        sender.ItemsSource = new List<string>() { "Ничего не найдено" };
+                        sender.ItemsSource = new List<string>() { TranslationHelper.GetText(TextType.SearchNotFound) };
                     }
                 }
             }

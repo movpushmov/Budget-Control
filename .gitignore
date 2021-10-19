@@ -4,3 +4,4 @@ obj
 AppPackages
 packages
 Budget Control.csproj.user
+Package.StoreAssociation.xml

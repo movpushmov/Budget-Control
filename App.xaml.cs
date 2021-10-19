@@ -7,6 +7,10 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using Windows.Globalization;
+using Budget_Control.XAML.Presetting;
+using Budget_Control.Source.API.Managers;
+using Budget_Control.Source.API.Managers.CurrenciesManager;
+using Budget_Control.Source.API.Managers.LocalizationManager;
 
 namespace Budget_Control
 {
@@ -61,12 +65,15 @@ namespace Budget_Control
             {
                 if (rootFrame.Content == null)
                 {
+                    LogicManager.CurrenciesManager = new CurrenciesManager();
+                    LogicManager.LocalizationManager = new LocalizationManager(ApplicationLanguages.PrimaryLanguageOverride);
+
                     // ApplicationLanguages.PrimaryLanguageOverride = "en-us";
 
                     // Если стек навигации не восстанавливается для перехода к первой странице,
                     // настройка новой страницы путем передачи необходимой информации в качестве параметра
                     // навигации
-                    rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                    rootFrame.Navigate(typeof(PresettingController), e.Arguments);
                 }
                 // Обеспечение активности текущего окна
                 Window.Current.Activate();

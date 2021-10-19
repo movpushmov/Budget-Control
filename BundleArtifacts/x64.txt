@@ -1,2 +1,2 @@
-MainPackage=C:\Users\redfo\Documents\GitHub\Budget-Control\bin\x64\Release\Budget Control_2.2.2.0_x64.msix
-ResourcePack=C:\Users\redfo\Documents\GitHub\Budget-Control\bin\x64\Release\Budget Control_2.2.2.0_language-en.msix
+MainPackage=C:\Users\redfo\Documents\GitHub\Budget-Control\bin\x64\Release\Budget Control_2.3.1.0_x64.msix
+ResourcePack=C:\Users\redfo\Documents\GitHub\Budget-Control\bin\x64\Release\Budget Control_2.3.1.0_language-en.msix

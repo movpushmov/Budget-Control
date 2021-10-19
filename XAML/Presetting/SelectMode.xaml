@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="Budget_Control.XAML.Presetting.SelectMode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:Core="using:Microsoft.Xaml.Interactions.Core" xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:local="using:Budget_Control.XAML.Presetting"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource SubheaderTextBlockStyle}" TextAlignment="Center" FontWeight="Light">Привет!</TextBlock>
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Padding="128 0" TextAlignment="Center" FontWeight="Light" Margin="0 12 0 24">
+                Чтобы начать работать с приложением, выберите, когда нам необходимо обновлять курсы валют.
+            </TextBlock>
+
+            <GridView HorizontalAlignment="Center" SelectionMode="Single" SelectionChanged="SelectionChanged">
+                <GridViewItem CornerRadius="8" Height="200" Tag="{x:Bind local:CurrenciesUpdateMode.AppLaunch}">
+                    <StackPanel Orientation="Horizontal" Padding="32"  CornerRadius="8">
+                        <FontIcon
+                            FontFamily="{StaticResource SegoeFluentIcons}"
+                            VerticalAlignment="Top"
+                            FontSize="32"
+                            Glyph=""
+                            Margin="0 8 0 0"
+                            />
+
+                        <StackPanel Orientation="Vertical" Margin="20 0 0 0">
+                            <TextBlock FontSize="20">При запуске приложения</TextBlock>
+                            <TextBlock MaxWidth="300" TextWrapping="Wrap" Margin="0 8 0 0">
+                                Приложение автоматически будет запрашивать последние данные о курсах валют и
+                                возьмёт последние сохранённые, если у вас будет отсутствовать доступ к интернету.
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </GridViewItem>
+
+                <GridViewItem CornerRadius="8" Height="200" Tag="{x:Bind local:CurrenciesUpdateMode.Manually}">
+                    <StackPanel Orientation="Horizontal" Padding="32"  CornerRadius="8">
+                        <FontIcon
+                            FontFamily="{StaticResource SegoeFluentIcons}"
+                            VerticalAlignment="Top"
+                            FontSize="32"
+                            Glyph=""
+                            Margin="0 8 0 0"
+                            />
+
+                        <StackPanel Orientation="Vertical" Margin="20 0 0 0">
+                            <TextBlock FontSize="20">Ручное обновление</TextBlock>
+                            <TextBlock MaxWidth="300" TextWrapping="Wrap" Margin="0 8 0 0">
+                                Приложение будет обновлять курс валют только тогда, когда вы этого захотите.
+                                Чтобы обновить курс валют, вам необходимо будет зайти в "Параметры" и нажать
+                                на соответствующую кнопку
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </GridViewItem>
+            </GridView>
+
+            <Button Style="{StaticResource AccentButtonStyle}" HorizontalAlignment="Center" Margin="0 20 0 0" Padding="12 8" Click="GoNext" IsEnabled="{x:Bind ButtonEnabled, Mode=OneWay}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="16">Продолжить</TextBlock>
+                    <FontIcon
+                        FontFamily="{StaticResource SegoeFluentIcons}"
+                        Glyph=""
+                        Margin="8 4 0 0"
+                        />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
